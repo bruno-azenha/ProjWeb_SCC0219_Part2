@@ -5,23 +5,29 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- <link href="css/carousel.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<title>Bridgeport Main page</title>
 </head>
 <body>
 	<div class= "navbar-wrapper">
-		<nav>
+		<nav class="navbar navbar-default">
 			<div class ="container">
 				<div class = "navbar-header ">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+         <span class="sr-only"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
 					<a class ="navbar-brand" href= "index.html">Bridgeport Hotel</a>
 				</div>
-				<div id="navbar" class="">
+				<div id="navbar" class="collapse navbar-collapse">
 	              <ul class="nav navbar-nav">
 	                <li class=""><a href="#">Home</a></li>
-	                <li><a href="#login">About</a></li>
-	                <li><a href="#contact">Contact</a></li>	                
+	                <li><a href="signup.html">Register</a></li>
+	                <li><a href="contact.html">Contact</a></li>	                
 	              </ul>
 	            </div>
 	            <div><a class="btn btn-md btn-primary pull-right" href="login.html" role="button">log in</a></div>
@@ -77,23 +83,25 @@
 
       <!-- This code adds "left" and "right" buttons that allows the user to go back and forth between the slides manually. The data-slide attribute accepts the keywords "prev" or "next", which alters the slide position relative to its current position. -->
       <a class="left carousel-control" href="#bridgeportCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="fa fa-arrow-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
       <a class="right carousel-control" href="#bridgeportCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="fa fa-arrow-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
     </div>
 
     <div class="container marketing">
        <hr class="featurette-divider">
-    	<div   id= "facilities" class="row featurette">
+    	<div   id= "facilities" class="row featurette ">
         <div class="col-md-7">
           <h2 class="featurette-heading">Awesome Bar. <span class="text-muted">It will blow your mind.</span></h2>
           <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
         <div class="col-md-5">
+                   <hr class="featurette-divider">
+
           <img class="featurette-image img-responsive center-block" src="imgs/bar2.jpg" alt="bar">
         </div>
       </div>
@@ -126,7 +134,7 @@
 
       <div class="row featurette">
         <div class="col-md-7 col-md-push-5">
-          <h2 class="featurette-heading">The crystal clear pool. <span class="text-muted">Checkmate.</span></h2>
+          <h2 class="featurette-heading">The crystal clear pool. <span class="text-muted">Dive in.</span></h2>
           <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
         </div>
         <div class="col-md-5 col-md-pull-7">
