@@ -11,7 +11,7 @@ public class User implements java.io.Serializable {
     private String zip;
     private String email;
     private String password;
-    private Boolean isSuper;
+    private Boolean isSuper = false;
     
     public User() {
     }
