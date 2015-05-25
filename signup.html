@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+		<html lang= "pt-br">
+<head>
+	<meta charset ="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/signup.css" rel="stylesheet">
+    <link href="css/error.css" rel="stylesheet">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/signup.js"></script>
+    <script type="text/javascript" src ="js/jquery-ui/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.min.css">
+    
+	<title>Sign up</title>
+</head>
+<body>
+	<div class= "navbar-wrapper">
+		<nav>
+			<div class ="container">
+				<div class = "navbar-header ">
+					<a class ="navbar-brand" href= "index.html">Bridgeport Hotel</a>
+				</div>
+				<div id="navbar" class="">
+	              <ul class="nav navbar-nav">
+	                <li class=""><a href="index.html">Home</a></li>
+	                <li><a href="#about">About</a></li>
+	                <li><a href="#contact.html">Contact</a></li>	                
+	              </ul>
+	            </div>
+	        </div>
+		</nav>
+	</div>
+
+	<div class="container cover">
+		<div class= "col-md-12">
+		
+		<form  class = "form" action="" method="GET" id= "register" autocomplete = "off">
+			<h1>Register</h1>
+			<div class="form-group">
+			<label for ="name">Full Name: </label>
+			<input  class="form-control" name = "name "id = "name" type = "text" required/>
+		</div>
+		<div class="form-group">
+			<label for ="cpf">CPF: </label>
+			<input class = "form-control" name = "cpf" id = "cpf" type="text" maxlength = "11" placeholder = "only numbers" required/>
+		</div>
+			<div class="form-group">
+			<label for ="datanasc">Date of Birth</label><br>
+			<input name = "dob" id = "datanasc" readonly='true' required />
+			</div>
+			<div >
+			<label for ="sexo">Gender: </label>
+			<input name= "sexo" type = "radio" value = "Masc" required/>Male
+			<input name= "sexo" type = "radio" value = "Fem" required/>Female
+			<input name= "sexo" type = "radio" value = "None" required/>Rather not state
+			</div>
+			<div class="form-group">
+			<label for= "estadoCivil">Marital Status: </label>
+			<input name= "estadoCivil" type = "radio" value = "Solteiro" required/>Single
+			<input name= "estadoCivil" type = "radio" value = "Casado" required/>Married
+			<input name= "estadoCivil" type = "radio" value = "Outros" required/>Other
+			</div>
+		<div class="form-group">
+			<label for ="cidade"> City: </label>
+			<input class = "form-control field" name = "cidade" id = "cidade" type = "text" required/>
+			<label for ="estado">State: </label>
+			<select name = "estado" id= "estado" >
+				<option>AC</option>			<option>AL</option>		<option>AP</option>			
+				<option>AM</option>			<option>BA</option>		<option>CE</option>
+				<option>DF</option>			<option>ES</option>		<option>GO</option>
+				<option>MA</option>			<option>MT</option>		<option>MS</option>
+				<option>MG</option>			<option>PA</option>		<option>PB</option>
+				<option>PE</option>			<option>PI</option>		<option>PR</option>
+				<option>RJ</option>			<option>RN</option>		<option>RO</option>
+				<option>RR</option>			<option>RS</option>		<option>SC</option>
+				<option>SE</option>			<option>SP</option> 	<option>TO</option>
+			</select>
+		</div>
+		<div class="form-group">
+			<label for ="cep">Zipcode: </label>
+			<input class= "form-control" id = "cep" type = "text" maxlength = "8" placeholder="only numbers" required/>
+		</div>
+		<div class="form-group">
+			<label for ="email">E-mail: </label>
+			<input class = "form-control field" type = "text" id = "email" required/>
+		</div>
+		<div class="form-group">
+			<label for ="senha">Password: </label>
+			<input class = "form-control" type = "password" id="senha"/>
+			<p class="forca" id="forcaDaSenha"></p>
+		</div>	
+		<div class="form-group">
+			<label for ="passConfirmation">Password Confimation: </label>			
+			<input class = "form-control" type = "password" id="passConfirmation" required/>
+		</div>
+			<input class = "btn btn-lg btn-primary btn-block" type="submit" value ="Register"/>
+		</form>		
+	</div>
+	</div>
+
+</body>
+</html>
