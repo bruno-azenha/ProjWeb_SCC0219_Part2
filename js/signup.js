@@ -10,12 +10,12 @@ window.onload = function(){
  	maxDate = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate());
  
 
-$("#datanasc").attr("max",maxDate);
+$("#dob").attr("max",maxDate);
 	
 };
 
 $(document).ready(function(){
-	$("#datanasc").datepicker({
+	$("#dob").datepicker({
 		minDate: new Date(1900, 0, 1),
 		maxDate: new Date(),
 		yearRange: '1900:',
@@ -31,8 +31,8 @@ $(document).ready(function(){
 			displayError(cpf,"invalid CPF");
 	})
 
-	$("#cep").focusout(function(event){
-		var cep = $("#cep");
+	$("#zip").focusout(function(event){
+		var cep = $("#zip");
 		var mask = new RegExp("^[0-9]{8}$");
 		if(mask.test(cep.val())){
 			
@@ -68,24 +68,24 @@ $(document).ready(function(){
 			displayError(name,"name has to be at least 2 words long\n each word with 3 characters or more")
 	})
 
-	$("#estado").change(function(event){
-		var cep = $("#cep").val()
+	$("#state").change(function(event){
+		var cep = $("#zip").val()
 		if (cep != ""){
 			if (validateCEP(cep))
-				removeError($("#cep"));
+				removeError($("#zip"));
 		}
 	})
 	
 	
-	$("#senha").keyup(function(event){
-		var senha = $("#senha").val();
+	$("#password").keyup(function(event){
+		var senha = $("#password").val();
 		var forca = verificaSenha(senha);
 		if (forca == -1){
-			displayError($("#senha"), "A senha deve ter entre 6 e 12 caracteres");
+			displayError($("#password"), "A senha deve ter entre 6 e 12 caracteres");
 		}
 		else {
 			displayPasswordStrength(forca);
-			removeError($("#senha"));
+			removeError($("#password"));
 		}
 		
 	})
@@ -96,7 +96,7 @@ $(document).ready(function(){
 		alert("Você não pode colar nesse campo.");
 	})
 	$("#passConfirmation").focusout(function(event){
-		var pass = $("#senha");
+		var pass = $("#password");
 		var conf = $("#passConfirmation");
 		if( validatePass(pass.val(),conf.val())){
 			removeError(conf);
@@ -112,14 +112,14 @@ $(document).ready(function(){
 
 		var fName = $("#name");
 		var cpf = $("#cpf");
-		var data = $("#datanasc");
+		var data = $("#dob");
 		var email = $("#email");
-		var sexo = $("[name='sexo']:checked");
-		var eCivil = $("[name='estadoCivil']:checked");
-		var cidade = $("#cidade");
-		var estado = $("#estado");
-		var cep = $("#cep");
-		var senha = $("#senha");
+		var sexo = $("[name='gender']:checked");
+		var eCivil = $("[name='civilStatus']:checked");
+		var cidade = $("#city");
+		var estado = $("#state");
+		var cep = $("#zip");
+		var senha = $("#password");
 		var senhaC = $("#passConfirmation");
 		console.log(validateFullName(fName.val()));
 		console.log(validateCPF(cpf.val()));
@@ -147,6 +147,7 @@ $(document).ready(function(){
 			localStorage.setItem("email",email.val());
 			localStorage.setItem("senha",senha.val());
 
+			alert("OK!");
 		
 		}
 		
