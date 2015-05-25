@@ -197,243 +197,243 @@ function validateCEP(cep){
 	}
 	
 	if( (zip >=10) && (zip <=199)) {
-		// $("#estado").val("SP");
-		if ($("#estado").val() != "SP"){
-			displayError($("#cep"), "Esse CEP é de SP. Será que você errou?");
+		// $("#state").val("SP");
+		if ($("#state").val() != "SP"){
+			displayError($("#zip"), "Esse CEP é de SP. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 	
 	if( (zip >=200) && (zip <=289)) {
-		//$("#estado").val("RJ");
-		if ($("#estado").val() != "RJ"){
-			displayError($("#cep"), "Esse CEP é de RJ. Será que você errou?");
+		//$("#state").val("RJ");
+		if ($("#state").val() != "RJ"){
+			displayError($("#zip"), "Esse CEP é de RJ. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=790) && (zip <=799)) {
-		//$("#estado").val("MS");
-		if ($("#estado").val() != "MS"){
-			displayError($("#cep"), "Esse CEP é de MS. Será que você errou?");
+		//$("#state").val("MS");
+		if ($("#state").val() != "MS"){
+			displayError($("#zip"), "Esse CEP é de MS. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=300) && (zip <=399)) {
-		//$("#estado").val("MG");
-		if ($("#estado").val() != "MG"){
-			displayError($("#cep"), "Esse CEP é de MG. Será que você errou?");
+		//$("#state").val("MG");
+		if ($("#state").val() != "MG"){
+			displayError($("#zip"), "Esse CEP é de MG. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=780) && (zip <=788)) {
-		//$("#estado").val("MT");
-		if ($("#estado").val() != "MT"){
-			displayError($("#cep"), "Esse CEP é de MT. Será que você errou?");
+		//$("#state").val("MT");
+		if ($("#state").val() != "MT"){
+			displayError($("#zip"), "Esse CEP é de MT. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=699) && (zip <=699)) {
-		//$("#estado").val("AC");
-		if ($("#estado").val() != "AC"){
-			displayError($("#cep"), "Esse CEP é de AC. Será que você errou?");
+		//$("#state").val("AC");
+		if ($("#state").val() != "AC"){
+			displayError($("#zip"), "Esse CEP é de AC. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=570) && (zip <=579)) {
-		//$("#estado").val("AL");
-		if ($("#estado").val() != "AL"){
-			displayError($("#cep"), "Esse CEP é de AL. Será que você errou?");
+		//$("#state").val("AL");
+		if ($("#state").val() != "AL"){
+			displayError($("#zip"), "Esse CEP é de AL. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=690) && (zip <=698)) {
-		//$("#estado").val("AM");
-		if ($("#estado").val() != "AM"){
-			displayError($("#cep"), "Esse CEP é de AM. Será que você errou?");
+		//$("#state").val("AM");
+		if ($("#state").val() != "AM"){
+			displayError($("#zip"), "Esse CEP é de AM. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=689) && (zip <=689)) {
-		//$("#estado").val("AP");
-		if ($("#estado").val() != "AP"){
-			displayError($("#cep"), "Esse CEP é de AP. Será que você errou?");
+		//$("#state").val("AP");
+		if ($("#state").val() != "AP"){
+			displayError($("#zip"), "Esse CEP é de AP. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=400) && (zip <=489)) {
-		//$("#estado").val("BA");
-		if ($("#estado").val() != "BA"){
-			displayError($("#cep"), "Esse CEP é da belíssima Bahia. Será que você errou?");
+		//$("#state").val("BA");
+		if ($("#state").val() != "BA"){
+			displayError($("#zip"), "Esse CEP é da belíssima Bahia. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=600) && (zip <=639)) {
-		//$("#estado").val("CE");
-		if ($("#estado").val() != "CE"){
-			displayError($("#cep"), "Esse CEP é de CE. Será que você errou?");
+		//$("#state").val("CE");
+		if ($("#state").val() != "CE"){
+			displayError($("#zip"), "Esse CEP é de CE. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=700) && (zip <=736)) {
-		//$("#estado").val("DF");
-		if ($("#estado").val() != "DF"){
-			displayError($("#cep"), "Esse CEP é de DF. Será que você errou?");
+		//$("#state").val("DF");
+		if ($("#state").val() != "DF"){
+			displayError($("#zip"), "Esse CEP é de DF. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=290) && (zip <=299)) {
-		//$("#estado").val("ES");
-		if ($("#estado").val() != "ES"){
-			displayError($("#cep"), "Esse CEP é de ES. Será que você errou?");
+		//$("#state").val("ES");
+		if ($("#state").val() != "ES"){
+			displayError($("#zip"), "Esse CEP é de ES. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=737) && (zip <=769)) {
-		//$("#estado").val("GO");
-		if ($("#estado").val() != "GO"){
-			displayError($("#cep"), "Esse CEP é de GO. Será que você errou?");
+		//$("#state").val("GO");
+		if ($("#state").val() != "GO"){
+			displayError($("#zip"), "Esse CEP é de GO. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=650) && (zip <=659)) {
-		//$("#estado").val("MA");
-		if ($("#estado").val() != "MA"){
-			displayError($("#cep"), "Esse CEP é de MA. Será que você errou?");
+		//$("#state").val("MA");
+		if ($("#state").val() != "MA"){
+			displayError($("#zip"), "Esse CEP é de MA. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=660) && (zip <=688)) {
-		//$("#estado").val("PA");
-		if ($("#estado").val() != "PA"){
-			displayError($("#cep"), "Esse CEP é de PA. Será que você errou?");
+		//$("#state").val("PA");
+		if ($("#state").val() != "PA"){
+			displayError($("#zip"), "Esse CEP é de PA. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=580) && (zip <=589)) {
-		//$("#estado").val("PB");
-		if ($("#estado").val() != "PB"){
-			displayError($("#cep"), "Esse CEP é de PB. Será que você errou?");
+		//$("#state").val("PB");
+		if ($("#state").val() != "PB"){
+			displayError($("#zip"), "Esse CEP é de PB. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=500) && (zip <=569)) {
-		//$("#estado").val("PE");
-		if ($("#estado").val() != "PE"){
-			displayError($("#cep"), "Esse CEP é de PE. Será que você errou?");
+		//$("#state").val("PE");
+		if ($("#state").val() != "PE"){
+			displayError($("#zip"), "Esse CEP é de PE. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=640) && (zip <=649)) {
-		//$("#estado").val("PI");
-		if ($("#estado").val() != "PI"){
-			displayError($("#cep"), "Esse CEP é de PI. Será que você errou?");
+		//$("#state").val("PI");
+		if ($("#state").val() != "PI"){
+			displayError($("#zip"), "Esse CEP é de PI. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=800) && (zip <=879)) {
-		//$("#estado").val("PR");
-		if ($("#estado").val() != "PR"){
-			displayError($("#cep"), "Esse CEP é de PR. Será que você errou?");
+		//$("#state").val("PR");
+		if ($("#state").val() != "PR"){
+			displayError($("#zip"), "Esse CEP é de PR. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=590) && (zip <=599)) {
-		//$("#estado").val("RN");
-		if ($("#estado").val() != "RN"){
-			displayError($("#cep"), "Esse CEP é de RN. Será que você errou?");
+		//$("#state").val("RN");
+		if ($("#state").val() != "RN"){
+			displayError($("#zip"), "Esse CEP é de RN. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=789) && (zip <=789)) {
-		//$("#estado").val("RO");
-		if ($("#estado").val() != "RO"){
-			displayError($("#cep"), "Esse CEP é de RO. Será que você errou?");
+		//$("#state").val("RO");
+		if ($("#state").val() != "RO"){
+			displayError($("#zip"), "Esse CEP é de RO. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=693) && (zip <=693)) {
-		//$("#estado").val("RR");
-		if ($("#estado").val() != "RR"){
-			displayError($("#cep"), "Esse CEP é de RR. Será que você errou?");
+		//$("#state").val("RR");
+		if ($("#state").val() != "RR"){
+			displayError($("#zip"), "Esse CEP é de RR. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=900) && (zip <=999)) {
-		//$("#estado").val("RS");
-		if ($("#estado").val() != "RS"){
-			displayError($("#cep"), "Esse CEP é de RS. Será que você errou?");
+		//$("#state").val("RS");
+		if ($("#state").val() != "RS"){
+			displayError($("#zip"), "Esse CEP é de RS. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=880) && (zip <=899)) {
-		//$("#estado").val("SC");
-		if ($("#estado").val() != "SC"){
-			displayError($("#cep"), "Esse CEP é de SC. Será que você errou?");
+		//$("#state").val("SC");
+		if ($("#state").val() != "SC"){
+			displayError($("#zip"), "Esse CEP é de SC. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=490) && (zip <=499)) {
-		//$("#estado").val("SE");
-		if ($("#estado").val() != "SE"){
-			displayError($("#cep"), "Esse CEP é de SE. Será que você errou?");
+		//$("#state").val("SE");
+		if ($("#state").val() != "SE"){
+			displayError($("#zip"), "Esse CEP é de SE. Será que você errou?");
 			return false;
 		}
 		return true;
 	}
 
 	if( (zip >=770) && (zip <=779)) {
-		//$("#estado").val("TO");
-		if ($("#estado").val() != "TO"){
-			displayError($("#cep"), "Esse CEP é de TO. Será que você errou?");
+		//$("#state").val("TO");
+		if ($("#state").val() != "TO"){
+			displayError($("#zip"), "Esse CEP é de TO. Será que você errou?");
 			return false;
 		}
 		return true;

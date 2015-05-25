@@ -47,27 +47,27 @@
 			<label for ="cpf">CPF: </label>
 			<input class = "form-control" name = "cpf" id = "cpf" type="text" maxlength = "11" placeholder = "only numbers" required/>
 		</div>
-			<div class="form-group">
-			<label for ="datanasc">Date of Birth</label><br>
-			<input name = "dob" id = "datanasc" readonly='true' required />
+			<div class = "form-group">
+			<label for = "datanasc">Date of Birth</label><br>
+			<input name = "dob" id = "dob" readonly = 'true' required />
 			</div>
 			<div >
-			<label for ="sexo">Gender: </label>
-			<input name= "sexo" type = "radio" value = "Masc" required/>Male
-			<input name= "sexo" type = "radio" value = "Fem" required/>Female
-			<input name= "sexo" type = "radio" value = "None" required/>Rather not state
+			<label for = "gender">Gender: </label>
+			<input name= "gender" type = "radio" value = "Masc" required/>Male
+			<input name= "gender" type = "radio" value = "Fem" required/>Female
+			<input name= "gender" type = "radio" value = "None" required/>Rather not state
 			</div>
 			<div class="form-group">
-			<label for= "estadoCivil">Marital Status: </label>
-			<input name= "estadoCivil" type = "radio" value = "Solteiro" required/>Single
-			<input name= "estadoCivil" type = "radio" value = "Casado" required/>Married
-			<input name= "estadoCivil" type = "radio" value = "Outros" required/>Other
+			<label for = "civilStatus">Marital Status: </label>
+			<input name= "civilStatus" type = "radio" value = "Solteiro" required/>Single
+			<input name= "civilStatus" type = "radio" value = "Casado" required/>Married
+			<input name= "civilStatus" type = "radio" value = "Outros" required/>Other
 			</div>
 		<div class="form-group">
-			<label for ="cidade"> City: </label>
-			<input class = "form-control field" name = "cidade" id = "cidade" type = "text" required/>
-			<label for ="estado">State: </label>
-			<select name = "estado" id= "estado" >
+			<label for = "city"> City: </label>
+			<input class = "form-control field" name = "city" id = "city" type = "text" required/>
+			<label for = "state">State: </label>
+			<select name = "state" id = "state" >
 				<option>AC</option>			<option>AL</option>		<option>AP</option>			
 				<option>AM</option>			<option>BA</option>		<option>CE</option>
 				<option>DF</option>			<option>ES</option>		<option>GO</option>
@@ -79,24 +79,24 @@
 				<option>SE</option>			<option>SP</option> 	<option>TO</option>
 			</select>
 		</div>
-		<div class="form-group">
-			<label for ="cep">Zipcode: </label>
-			<input class= "form-control" id = "cep" type = "text" maxlength = "8" placeholder="only numbers" required/>
+		<div class = "form-group">
+			<label for = "zip">Zipcode: </label>
+			<input class = "form-control" id = "zip" name = "zip" type = "text" maxlength = "8" placeholder = "only numbers" required/>
 		</div>
-		<div class="form-group">
-			<label for ="email">E-mail: </label>
-			<input class = "form-control field" type = "text" id = "email" required/>
+		<div class = "form-group">
+			<label for = "email">E-mail: </label>
+			<input class = "form-control field" type = "text" id = "email" name = "email" required/>
 		</div>
-		<div class="form-group">
-			<label for ="senha">Password: </label>
-			<input class = "form-control" type = "password" id="senha"/>
-			<p class="forca" id="forcaDaSenha"></p>
+		<div class = "form-group">
+			<label for = "password">Password: </label>
+			<input class = "form-control" type = "password" id = "password" name = "password"/>
+			<p class = "forca" id = "forcaDaSenha"></p>
 		</div>	
-		<div class="form-group">
-			<label for ="passConfirmation">Password Confimation: </label>			
-			<input class = "form-control" type = "password" id="passConfirmation" required/>
+		<div class = "form-group">
+			<label for = "passConfirmation">Password Confimation: </label>			
+			<input class = "form-control" type = "password" id = "passConfirmation" required/>
 		</div>
-			<input class = "btn btn-lg btn-primary btn-block" type="submit" value ="Register"/>
+			<input class = "btn btn-lg btn-primary btn-block" type = "submit" value = "Register" id = "register"/>
 		</form>		
 	</div>
 	</div>
