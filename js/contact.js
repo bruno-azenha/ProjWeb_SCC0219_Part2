@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 	})
 
-	$("#contato").submit(function(event){ 	
+	$("#contact").submit(function(event){ 	
 		c = $("#conheceu");
 		n = $("#name");
 		e = $("#email");
@@ -61,7 +61,7 @@ $(document).ready(function(){
 			if (!checked){
     	displayError(c,"Please check at least one checkbox");
         
-    }
+            }
 	}
 
 	else {

@@ -1,0 +1,33 @@
+
+
+.cover{
+	background-image: url(../imgs/hotel.jpg);
+	background-repeat: no-repeat;
+    padding: 20px;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: local;
+    
+    
+    
+
+}
+
+.form h2,h3,label {
+    color: #E1EEEE;
+
+}
+
+
+.form-control {
+  max-width: 330px;
+  
+}
+.textarea {
+        width: 62%;
+        height: 175px;
+}
+.button{
+width: 80%;
+padding-left: 15px;
+}
