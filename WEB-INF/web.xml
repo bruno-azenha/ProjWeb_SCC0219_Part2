@@ -38,6 +38,11 @@
       <servlet-name>ListHandler</servlet-name>
       <servlet-class>Bridgeport.ListHandler</servlet-class>
     </servlet>
+    <servlet>
+      <servlet-name>SignUpController</servlet-name>
+      <servlet-class>Bridgeport.SignUpController</servlet-class>
+    </servlet>
+
     
     
     <servlet-mapping>
@@ -47,6 +52,10 @@
     <servlet-mapping>
         <servlet-name>ListHandler</servlet-name>
         <url-pattern>/Bridgeport/ListHandler</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUpController</servlet-name>
+        <url-pattern>/Bridgeport/SignUpController</url-pattern>
     </servlet-mapping>
    
 </web-app>
