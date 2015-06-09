@@ -2,25 +2,35 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <HTML>
 <HEAD><TITLE> 
-    test page
+	test page
 </TITLE></HEAD>
 
 
 <BODY BGCOLOR="white">
-<jsp:useBean id="userList" class="java.util.ArrayList" scope="session"/>
-<jsp:useBean id="messageList" class="java.util.ArrayList" scope="session"/>
-<jsp:useBean id="reservationList" class="java.util.ArrayList" scope="session"/>
+	
+<jsp:useBean 
+		id="userList" 
+		class="java.util.ArrayList" 
+		scope="session"/>
+<jsp:useBean 
+		id="messageList" 
+		class="java.util.ArrayList" 
+		scope="session"/>
+<jsp:useBean 
+		id="reservationList" 
+		class="java.util.ArrayList" 
+		scope="session"/>
 
 <h2>these are the users</h2>
 <table border=1>
 <tr><td><b>ID</b></td><td><b>Nome</b></td><td><b>email</b></td><td></td></tr>
 <c:forEach var="user" items="${userList}" varStatus="status">
-  <tr>
+	<tr>
 	<td>${status.index}</td>
 	<td>${user.name}</td>
 	<td>${user.email}</td>
 	
-  </tr>
+	</tr>
 </c:forEach>
 </table>
 
@@ -31,12 +41,12 @@
 <table border=1>
 <tr><td><b>ID</b></td><td><b>name</b></td><td><b>known</b></td><td></td></tr>
 <c:forEach var="message" items="${messageList}" varStatus="status">
-  <tr>
+	<tr>
 	<td>${status.index}</td>
 	<td>${message.name}</td>
 	<td>${message.known}</td>
 	
-  </tr>
+	</tr>
 </c:forEach>
 </table>
 
@@ -46,12 +56,12 @@
 <table border=1>
 <tr><td><b>ID</b></td><td><b>Name</b></td><td><b>idate</b></td><td></td></tr>
 <c:forEach var="reservation" items="${reservationList}" varStatus="status">
-  <tr>
+	<tr>
 	<td>${status.index}</td>
 	<td>${reservation.name}</td>
 	<td>${reservation.checkin}</td>
 	
-  </tr>
+	</tr>
 </c:forEach>
 </table>
 
