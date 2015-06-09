@@ -21,6 +21,15 @@
 		class="java.util.ArrayList" 
 		scope="session"/>
 
+<c:choose> 
+	<c:when test="${registrationOK == true}">
+		<h2>Registration was successfull!</h2>
+	</c:when>
+	<c:otherwise>
+		<h2>Registration failed.</h2>
+	</c:otherwise>
+</c:choose>
+
 <h2>these are the users</h2>
 <table border=1>
 <tr><td><b>ID</b></td><td><b>Nome</b></td><td><b>email</b></td><td></td></tr>
