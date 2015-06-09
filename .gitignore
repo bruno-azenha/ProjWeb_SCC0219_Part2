@@ -1,0 +1,7 @@
+# Compiled java files
+*.class
+
+# Vim temp files
+*~
+*.swp
+*.swo
