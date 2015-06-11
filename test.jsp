@@ -68,7 +68,7 @@
 <c:forEach var="reservation" items="${reservationList}" varStatus="status">
 	<tr>
 	<td>${status.index}</td>
-	<td>${reservation.name}</td>
+	<td>${reservation.user}</td>
 	<td>${reservation.checkin}</td>
 	
 	</tr>

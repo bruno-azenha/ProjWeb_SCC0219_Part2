@@ -80,6 +80,7 @@ public class ListHandler extends HttpServlet {
                     message.setDate(fDate);
 					message.setName(request.getParameter("name")); 
 					message.setEmail(request.getParameter("email"));
+                    message.setMobile(request.getParameter("phone"));
 					String[] known = request.getParameterValues("conheceu");
 					String know = new String();
 					for( String s: known){
@@ -96,13 +97,13 @@ public class ListHandler extends HttpServlet {
 					User user = (User) session.getAttribute("user");
                     Reservation reservation = new Reservation();
 					reservation.setUser(user.getEmail());
-					reservation.setCheckin(request.getParameter("checkin"));
-					reservation.setCheckout(request.getParameter("chekout"));
+					reservation.setCheckin(request.getParameter("iDate").toString());
+					reservation.setCheckout(request.getParameter("oDate").toString());
 					reservation.setAdult(Integer.valueOf(request.getParameter("adult")));
 					reservation.setBaby(Integer.valueOf(request.getParameter("baby")));
 					reservation.setChild(Integer.valueOf(request.getParameter("child")));
                    reservationList.add(reservation);
-					session.setAttribute("reservationList",messageList);
+					session.setAttribute("reservationList",reservationList);
 				}
 
 				url= "test.jsp";

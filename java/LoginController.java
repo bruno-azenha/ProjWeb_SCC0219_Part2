@@ -67,6 +67,7 @@ public class LoginController extends HttpServlet {
 				    if(request.getParameter("email").equals(c.getEmail())){
 					   if(request.getParameter("password").equals(c.getPassword())){
 						  session.setAttribute("user",c);
+                           loginCounter= loginCounter -1;
 						  
                            if( c.getIsSuper()){
 							 url= "admin.jsp";

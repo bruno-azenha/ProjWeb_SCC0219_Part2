@@ -57,7 +57,7 @@
 				<h1>Bridgeport Hotel</h1>
 				<!--  If the page is loaded via <code> file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules. -->
 				<p class = "info">Bridgeport hotel is a great place to stay. A confortable place with  friendly staff which will be happy to take care of you while you are in this beautifull city. Whether you are here to relax, to work or to visit we have a room just for you. Make your reservation today</p>
-				<p><a class="btn btn-lg btn-primary" href="${pageContext.request.contextPath}/login.html" role="button">log in</a></p>
+				<p><a class="btn btn-lg btn-primary" href="${pageContext.request.contextPath}/login.jsp" role="button">log in</a></p>
 			</div>
 			</div>
 		</div>

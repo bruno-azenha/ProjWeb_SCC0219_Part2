@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
 	 var d = new Date();
-	 var minInDate;
+     var minInDate;
 	 
 	 minInDate = new Date(d.getFullYear(), d.getMonth(), d.getDate()+2);
 	 
@@ -16,11 +16,11 @@ $(document).ready(function() {
 	
 	$("#iDate").change(function() {
 		var date = new Date($(this).val());
-		removeError($("#iDate"));
-		var minOutDate = new Date(date.getFullYear(), date.getMonth(), date.getDate()+2);
-		
-
-		
+		var minOutDate = new Date(date.getFullYear(), date.getDate()+2, date.getMonth());
+        console.log(date);
+        console.log(minOutDate);
+        
+        console.log($(this).val());
 		$('#oDate').datepicker('option', 'minDate', minOutDate);
 		$("#oDate").val("");
 		$("#oDate").removeAttr("disabled");
