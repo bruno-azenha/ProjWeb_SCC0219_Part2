@@ -31,7 +31,7 @@ public class MessageServlet extends HttpServlet {
 			ArrayList<Message> messageList = (ArrayList) session.getAttribute("messageList");
 			String url;
 			// Checa se já existem mensagens no sistema
-			if (messageList == null){
+			if (messageList == null || messageList.isEmpty()){
 				url = "noMessages.jsp";
 			}
 
