@@ -7,15 +7,15 @@
 	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/signup.css" rel="stylesheet">
-	<link href="css/error.css" rel="stylesheet">
-	<script src="js/jquery-1.11.2.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/validation.js"></script>
-	<script src="js/signup.js"></script>
-	<script type="text/javascript" src ="js/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.min.css">
+	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/signup.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
+	<script src="${pageContext.request.contextPath}/js/signup.js"></script>
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 	
 	<title>Sign up</title>
 </head>

@@ -31,9 +31,9 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/reservation.jsp">Make a Reservation</a></li>
-						<li><a href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
-						<li><a href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/cancelr.jsp">Cancel Reservations</a></li>
+						<li><a href="${pageContext.request.contextPath}/reservation.jsp">Make a Reservation</a></li>
+						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
+						<li><a href="${pageContext.request.contextPath}/cancelr.jsp">Cancel Reservations</a></li>
 						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
 					</ul>
 				</div>
@@ -43,7 +43,7 @@
 	</div>
 	<div class = "container">
 		<div class="row cover">
-			<form class = "col-md-6 form" action="" method="GET" id = "reservation">
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ListHandler" method="GET" id = "reservation">
 				<input type="hidden" name="action" value="add"/>
 				<input type ="hidden" name= "origin" value="reservation"/>
 				<h2>Make your reservation</h2>
