@@ -106,12 +106,12 @@
 			</form>		
 		</div>
 	</div>
-    <div class = "container">
-	    <footer>
+	<div class = "container">
+		<footer>
 		<p>&copy; 2015 designed by Clayton de Oliveira, All rights reserved
-    </footer>
-    </div>
-    </html>
+	</footer>
+	</div>
+	</html>
 
 </body>
 </html>

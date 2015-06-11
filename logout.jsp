@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <HTML>
 <HEAD><TITLE> 
-    Logout
+	Logout
 </TITLE></HEAD>
 
 <body>

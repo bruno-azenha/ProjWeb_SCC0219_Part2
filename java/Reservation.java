@@ -30,8 +30,8 @@ public class Reservation implements java.io.Serializable {
 
 	public void setBaby (Integer baby) {
 		this.baby = baby;
-	}    
-
+	}
+	
 	public void setChild (Integer child) {
 		this.child = child;
 	}
