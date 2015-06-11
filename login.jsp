@@ -45,18 +45,14 @@
 
 	<div class="container cover">
 
-		<form action = "/ProjWeb_SCC0219_Part2/Bridgeport/LoginController" method="get" class="form-signin">
+		<form action = "/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="get" class="form-signin">
 		<h2 class="form-signin-heading">Please sign in or register</h2>
 		<label for="inputEmail" class="sr-only">Email address</label>
 		<input name = "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input name = "password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+		<input name = "action" type = "hidden" value = "login">
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		<div class="checkbox">
-		<label>
-			<input type="checkbox" value="remember-me"> Remember me
-		</label>
-		</div>
 		<span>Not a Client yet?</span>
 			<a class = "btn btn-lg btn-info btn-block" href="${pageContext.request.contextPath}/signup.jsp">Register now</a>
 		</form>

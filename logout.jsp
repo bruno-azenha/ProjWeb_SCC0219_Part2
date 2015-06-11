@@ -6,7 +6,7 @@
 </TITLE></HEAD>
 
 <body>
-	<c:redirect url="/Bridgeport/LogOutHandler"/>
+	<c:redirect url="/Bridgeport/UserServlet?action=logout"/>
 </body>
 
 
