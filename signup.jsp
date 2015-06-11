@@ -101,6 +101,7 @@
 					<label for = "passConfirmation">Password Confimation: </label>			
 					<input class = "form-control" type = "password" id = "passConfirmation" required/>
 				</div>
+				<input type = "hidden" name = "action" value = "add"/>
 					<input class = "btn btn-lg btn-primary btn-block" type = "submit" value = "Register" id = "register"/>
 			</form>		
 		</div>

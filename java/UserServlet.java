@@ -22,7 +22,13 @@ public class UserServlet extends HttpServlet {
 	}
 
 	public void doPost (HttpServletRequest request, HttpServletResponse response){
-		userSignUp(request, response);
+		
+		if (request.getParameter("action").equals("add")){
+			userSignUp(request, response);
+		}
+		else if(request.getParameter("action").equals("remove")){
+			userRemove(request, response);
+		}
 	}
 
 	private void userLogin (HttpServletRequest request, HttpServletResponse response){
@@ -156,6 +162,15 @@ public class UserServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 
 		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	private void userRemove(HttpServletRequest request, HttpServletResponse response){
+		try{		
+			HttpSession session = request.getSession();
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}
 	}

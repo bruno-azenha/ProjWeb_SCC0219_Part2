@@ -51,7 +51,7 @@
 		<input name = "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
 		<label for="inputPassword" class="sr-only">Password</label>
 		<input name = "password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-		<input name = "action" type = "hidden" value = "login">
+		<input name = "action" type = "hidden" value = "login"/>
 		<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		<span>Not a Client yet?</span>
 			<a class = "btn btn-lg btn-info btn-block" href="${pageContext.request.contextPath}/signup.jsp">Register now</a>

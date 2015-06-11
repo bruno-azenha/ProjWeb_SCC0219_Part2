@@ -43,9 +43,8 @@
 	
 	<div class= "container">
 		<div class = "row cover" >
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ListHandler" method="get" id = "contact" autocomplete= "off">
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/MessageServlet" method="POST" id = "contact" autocomplete= "off">
 		  <input type="hidden" name="action" value="add"/>
-		  <input type="hidden" name="origin" value="message"/>
 		  <h2>Contact us</h2>
 		  <h3> Personal Information:</h3>
 		  <div>

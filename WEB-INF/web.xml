@@ -35,6 +35,10 @@
       <servlet-class>Bridgeport.UserServlet</servlet-class>
     </servlet>
     <servlet>
+      <servlet-name>MessageServlet</servlet-name>
+      <servlet-class>Bridgeport.MessageServlet</servlet-class>
+    </servlet>
+    <servlet>
       <servlet-name>ListHandler</servlet-name>
       <servlet-class>Bridgeport.ListHandler</servlet-class>
     </servlet>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>UserServlet</servlet-name>
         <url-pattern>/Bridgeport/UserServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MessageServlet</servlet-name>
+        <url-pattern>/Bridgeport/MessageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListHandler</servlet-name>
