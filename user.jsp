@@ -1,15 +1,17 @@
+<%@page language="java" contentType="text/html"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 		<html lang= "pt-br">
 <head>
 	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/reservation.css" rel="stylesheet">
-	<link href="css/error.css" rel="stylesheet">
-	<script src="js/jquery-1.11.2.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src ="js/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="js/jquery-ui/jquery-ui.min.css">
+	<link href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 	<script src="js/validation.js"></script>
 	<script src="js/reservation.js"></script>
 	<title>Reservation Page</title>
@@ -29,10 +31,10 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="reservation.html">Make a Reservation</a></li>
-						<li><a href="viewr.html">View Reservations</a></li>
-						<li><a href="cancelr.html">Cancel Reservations</a></li>
-						<a class="btn navbar-btn btn-primary " href="logout.html" role="button">log out</a>
+						<li><a href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/reservation.jsp">Make a Reservation</a></li>
+						<li><a href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
+						<li><a href="${pageContext.request.contextPath}/${pageContext.request.contextPath}/cancelr.jsp">Cancel Reservations</a></li>
+						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
 					</ul>
 				</div>
 				

@@ -35,6 +35,10 @@
       <servlet-class>Bridgeport.LoginController</servlet-class>
     </servlet>
     <servlet>
+      <servlet-name>LogOutHandler</servlet-name>
+      <servlet-class>Bridgeport.LogOutHandler</servlet-class>
+    </servlet>
+    <servlet>
       <servlet-name>ListHandler</servlet-name>
       <servlet-class>Bridgeport.ListHandler</servlet-class>
     </servlet>
@@ -48,6 +52,10 @@
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/Bridgeport/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutHandler</servlet-name>
+        <url-pattern>/Bridgeport/LogOutHandler</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListHandler</servlet-name>

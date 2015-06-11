@@ -6,6 +6,7 @@ public class Message implements java.io.Serializable {
 	private String mobile;
 	private String known;
 	private String message;
+    private String date;
 
 	public Message() {
 	}
@@ -30,6 +31,9 @@ public class Message implements java.io.Serializable {
 	public void setMessage (String message) {
 		this.message = message;
 	}
+    public void setDate (String date) {
+		this.date = date;
+	}
 
 
 	// Getters
@@ -51,5 +55,9 @@ public class Message implements java.io.Serializable {
 
 	public String getKnown () {
 		return this.known;
+	}
+    
+	public String getDate () {
+		return this.date;
 	}
 }

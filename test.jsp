@@ -48,10 +48,11 @@
 
 <h2>these are the messages</h2>
 <table border=1>
-<tr><td><b>ID</b></td><td><b>name</b></td><td><b>known</b></td><td></td></tr>
+<tr><td><b>ID</b></td><td><b>date</b></td><td><b>name</b></td><td><b>known</b></td><td></td></tr>
 <c:forEach var="message" items="${messageList}" varStatus="status">
 	<tr>
 	<td>${status.index}</td>
+	<td>${message.date}</td>
 	<td>${message.name}</td>
 	<td>${message.known}</td>
 	

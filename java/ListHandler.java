@@ -5,6 +5,9 @@ import javax.servlet.*;
 import javax.servlet.http.*; 
 import java.util.*; 
 import java.lang.Integer;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
 
 
 public class ListHandler extends HttpServlet {
@@ -47,13 +50,14 @@ public class ListHandler extends HttpServlet {
 		}
 
 
-			ArrayList userList = (ArrayList) session.getAttribute("userList");
-			ArrayList messageList = (ArrayList) session.getAttribute("messageList");
-			ArrayList reservationList = (ArrayList) session.getAttribute("reservationList");
+			ArrayList<User> userList = (ArrayList) session.getAttribute("userList");
+			ArrayList<Message> messageList = (ArrayList) session.getAttribute("messageList");
+			ArrayList<Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
 		// TODO linkar com a pagina de cadastro que o bruno fez
 			if(request.getParameter("action").equals("add")){
 				if(request.getParameter("origin").equals("user")){
-					User user = new User();
+					//there is a controller for that now
+                    /*User user = new User();
 					user.setName(request.getParameter("name"));
 					user.setCpf(request.getParameter("cpf"));
 					user.setDob(request.getParameter("dob"));
@@ -65,11 +69,15 @@ public class ListHandler extends HttpServlet {
 					user.setEmail(request.getParameter("email"));
 					user.setPassword(request.getParameter("password"));
 					userList.add(user);
-					session.setAttribute("userList",userList);
+					session.setAttribute("userList",userList);*/
 
 				}
 				else if(request.getParameter("origin").equals("message")){
 					Message message = new Message();
+                    Date date = new Date();
+                    DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+                    String fDate = formatter.format(date);
+                    message.setDate(fDate);
 					message.setName(request.getParameter("name")); 
 					message.setEmail(request.getParameter("email"));
 					String[] known = request.getParameterValues("conheceu");
@@ -81,17 +89,20 @@ public class ListHandler extends HttpServlet {
 					message.setKnown(know);
 					message.setMessage(request.getParameter("message"));
 					messageList.add(message);
-					session.setAttribute("userList",userList);
+					session.setAttribute("messageList",messageList);
 
 				}
 				else if(request.getParameter("origin").equals("reservation")){
-					Reservation reservation = new Reservation();
-					reservation.setName(request.getParameter("name"));
+					User user = (User) session.getAttribute("user");
+                    Reservation reservation = new Reservation();
+					reservation.setUser(user.getEmail());
 					reservation.setCheckin(request.getParameter("checkin"));
 					reservation.setCheckout(request.getParameter("chekout"));
 					reservation.setAdult(Integer.valueOf(request.getParameter("adult")));
 					reservation.setBaby(Integer.valueOf(request.getParameter("baby")));
 					reservation.setChild(Integer.valueOf(request.getParameter("child")));
+                   reservationList.add(reservation);
+					session.setAttribute("reservationList",messageList);
 				}
 
 				url= "test.jsp";
@@ -100,14 +111,26 @@ public class ListHandler extends HttpServlet {
 			/*if(request.getParameter("action").equals("remove"){
 			 if(request.getParameter("origin").equals("reservation"){//user pode consultar e remover apenas suas proprias reservas
 				}
-			}
-			if(request.getParameter("action").equals("consult"){
-			if(request.getParameter("origin").equals("user"){//admin pode consultar e remover usuarios,mensagens reservas de todo mundo
-				}
-				else if(request.getParameter("origin").equals("admin"
-				){//pode consultar e remover qualquer reserva e usuario}
-				else if(request.getParameter("origin").equals("reservation"){}
 			}*/
+			if(request.getParameter("action").equals("consult")){
+                if(request.getParameter("origin").equals("user")){
+                    User u = (User) session.getAttribute("user");
+                    ArrayList<Reservation> myReservation =new ArrayList();
+                    for(Reservation r : reservationList ){
+                        if(r.getUser().equals(u.getEmail())){
+                            myReservation.add(r);
+                    }
+                session.setAttribute("myReservation",myReservation);
+                    
+                    }
+                }
+//            //admin pode consultar e remover usuarios,mensagens reservas de todo mundo
+//				}
+//				else if(request.getParameter("origin").equals("admin"
+//				){//pode consultar e remover qualquer reserva e usuario}
+//				else if(request.getParameter("origin").equals("reservation"){}
+                
+        }
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);

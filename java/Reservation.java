@@ -1,7 +1,7 @@
 package Bridgeport;
 public class Reservation implements java.io.Serializable {
 
-	private String name;
+	private String user;
 	private String checkin;
 	private String checkout;
 	private Integer adult;
@@ -12,8 +12,8 @@ public class Reservation implements java.io.Serializable {
 	}
 
 	// Setters
-	public void setName (String name) {
-		this.name = name;
+	public void setUser (String user) {
+		this.user = user;
 	}
 
 	public void setCheckin (String checkin) {
@@ -37,8 +37,8 @@ public class Reservation implements java.io.Serializable {
 	}
 
 	// Getters
-	public String getName () {
-		return this.name;
+	public String getUser () {
+		return this.user;
 	}
 
 	public String getCheckin () {

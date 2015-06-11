@@ -1,13 +1,15 @@
+<%@page language="java" contentType="text/html"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 		<html lang= "pt-br">
 <head>
 	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<script src="js/jquery-1.11.2.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<title>Bridgeport Main page</title>
 </head>
 <body>
@@ -21,14 +23,14 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class ="navbar-brand" href= "index.html">Bridgeport Hotel</a>
+					<a class ="navbar-brand" href= "${pageContext.request.contextPath}/index.jsp">Bridgeport Hotel</a>
 					</div>
 					<div id="navbar" class="collapse navbar-collapse">
 						<ul class="nav navbar-nav">
 						<li class=""><a href="#">Home</a></li>
-						<li><a href="signup.html">Register</a></li>
-						<li><a href="contact.html">Contact</a></li>	
-						<a class="btn btn-md btn-primary navbar-btn " href="login.html" role="button">log in</a>               
+						<li><a href="${pageContext.request.contextPath}/signup.jsp">Register</a></li>
+						<li><a href="${pageContext.request.contextPath}/contact.jsp">Contact</a></li>	
+						<a class="btn btn-md btn-primary navbar-btn " href="${pageContext.request.contextPath}/login.jsp" role="button">log in</a>               
 						</ul>
 					</div>
 				</div>
@@ -48,19 +50,19 @@
 		<!-- The slides are specified in a <div> with class .carousel-inner. The content of each slide is defined in a <div> with class .item. Also, the .active class needs to be added to one of the slides in order to the carousel be visible. -->
 		<div class="carousel-inner" role="listbox">
 		<div class="item active">
-			<img class="first-slide" src="imgs/hotel.jpg" alt="hotel photo">
+			<img class="first-slide" src="${pageContext.request.contextPath}/imgs/hotel.jpg" alt="hotel photo">
 			<div class="container">
 			<!-- add a caption to the image -->
 			<div class="carousel-caption">
 				<h1>Bridgeport Hotel</h1>
 				<!--  If the page is loaded via <code> file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules. -->
 				<p class = "info">Bridgeport hotel is a great place to stay. A confortable place with  friendly staff which will be happy to take care of you while you are in this beautifull city. Whether you are here to relax, to work or to visit we have a room just for you. Make your reservation today</p>
-				<p><a class="btn btn-lg btn-primary" href="login.html" role="button">log in</a></p>
+				<p><a class="btn btn-lg btn-primary" href="${pageContext.request.contextPath}/login.html" role="button">log in</a></p>
 			</div>
 			</div>
 		</div>
 		<div class="item">
-			<img class="second-slide" src="imgs/facilities1.jpg" alt="bar photo">
+			<img class="second-slide" src="${pageContext.request.contextPath}/imgs/facilities1.jpg" alt="bar photo">
 			<div class="container">
 			<div class="carousel-caption">
 				<h1>Want to relax?</h1>
@@ -70,7 +72,7 @@
 			</div>
 		</div>
 		<div class="item">
-			<img class="third-slide" src="imgs/bedroom1.jpg" alt="bedroom photo">
+			<img class="third-slide" src="${pageContext.request.contextPath}/imgs/bedroom1.jpg" alt="bedroom photo">
 			<div class="container">
 			<div class="carousel-caption">
 				<h1>Let us worry about your stay.</h1>
@@ -101,7 +103,7 @@
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 		</div>
 		<div class="col-md-5">
-			<img class="featurette-image img-responsive center-block" src="imgs/bar2.jpg" alt="bar">
+			<img class="featurette-image img-responsive center-block" src="${pageContext.request.contextPath}/imgs/bar2.jpg" alt="bar">
 		</div>
 		</div>
 
@@ -113,7 +115,7 @@
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 		</div>
 		<div class="col-md-5 col-md-pull-7">
-			<img class="featurette-image img-responsive center-block" src="imgs/innerspa.jpg" alt="spa">
+			<img class="featurette-image img-responsive center-block" src="${pageContext.request.contextPath}/imgs/innerspa.jpg" alt="spa">
 		</div>
 		</div>
 
@@ -125,7 +127,7 @@
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 		</div>
 		<div class="col-md-5">
-			<img class="featurette-image img-responsive center-block" src="imgs/gym.jpg" alt="Gym">
+			<img class="featurette-image img-responsive center-block" src="${pageContext.request.contextPath}/imgs/gym.jpg" alt="Gym">
 		</div>
 		</div>
 
@@ -137,7 +139,7 @@
 			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 		</div>
 		<div class="col-md-5 col-md-pull-7">
-			<img class="featurette-image img-responsive center-block" src="imgs/innerpool.jpg" alt="pool">
+			<img class="featurette-image img-responsive center-block" src="${pageContext.request.contextPath}/imgs/innerpool.jpg" alt="pool">
 		</div>
 		</div>
 
