@@ -24,7 +24,7 @@
 		<nav class="navbar navbar-default" >
 			<div class ="container">
 				<div class = "navbar-header ">
-					<a class ="navbar-brand" href= "index.jsp">Bridgeport Hotel</a>
+					<a class ="navbar-brand" href= "${pageContext.request.contextPath}"">Bridgeport Hotel</a>
 				</div>
 				<div id="navbar" class="">
 					<ul class="nav navbar-nav">
