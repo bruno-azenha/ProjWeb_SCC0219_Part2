@@ -52,9 +52,8 @@ public class MessageServlet extends HttpServlet {
 		try {
 			HttpSession session = request.getSession();
 			
-			ArrayList<Message> messageList = (ArrayList) session.getAttribute("messageList");
-
 			// Checa se já foi instanciado a messageList no sistema
+			ArrayList<Message> messageList = (ArrayList) session.getAttribute("messageList");
 			if (messageList == null){
 				messageList = new ArrayList<Message>();
 				session.setAttribute("messageList", messageList);

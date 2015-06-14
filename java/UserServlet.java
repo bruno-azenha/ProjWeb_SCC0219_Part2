@@ -119,10 +119,11 @@ public class UserServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			/* If we don't have a user list on this session, create it */				
-			if(session.getAttribute("userList")==null) session.setAttribute("userList",new ArrayList());
-		
-			/* Recover the userList from session */
-			ArrayList<User> userList = (ArrayList) session.getAttribute("userList");
+			ArrayList <User> userList = (ArrayList) session.getAttribute("userList");
+			if (userList == null){
+				userList = new ArrayList<User>();
+				session.setAttribute("userList", userList);
+			}
 
 			/* Searches userList to see if there is already a user with this email */
 			Boolean hasUniqueEmail = true;

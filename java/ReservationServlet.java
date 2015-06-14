@@ -140,7 +140,8 @@ public class ReservationServlet extends HttpServlet {
 
 			ArrayList <Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
 			if (reservationList == null){
-				session.setAttribute("reservationList", new ArrayList<Reservation>());
+				reservationList = new ArrayList<Reservation>();
+				session.setAttribute("reservationList", reservationList);
 			}
 
 			User user = (User) session.getAttribute("user");
