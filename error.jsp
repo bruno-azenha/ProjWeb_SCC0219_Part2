@@ -5,13 +5,10 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
+	
 
 	<title> 
 	Sign in error
@@ -48,18 +45,18 @@
 <div class="container cover">
 	<c:choose>	
   <c:when test="${counter<=3}">
-   <h2>Sign in Error</h2>
-	<p>you entered a invalid user or name. Please go back and try again. Passwords are case sensitive. if you forgot your password Click<a href="recover.jsp"> here!!! </a><br/>
+   <h2 class="header">Sign in Error</h2>
+	<p class="text" >you entered a invalid user or name. Please go back and try again. Passwords are case sensitive. if you forgot your password Click<a href="recover.jsp"> here!!! </a><br/>
 
 		Notice that you used  ${sessionScope.counter} of 5 attempts to sign in. After 5 failed attempts, you will no longer be able to sign in for 1 hour.<br/>
-		to go back click <a href="login.jsp"> here!!! </a></p>
+		to go back click <a class= "link" href="login.jsp"> here!!! </a></p>
    
 
     
 	</c:when>
 	<c:otherwise >
-   <h2>Sign in Error</h2>
-	<p>you entered a invalid user or name. you will no longer be able to sign in for 1 hour.<br/>
+   <h2 class="header">Sign in Error</h2>
+	<p class = "text">you entered a invalid user or name. you will no longer be able to sign in for 1 hour.<br/>
 	to go back click <a href="login.jsp"> here!!! </a>
 	</p>
   
