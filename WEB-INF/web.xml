@@ -39,8 +39,8 @@
       <servlet-class>Bridgeport.MessageServlet</servlet-class>
     </servlet>
     <servlet>
-      <servlet-name>ListHandler</servlet-name>
-      <servlet-class>Bridgeport.ListHandler</servlet-class>
+      <servlet-name>ReservationServlet</servlet-name>
+      <servlet-class>Bridgeport.ReservationServlet</servlet-class>
     </servlet>
     
     
@@ -53,8 +53,8 @@
         <url-pattern>/Bridgeport/MessageServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ListHandler</servlet-name>
-        <url-pattern>/Bridgeport/ListHandler</url-pattern>
+        <servlet-name>ReservationServlet</servlet-name>
+        <url-pattern>/Bridgeport/ReservationServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

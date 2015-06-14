@@ -69,8 +69,6 @@ public class UserServlet extends HttpServlet {
 				{
 					//invalidate user session, so they can try again
 					loginCounter =0;
-				}else{
-					url = "error2.jsp";
 				}
 			}
 

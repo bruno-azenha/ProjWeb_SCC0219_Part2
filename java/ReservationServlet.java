@@ -44,12 +44,12 @@ public class ReservationServlet extends HttpServlet {
 				else{
 					if (u.getIsSuper()){
 						superSearch(request, response);
-						url = "displayReservations.jsp";
+						url = "displayReservation.jsp";
 					}
 
 					else {
 						normalSearch(request, response);
-						url = "displayReservations.jsp";	
+						url = "displayReservation.jsp";	
 
 					}
 
