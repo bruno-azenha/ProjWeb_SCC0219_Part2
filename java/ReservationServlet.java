@@ -185,6 +185,7 @@ public class ReservationServlet extends HttpServlet {
 			}
 
 			session.setAttribute("reservationList", reservationCopy);
+			session.removeAttribute("reservationQuery");
 			String url = "viewr.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);

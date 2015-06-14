@@ -34,8 +34,8 @@ public class UserServlet extends HttpServlet {
 		if (request.getParameter("action").equals("add")){
 			userSignUp(request, response);
 		}
-		else if(request.getParameter("action").equals("remove")){
-			userRemove(request, response);
+		else if(request.getParameter("action").equals("delete")){
+			userDelete(request, response);
 		}
 	}
 
@@ -189,15 +189,6 @@ public class UserServlet extends HttpServlet {
 		}
 	}
 
-	private void userRemove(HttpServletRequest request, HttpServletResponse response){
-		try{		
-			HttpSession session = request.getSession();
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-	}
-
 	private void userSearchDate(HttpServletRequest request, HttpServletResponse response){
 		try{		
 			HttpSession session = request.getSession();
@@ -218,7 +209,7 @@ public class UserServlet extends HttpServlet {
 				}
 			}
 			session.setAttribute("userQuery", userQuery);
-			String url = "test.jsp";
+			String url = "displayuser.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 
@@ -244,7 +235,33 @@ public class UserServlet extends HttpServlet {
 				}
 			}
 			session.setAttribute("userQuery", userQuery);
-			String url = "test.jsp";
+			String url = "displayuser.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
+			dispatcher.forward(request, response);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	private void userDelete(HttpServletRequest request, HttpServletResponse response){
+		try{		
+			HttpSession session = request.getSession();
+			ArrayList <User> userList = (ArrayList) session.getAttribute("userList");
+			ArrayList <User> userQuery = (ArrayList) session.getAttribute("userList");
+			ArrayList <User> userCopy = new ArrayList<User>(userList);
+			Integer count = 0;
+
+			for (User uQuery : userQuery){
+				if (request.getParameter("removeUser"+Integer.toString(count)) != null){
+					userCopy.remove(uQuery);
+				}			
+				count++;
+			}
+
+			session.setAttribute("userList", userCopy);
+			session.removeAttribute("userQuery");
+			String url = "displayuser.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}
