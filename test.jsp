@@ -13,6 +13,10 @@
 		class="java.util.ArrayList" 
 		scope="session"/>
 <jsp:useBean 
+		id="userQuery" 
+		class="java.util.ArrayList" 
+		scope="session"/>
+<jsp:useBean 
 		id="messageList" 
 		class="java.util.ArrayList" 
 		scope="session"/>
@@ -45,6 +49,19 @@
 
 <hr>
 
+<h2>This is the result of the user query</h2>
+<table border=1>
+<tr><td><b>ID</b></td><td><b>Nome</b></td><td><b>email</b></td><td></td></tr>
+<c:forEach var="user" items="${userQuery}" varStatus="status">
+	<tr>
+	<td>${status.index}</td>
+	<td>${user.name}</td>
+	<td>${user.email}</td>
+	</tr>
+</c:forEach>
+</table>
+
+<hr>
 
 <h2>these are the messages</h2>
 <table border=1>

@@ -11,6 +11,7 @@ public class User implements java.io.Serializable {
 	private String zip;
 	private String email;
 	private String password;
+	private String regDate;
 	private Boolean isSuper = false;
 
 	public User() {
@@ -55,6 +56,10 @@ public class User implements java.io.Serializable {
 
 	public void setPassword (String password) {
 		this.password = password;
+	}
+
+	public void setRegDate (String regDate) {
+		this.regDate = regDate;
 	}
 
 	public void setIsSuper (Boolean isSuper) {
@@ -103,6 +108,10 @@ public class User implements java.io.Serializable {
 		return this.password;
 	}
 	
+	public String getRegDate() {
+		return this.regDate;
+	}
+
 	public Boolean getIsSuper () {
 		return this.isSuper;
 	}

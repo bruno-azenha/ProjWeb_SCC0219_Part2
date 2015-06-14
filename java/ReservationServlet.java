@@ -111,13 +111,13 @@ public class ReservationServlet extends HttpServlet {
 	}
 
 	private void normalSearch(HttpServletRequest request, HttpServletResponse response){
-		HttpSession session = request.getSession();
-
-		ArrayList <Reservation> reservationQuery = new ArrayList();
-		ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
-
-		// Faz busca pela data
 		try{
+			HttpSession session = request.getSession();
+
+			ArrayList <Reservation> reservationQuery = new ArrayList();
+			ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
+
+			// Faz busca pela data
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date dataQueryIn = format.parse(request.getParameter("dateIn"));
 			Date dataQueryOut = format.parse(request.getParameter("dateOut"));
@@ -129,12 +129,13 @@ public class ReservationServlet extends HttpServlet {
 					reservationQuery.add(r);
 				}
 			}
+			session.setAttribute("reservationQuery", reservationQuery);
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
 
-		session.setAttribute("reservationQuery", reservationQuery);
+		
 	}
 
 	private void newReservation (HttpServletRequest request, HttpServletResponse response){

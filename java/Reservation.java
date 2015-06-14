@@ -10,7 +10,6 @@ public class Reservation implements java.io.Serializable {
 	private Integer child;
 
 	public Reservation() {
-		this.id = UUID.randomUUID();
 	}
 
 	// Setters

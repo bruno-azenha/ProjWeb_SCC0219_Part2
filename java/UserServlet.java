@@ -5,6 +5,8 @@ import javax.servlet.*;
 import javax.servlet.http.*; 
 import java.util.*; 
 import java.lang.Integer;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 
 public class UserServlet extends HttpServlet {
@@ -17,6 +19,12 @@ public class UserServlet extends HttpServlet {
 		}
 		else if (request.getParameter("action").equals("logout")){
 			userLogout(request, response);
+		}
+		else if (request.getParameter("action").equals("searchDate")){
+			userSearchDate(request, response);
+		}
+		else if (request.getParameter("action").equals("searchEmail")){
+			userSearchEmail(request, response);
 		}
 		
 	}
@@ -46,14 +54,26 @@ public class UserServlet extends HttpServlet {
 				user.setName("David Ross");
 				user.setEmail("dross@gmail.com");
 				user.setPassword("123456");
+				Date date = new Date();
+				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				String fDate = formatter.format(date);
+				user.setRegDate(fDate);
+
 				userList.add(user);
+
 				
 				User admin = new User();
 				admin.setName("Michael Jackson");
 				admin.setEmail("adminmj@gmail.com");
 				admin.setPassword("adminadmin");
 				admin.setIsSuper(true);
+				date = new Date();
+				formatter = new SimpleDateFormat("dd/MM/yyyy");
+				fDate = formatter.format(date);
+				admin.setRegDate(fDate);
+
 				userList.add(admin);
+
 				/* atualiza lista na sessao */
 				session.setAttribute("userList",userList);
 		}
@@ -112,7 +132,7 @@ public class UserServlet extends HttpServlet {
 		}
 	}
 
-	public void userSignUp(HttpServletRequest request, HttpServletResponse response){
+	private void userSignUp(HttpServletRequest request, HttpServletResponse response){
 	 
 		try{
 				
@@ -148,6 +168,10 @@ public class UserServlet extends HttpServlet {
 				user.setZip(request.getParameter("zip"));
 				user.setEmail(request.getParameter("email"));
 				user.setPassword(request.getParameter("password"));
+				Date date = new Date();
+				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				String fDate = formatter.format(date);
+				user.setRegDate(fDate);
 
 				/* Adds user to userList and saves List to session */
 				userList.add(user);
@@ -168,6 +192,61 @@ public class UserServlet extends HttpServlet {
 	private void userRemove(HttpServletRequest request, HttpServletResponse response){
 		try{		
 			HttpSession session = request.getSession();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	private void userSearchDate(HttpServletRequest request, HttpServletResponse response){
+		try{		
+			HttpSession session = request.getSession();
+
+			ArrayList <User> userQuery = new ArrayList();
+			ArrayList <User> userList = (ArrayList )session.getAttribute("userList");
+
+			// Faz busca pela data
+			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+			Date regDateBegin = format.parse(request.getParameter("regDateBegin"));
+			Date regDateEnd = format.parse(request.getParameter("regDateEnd"));
+			Date regDate;
+			for (User u : userList){
+				
+				regDate = format.parse(u.getRegDate());
+				if (regDateBegin.compareTo(regDate) <= 0 && regDateEnd.compareTo(regDate) >= 0){
+					userQuery.add(u);
+				}
+			}
+			session.setAttribute("userQuery", userQuery);
+			String url = "test.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
+			dispatcher.forward(request, response);
+
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	private void userSearchEmail(HttpServletRequest request, HttpServletResponse response){
+		try{		
+			HttpSession session = request.getSession();
+
+			ArrayList <User> userQuery = new ArrayList();
+			ArrayList <User> userList = (ArrayList )session.getAttribute("userList");
+
+			// Faz busca pelo email
+			String email = request.getParameter("email");
+			for (User u : userList){
+				if (u.getEmail().equals(email)){
+					userQuery.add(u);
+					break;
+				}
+			}
+			session.setAttribute("userQuery", userQuery);
+			String url = "test.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
+			dispatcher.forward(request, response);
 		}
 		catch(Exception e){
 			e.printStackTrace();
