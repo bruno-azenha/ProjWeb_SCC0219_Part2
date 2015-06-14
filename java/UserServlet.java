@@ -180,7 +180,7 @@ public class UserServlet extends HttpServlet {
 			}
 
 			/* Set the correct response url */
-			String url = "test.jsp";
+			String url = "success.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 

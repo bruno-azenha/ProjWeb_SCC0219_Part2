@@ -159,7 +159,8 @@ public class ReservationServlet extends HttpServlet {
 			reservationList.add(reservation);
 			session.setAttribute("reservationList",reservationList);
 
-			String url = "test.jsp";
+			String url = "success.jsp";
+			session.setAttribute("origin", "reservation");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}

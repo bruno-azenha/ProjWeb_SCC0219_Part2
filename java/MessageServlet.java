@@ -21,6 +21,9 @@ public class MessageServlet extends HttpServlet {
 		if (request.getParameter("action").equals("add")){
 			newMessage(request, response);	
 		}
+		else if (request.getParameter("action").equals("delete")){
+			deleteMessage(request, response);
+		}
 	}
 
 	private void getMessages(HttpServletRequest request, HttpServletResponse response){
@@ -77,8 +80,8 @@ public class MessageServlet extends HttpServlet {
 			message.setMessage(request.getParameter("message"));
 			messageList.add(0, message);
 			session.setAttribute("messageList",messageList);
-			
-			String url = "test.jsp";
+			session.setAttribute("origin", "message");
+			String url = "success.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}
@@ -88,5 +91,31 @@ public class MessageServlet extends HttpServlet {
 		}
 	}
 
-	
+	private void deleteMessage(HttpServletRequest request, HttpServletResponse response){
+		try {
+			HttpSession session = request.getSession();
+			
+			ArrayList <Message> messageList = (ArrayList) session.getAttribute("messageList");
+			ArrayList <Message> messageQuery = (ArrayList) session.getAttribute("messageList");
+			ArrayList <Message> messageCopy = new ArrayList<Message>(messageList);
+			Integer count = 0;
+
+			for (Message mQuery : messageQuery){
+				if (request.getParameter("removeMessage"+Integer.toString(count)) != null){
+					messageCopy.remove(mQuery);
+				}			
+				count++;
+			}
+
+			session.setAttribute("messageList", messageCopy);
+			session.removeAttribute("messageQuery");
+			String url = "displayMessages.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
+			dispatcher.forward(request, response);
+		}
+
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }

@@ -47,8 +47,20 @@
 	
 	<div class="container cover">
 	<h2>Success</h2>
-	<p>Your reservation was recorded<br>
-   Click <a href="user.jsp"> here!!! </a> to go back</p>
+	<c:choose>
+		<c:when test="${origin == 'reservation' }">
+			<p>Your reservation was recorded<br>
+	   		Click <a href="${pageContext.request.contextPath}/user.jsp"> here!!! </a> to go back</p>
+	   	</c:when>
+	   	<c:when test="${origin == 'message'}">
+			<p>Your message was successfully sent! Please wait for our answer.<br>
+	   		Click <a href="${pageContext.request.contextPath}/index.jsp"> here!!! </a> to go back</p>
+	   	</c:when>
+	   	<c:when test="${origin == 'signUp'}">
+			<p>Your registration was succesfull!<br>
+	   		Click <a href="${pageContext.request.contextPath}/login.jsp"> here!!! </a> to go to the login page.</p>
+	   	</c:when>
+   	</c:choose>
    
 	</div>
 </BODY>

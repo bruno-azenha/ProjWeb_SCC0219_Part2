@@ -134,22 +134,6 @@ $(document).ready(function(){
 		 	|| (!validaEmail(email)) ||(!validatePass(senha.val(),senhaC.val()))) {
 			event.preventDefault();
 		}
-		else {
-
-			localStorage.setItem("fName",fName.val());
-			localStorage.setItem("cpf",cpf.val());
-			localStorage.setItem("dOB",data.val());
-			localStorage.setItem("sexo",sexo.val());
-			localStorage.setItem("eCivil",eCivil.val());
-			localStorage.setItem("cidade",cidade.val());
-			localStorage.setItem("estado",estado.val());
-			localStorage.setItem("cep",cep.val());
-			localStorage.setItem("email",email.val());
-			localStorage.setItem("senha",senha.val());
-
-			alert("OK!");
-		
-		}
 		
 	});		
 

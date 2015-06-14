@@ -17,6 +17,12 @@
 	<title>User Management Page</title>
 </head>
 <body>
+
+	<jsp:useBean 
+		id="messageList" 
+		class="java.util.ArrayList" 
+		scope="session"/>
+
 	<div class= "navbar-wrapper">
 		<nav class="navbar navbar-default">
 			<div class ="container">
@@ -46,16 +52,15 @@
 </c:if>
 	<div class = "container">
 		<div class="row cover">
-		<jsp:useBean 
-		id="messageList" 
-		class="java.util.ArrayList" 
-		scope="session"/>
+
 		<h2>these are the messages</h2>
+<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/MessageServlet">	
+	<input type="hidden" name="action" value="delete"/>
 	<table border=1>
 		<tr><td><b>ID</b></td><td><b>date</b></td><td><b>name</b></td><td><b>email</b></td><td><b>mobile</b></td><td><b>known</b></td><td><b>message</b></td><td></td></tr>
 		<c:forEach var="message" items="${messageList}" varStatus="status">
 		<tr>
-		<td><input type = "checkbox"</td>
+		<td><input type = "checkbox" name="removeMessage${status.index}" value="true"/></td>
 		<td>${status.index}</td>
 		<td>${message.date}</td>
 		<td>${message.name}</td>
@@ -65,10 +70,10 @@
 		<td>${message.message}</td>
 		</tr>
 		</c:forEach>
-</table>	
-	<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="message" value ="delete selected"/>
-		</div>
-
+	</table>	
+		<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="message" value ="delete selected"/>
+			</div>
+</td>
 </div>
 		</div>
 			<footer>
