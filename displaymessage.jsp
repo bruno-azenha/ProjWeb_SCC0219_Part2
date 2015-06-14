@@ -6,14 +6,12 @@
 	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
-	<script src="${pageContext.request.contextPath}/js/reservation.js"></script>
+	
 	<title>User Management Page</title>
 </head>
 <body>
@@ -50,19 +48,19 @@
 		id="messageList" 
 		class="java.util.ArrayList" 
 		scope="session"/>
-		<h2>these are the messages</h2>
+		<h2 class = "header" >these are the messages</h2>
 	<table border=1>
-		<tr><td><b>ID</b></td><td><b>date</b></td><td><b>name</b></td><td><b>email</b></td><td><b>mobile</b></td><td><b>known</b></td><td><b>message</b></td><td></td></tr>
+		<tr><td class="text"><b>ID</b></td><td class="text"><b>date</b></td><td class="text"><b>name</b></td><td class="text"><b>email</b></td><td class="text"><b>mobile</b></td><td class="text"><b>known</b></td><td class="text"><b>message</b></td><td class="text"></td></tr>
 		<c:forEach var="message" items="${messageList}" varStatus="status">
 		<tr>
-		<td><input type = "checkbox"</td>
-		<td>${status.index}</td>
-		<td>${message.date}</td>
-		<td>${message.name}</td>
-		<td>${message.email}</td>
-		<td>${message.mobile}</td>
-		<td>${message.known}</td>
-		<td>${message.message}</td>
+		<td class="text"><input type = "checkbox"</td>
+		<td class="text">${status.index}</td>
+		<td class="text">${message.date}</td>
+		<td class="text">${message.name}</td>
+		<td class="text">${message.email}</td>
+		<td class="text">${message.mobile}</td>
+		<td class="text">${message.known}</td>
+		<td class="text">${message.message}</td>
 		</tr>
 		</c:forEach>
 </table>	

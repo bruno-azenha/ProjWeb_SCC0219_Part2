@@ -6,14 +6,12 @@
 	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
-	<script src="${pageContext.request.contextPath}/js/reservation.js"></script>
+	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<title>User Management Page</title>
 </head>
 <body>
@@ -46,11 +44,11 @@
 </c:if>
 	<div class = "container">
 		<div class="row cover">
-		<h2  class = " text-center"> Search users</h2>
+		<h1  class = " header text-center"> Search users</h1>
 		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byname">
 				
 			<div>
-				<label>username</label>
+				<label>Username</label>
 				<input class= "form-control" name = "username" id= "username" required  />
 			</div>
 			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="serch" value ="Search by name"/>			
