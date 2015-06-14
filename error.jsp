@@ -11,7 +11,6 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
 	<title> 
 	Sign in error
 	</title>
@@ -19,7 +18,8 @@
 
 
 <BODY BGCOLOR="white">
-	<c:when test="${counter<=5}">
+	<c:choose>	
+  <c:when test="${counter<=5}">
    <h2>Sign in Error</h2>
 	<p>you entered a invalid user or name. Please go back and try again. Passwords are case sensitive. if you forgot your password Click<a href="recover.jsp"> here!!! </a><br/>
 
@@ -32,5 +32,6 @@
 	<p>you entered a invalid user or name. you will no longer be able to sign in for 1 hour.</p>
   
 	</c:otherwise>
+	</c:choose>
 </BODY>
 </HTML>
