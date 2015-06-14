@@ -1,9 +1,9 @@
 <%@page language="java" contentType="text/html"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="pt-br">
+		<html lang= "pt-br">
 <head>
-	<meta charset="UTF-8">
+	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
@@ -12,11 +12,12 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
-	<title>Display Reservations</title>
+	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
+	<script src="${pageContext.request.contextPath}/js/reservation.js"></script>
+	<title>Reservation Page</title>
 </head>
-<body fontcolor = "white">
-<div class= "navbar-wrapper">
+<body>
+	<div class= "navbar-wrapper">
 		<nav class="navbar navbar-default">
 			<div class ="container">
 				<div class = "navbar-header ">
@@ -30,9 +31,9 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
-						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
-						<li><a href="${pageContext.request.contextPath}/cancelr.jsp">Cancel Reservations</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin.jsp">Manage Users</a></li>
+						<li><a href="${pageContext.request.contextPath}/mreservation.jsp">Manage Reservations</a></li>
+						<li><a href="${pageContext.request.contextPath}/mmessage.jsp">Manage Messages</a></li>
 						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
 					</ul>
 				</div>
@@ -40,39 +41,18 @@
 			</div>
 		</nav>
 	</div>
-	<c:if test="${user==null}">
+	<c:if test="${user.isSuper==false}">
     <c:redirect url = "login.jsp"/>
 </c:if>
-
-<div class = "container">
+	<div class = "container">
 		<div class="row cover">
-			<jsp:useBean 
-		id="reservationQuery" 
-		class="java.util.ArrayList" 
-		scope="session"/>
-		<h2>these are your reservations</h2>
-<table border=1>
-<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Check in</b></td><td><b>check out</b></td><td><b>adults</b></td><td><b>babies</b></td><td><b>children</b></td><td></td></tr>
-<c:forEach var="reservation" items="${reservationQuery}" varStatus="status">
-	<tr>
-	<td><input type = "checkbox"/></td>
-	<td>${status.index}</td>
-	<td>${reservation.user}</td>
-	<td>${reservation.checkin}</td>
-	<td>${reservation.checkout}</td>
-	<td>${reservation.adult}</td>
-	<td>${reservation.baby}</td>
-	<td>${reservation.child}</td>
-	
-	
-	</tr>
-</c:forEach>
-</table>
-				
-			<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="reserve" value ="delete selected"/>
+		<c:redirect url="/Bridgeport/MessageServlet"/>
+		
 		</div>
+		<footer>
+		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+		</footer>
+	</div>
 
-</div>
 </body>
-
 </html>

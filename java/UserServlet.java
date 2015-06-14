@@ -59,20 +59,20 @@ public class UserServlet extends HttpServlet {
 		}
 			Integer loginCounter= (Integer) session.getAttribute("counter");
 			
-			if(loginCounter >= 5){
+			if(loginCounter >= 3){
 				long lastAccessedTime = session.getLastAccessedTime();
 				Date date = new Date();
 				long currentTime = date.getTime();
 				long timeDiff = currentTime - lastAccessedTime;
 				// 20 minutes in milliseconds  
-				if (timeDiff >= 1200000)
+				if (timeDiff >= 3600000)
 				{
 					//invalidate user session, so they can try again
 					loginCounter =0;
 				}
 			}
 
-			if(loginCounter < 5){
+			if(loginCounter < 3){
 				ArrayList<User> userList = (ArrayList) session.getAttribute("userList");
 				for(User c : userList){
 					if(request.getParameter("email").equals(c.getEmail())){

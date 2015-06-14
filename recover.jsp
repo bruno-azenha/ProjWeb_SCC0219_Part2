@@ -1,7 +1,7 @@
 <%@page language="java" contentType="text/html"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,10 +12,14 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
-	<title>Display Reservations</title>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
+
+	<title> 
+	Password Recovery Page
+	</title>
+	
 </head>
-<body fontcolor = "white">
+<body>
 <div class= "navbar-wrapper">
 		<nav class="navbar navbar-default">
 			<div class ="container">
@@ -43,36 +47,26 @@
 	<c:if test="${user==null}">
     <c:redirect url = "login.jsp"/>
 </c:if>
-
 <div class = "container">
 		<div class="row cover">
-			<jsp:useBean 
-		id="reservationQuery" 
-		class="java.util.ArrayList" 
-		scope="session"/>
-		<h2>these are your reservations</h2>
-<table border=1>
-<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>Check in</b></td><td><b>check out</b></td><td><b>adults</b></td><td><b>babies</b></td><td><b>children</b></td><td></td></tr>
-<c:forEach var="reservation" items="${reservationQuery}" varStatus="status">
-	<tr>
-	<td><input type = "checkbox"/></td>
-	<td>${status.index}</td>
-	<td>${reservation.user}</td>
-	<td>${reservation.checkin}</td>
-	<td>${reservation.checkout}</td>
-	<td>${reservation.adult}</td>
-	<td>${reservation.baby}</td>
-	<td>${reservation.child}</td>
-	
-	
-	</tr>
-</c:forEach>
-</table>
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/RecoveryServlet" method="GET" id = "recovery">
 				
-			<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="reserve" value ="delete selected"/>
+				
+				<h2>Password Recovery</h2>
+				<p>please enter your registered email account<br>
+				a new password will be sent to it
+				</p>
+				<div>
+					<input  type = "text" class= "form-control" name = "email" id= "email" required  />
+				</div>
+				<input class= "btn btn-md btn-warning btn-block form-control " type="submit" id="serch" value ="send request"/>
+				
+			</form>
+		<div id= "searchResponse">
+				
 		</div>
-
-</div>
+		</div>
+	</div>
+	
 </body>
-
 </html>
