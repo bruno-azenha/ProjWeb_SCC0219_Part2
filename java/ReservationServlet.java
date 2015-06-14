@@ -21,6 +21,9 @@ public class ReservationServlet extends HttpServlet {
 		if (request.getParameter("action").equals("add")){
 			newReservation(request, response);	
 		}
+		else if (request.getParameter("action").equals("delete")){
+			deleteReservation(request, response);
+		}
 	}
 
 	private void getReservations(HttpServletRequest request, HttpServletResponse response){
@@ -160,6 +163,32 @@ public class ReservationServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 		catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	private void deleteReservation (HttpServletRequest request, HttpServletResponse response){
+		try{
+			HttpSession session = request.getSession();
+
+			ArrayList <Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
+			ArrayList <Reservation> reservationQuery = (ArrayList) session.getAttribute("reservationList");
+			ArrayList <Reservation> reservationCopy = new ArrayList<Reservation>(reservationList);
+			Integer count = 0;
+
+			for (Reservation rQuery : reservationQuery){
+				if (request.getParameter("removeReservation"+Integer.toString(count)) != null){
+					reservationCopy.remove(rQuery);
+				}			
+				count++;
+			}
+
+			session.setAttribute("reservationList", reservationCopy);
+			String url = "viewr.jsp";
+			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
+			dispatcher.forward(request, response);
+		}
+		catch(Exception e){
 			e.printStackTrace();
 		}
 	}

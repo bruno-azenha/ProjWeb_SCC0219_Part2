@@ -45,30 +45,33 @@
 </c:if>
 
 <div class = "container">
-		<div class="row cover">
-			<jsp:useBean 
-		id="reservationQuery" 
-		class="java.util.ArrayList" 
-		scope="session"/>
-		<h2>these are the reservations</h2>
-<table border=1>
-<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>idate</b></td><td><b>odate</b></td><td><b>adult</b></td><td><b>baby</b></td><td><b>child</b></td><td></td></tr>
-<c:forEach var="reservation" items="${reservationQuery}" varStatus="status">
-	<tr>
-	<td>${status.index}</td>
-	<td>${reservation.user}</td>
-	<td>${reservation.checkin}</td>
-	<td>${reservation.checkout}</td>
-	<td>${reservation.adult}</td>
-	<td>${reservation.baby}</td>
-	<td>${reservation.child}</td>
-	<td><input type = "checkbox"/></td>
-	
-	</tr>
-</c:forEach>
-</table>
+	<div class="row cover">
+		<jsp:useBean 
+			id="reservationQuery" 
+			class="java.util.ArrayList" 
+			scope="session"/>
+
+	<h2>these are the reservations</h2>
+	<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" id="deleteReservation">
+		<table border=1>
+			<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>idate</b></td><td><b>odate</b></td><td><b>adult</b></td><td><b>baby</b></td><td><b>child</b></td><td></td></tr>
+			<c:forEach var="reservation" items="${reservationQuery}" varStatus="status">
+				<tr>
+				<td>${status.index}</td>
+				<td>${reservation.user}</td>
+				<td>${reservation.checkin}</td>
+				<td>${reservation.checkout}</td>
+				<td>${reservation.adult}</td>
+				<td>${reservation.baby}</td>
+				<td>${reservation.child}</td>
+				<td><input type="checkbox" name="removeReservation${status.index}" value="true"/></td>
+				</tr>
+			</c:forEach>
+		</table>
 				
-			<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="reserve" value ="delete selected"/>
+		<input type="hidden" name="action" value="delete">
+		<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="reserve" value ="delete selected"/>
+	</form>
 		</div>
 
 </div>

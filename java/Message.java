@@ -1,4 +1,6 @@
 package Bridgeport;
+import java.util.UUID;
+
 public class Message implements java.io.Serializable {
 
 	private String name;
@@ -7,8 +9,10 @@ public class Message implements java.io.Serializable {
 	private String known;
 	private String message;
 	private String date;
+	private UUID id;
 
 	public Message() {
+		this.id = UUID.randomUUID();
 	}
 
 	// Setters
@@ -59,5 +63,9 @@ public class Message implements java.io.Serializable {
 	
 	public String getDate () {
 		return this.date;
+	}
+
+	public UUID getId () {
+		return this.id;
 	}
 }
