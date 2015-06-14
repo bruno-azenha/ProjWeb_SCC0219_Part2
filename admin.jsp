@@ -47,7 +47,7 @@
 	<div class = "container">
 		<div class="row cover">
 		<h2  class = " text-center"> Search users</h2>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "reservation">
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byEmail">
 			<input type="hidden" name="action" value="searchEmail"/>
 			<div>
 				<label>email</label>
@@ -55,7 +55,8 @@
 			</div>
 			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="search" value ="Search by email"/>			
 		</form>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "reservation">
+		
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byDate">
 			<input type="hidden" name="action" value="searchDate"/>
 			<div >
 				<label>Start Date</label>
@@ -74,12 +75,10 @@
 				
 		</div>
 	</div>
-		
-		</div>
-		<footer>
+			<footer>
 		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>
-	</div>
-
+		</div>
+	
 </body>
 </html>

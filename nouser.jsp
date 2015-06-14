@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
 	<script src="${pageContext.request.contextPath}/js/reservation.js"></script>
-	<title>Reservation Page</title>
+	<title>No User Page</title>
 </head>
 <body>
 	<div class= "navbar-wrapper">
@@ -31,8 +31,9 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
-						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin.jsp">Manage Users</a></li>
+						<li><a href="${pageContext.request.contextPath}/mreservation.jsp">Manage Reservations</a></li>
+						<li><a href="${pageContext.request.contextPath}/mmessage.jsp">Manage Messages</a></li>
 						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
 					</ul>
 				</div>
@@ -40,43 +41,21 @@
 			</div>
 		</nav>
 	</div>
-	<c:if test="${user==null}">
+	<c:if test="${user.isSuper==false}">
     <c:redirect url = "login.jsp"/>
 </c:if>
 	<div class = "container">
 		<div class="row cover">
-			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="POST" id = "reservation">
-				<input type="hidden" name="action" value="add"/>
-				<input type ="hidden" name= "origin" value="reservation"/>
-				<h2>Make your reservation</h2>
-				<div class = "field">
-					<label>Check in Date</label>
-					<input class= "form-control" name = "iDate" id= "iDate" readonly='true' required  />
-				</div>
-				<div class = "field">
-					<label>check out Date</label>
-					<input class= "form-control" name = "oDate" id= "oDate" readonly='true' required />
-				</div>
-				<div>
-					<label>Number of Adults</label>
-					<input class= "form-control" name = "adult" id= "adult" type ="number" value = "1" min="1" max="4" required />
-				</div>
-				<div >
-					<label>Children under three years</label>
-					<input class= "form-control" name = "baby" id= "baby" type ="number" value = "0" min ="0" max ="3" required />
-				</div>
-				<div>
-					<label>Children between 3 and 12 years</label>
-					<input class= "form-control" name = "child" id= "child" type ="number" value = "0" min ="0" max ="4" required  />
-				</div>
-				<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="reserve" value ="Confirm Reservation"/>
-				
-			</form>
-		</div>
-		<footer>
-		   <p>&copy; 2015 designed by Clayton de Oliveira, All rights reserved</p>
-		</footer>
+		<h2>User Error</h2>
+	<p>There is no users registered at this moment<br/>
+		to go back click <a href="admin.jsp"> here!!! </a></p>
+   
 	</div>
-
+		</div>
+			<footer>
+		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+		</footer>
+		</div>
+	
 </body>
 </html>
