@@ -52,7 +52,7 @@
 		<div class="row cover">
 
 		<h2 class = "header" >these are the messages</h2>
-	<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/MessageServlet">	
+	<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/MessageServlet" accept-charset="utf-8">	
 	<input type="hidden" name="action" value="delete"/>
 
 	<table border=1>

@@ -49,7 +49,7 @@
 </c:if>
 <div class = "container">
 		<div class="row cover">
-			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/RecoveryServlet" method="GET" id = "recovery">
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/RecoveryServlet" method="GET" id = "recovery" accept-charset="utf-8">
 				
 				
 				<h2>Password Recovery</h2>

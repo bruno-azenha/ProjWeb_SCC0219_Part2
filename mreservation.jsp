@@ -47,7 +47,7 @@
 	<div class = "container">
 		<div class="row cover">
 		<h2  class = " text-center"> Search reservations</h2>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservation">
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservation" accept-charset="utf-8">
 				
 			<div >
 				<p>Enter the user name who made the resevation</p>

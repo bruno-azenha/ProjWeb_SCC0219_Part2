@@ -202,7 +202,6 @@ public class UserServlet extends HttpServlet {
 			Date regDateEnd = format.parse(request.getParameter("regDateEnd"));
 			Date regDate;
 			for (User u : userList){
-				
 				regDate = format.parse(u.getRegDate());
 				if (regDateBegin.compareTo(regDate) <= 0 && regDateEnd.compareTo(regDate) >= 0){
 					userQuery.add(u);
