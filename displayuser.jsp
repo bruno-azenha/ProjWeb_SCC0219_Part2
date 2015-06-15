@@ -13,16 +13,16 @@
 			<td><input type = "checkbox" name="removeUser${status.index}" value="true"/></td>
 			<td>${status.index}</td>
 			<td>${userQuery.get(status.index).name}</td>
-			<td>${user.regDate}</td>
-			<td>${user.cpf}</td>
-			<td>${user.dob}</td>
-			<td>${user.gender}</td>
-			<td>${user.civilStatus}</td>
-			<td>${user.city}</td>
-			<td>${user.state}</td>
-			<td>${user.zip}</td>
-			<td>${user.email}</td>
-			<td>${user.isSuper}</td>
+			<td>${userQuery.get(status.index).regDate}</td>
+			<td>${userQuery.get(status.index).cpf}</td>
+			<td>${userQuery.get(status.index).dob}</td>
+			<td>${userQuery.get(status.index).gender}</td>
+			<td>${userQuery.get(status.index).civilStatus}</td>
+			<td>${userQuery.get(status.index).city}</td>
+			<td>${userQuery.get(status.index).state}</td>
+			<td>${userQuery.get(status.index).zip}</td>
+			<td>${userQuery.get(status.index).email}</td>
+			<td>${userQuery.get(status.index).isSuper}</td>
 		</tr>
 		</c:forEach>
 	</table>	
