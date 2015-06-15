@@ -11,6 +11,7 @@
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/ajax-scripts.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
 	<title>Display Reservations</title>

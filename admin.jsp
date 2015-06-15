@@ -10,12 +10,14 @@
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/ajax-scripts.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<title>User Management Page</title>
 </head>
 <body>
+
 	<div class= "navbar-wrapper">
 		<nav class="navbar navbar-default">
 			<div class ="container">
@@ -47,11 +49,11 @@
 		<div class="row cover">
 
 		<h1  class = " header text-center"> Search users</h1>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byEmail">
+		<form class = "col-md-6 form ajaxform" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byEmail">
 			<input type="hidden" name="action" value="searchEmail"/>
 			<div>
 				<label>email</label>
-				<input class= "form-control" name = "email" id= "email" required  />
+				<input class= "form-control" name = "email" id= "email2" required  />
 
 			</div>
 			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="search" value ="Search by email"/>			
@@ -72,10 +74,13 @@
 				
 			</form>
 		
-		<div id= "searchResponse">
-				
+		<div id="searchResponse" class="row">
+					
 		</div>
 	</div>
+
+	
+
 			<footer>
 		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>
