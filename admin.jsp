@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
+	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
 	<title>User Management Page</title>
 </head>
 <body>

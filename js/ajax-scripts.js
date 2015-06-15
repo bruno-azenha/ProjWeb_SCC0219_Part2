@@ -24,7 +24,9 @@ $( document ).ready(function() {
 			data	: $(this).serialize(),
 			success : function( response ) {
 				alert( "response" );
+				$("#searchResponse").html(response);
 			}
 		});
+		e.preventDefault();
 	});
 });
