@@ -42,26 +42,31 @@
 		</nav>
 	</div>
 	
-<div class="container cover">
+<div class="container">
+<div class="row cover">
 	<c:choose>	
   <c:when test="${counter<=3}">
    <h2 class="header">Sign in Error</h2>
-	<p class="text" >you entered a invalid user or name. Please go back and try again. Passwords are case sensitive. if you forgot your password Click<a href="recover.jsp"> here!!! </a><br/>
+	<p class="text" >You entered a invalid user or name. Please go back and try again. Passwords are case sensitive. If you forgot your password Click<a class="link" href="recover.jsp"> here!!! </a><br/>
 
-		Notice that you used  ${sessionScope.counter} of 5 attempts to sign in. After 5 failed attempts, you will no longer be able to sign in for 1 hour.<br/>
-		to go back click <a class= "link" href="login.jsp"> here!!! </a></p>
+		Notice that you used  ${sessionScope.counter} of 3 attempts to sign in. After 3 failed attempts, you will no longer be able to sign in for 1 hour.<br/>
+		To go back click <a class= "link" href="login.jsp"> here!!! </a></p>
    
 
     
 	</c:when>
 	<c:otherwise >
    <h2 class="header">Sign in Error</h2>
-	<p class = "text">you entered a invalid user or name. you will no longer be able to sign in for 1 hour.<br/>
-	to go back click <a href="login.jsp"> here!!! </a>
+	<p class = "text">You entered a invalid user or name. You will no longer be able to sign in for 1 hour.<br/>
+	To go back click <a class="link" href="login.jsp"> here!!! </a>
 	</p>
   
 	</c:otherwise>
 	</c:choose>
+	</div>
+	<footer>
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+	</footer>
 	</div>
 </BODY>
 </HTML>

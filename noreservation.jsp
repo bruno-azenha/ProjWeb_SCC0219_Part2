@@ -5,16 +5,13 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
+	
 
 	<title> 
-	Sign in error
+	No Reservations
 	</title>
 </HEAD>
 
@@ -44,12 +41,16 @@
 			</div>
 		</nav>
 	</div>
-	
-	<div class="container cover">
-	<h2>Reservation Error</h2>
-	<p>You have no reservation on between those dates<br/>
-		to go back click <a href="viewr.jsp"> here!!! </a></p>
+	<div class="container">
+	<div class="row cover">
+	<h2 class = "header">Reservation Error</h2>
+	<p2 class= "text" >You have no reservation between those dates<br/>
+		to go back click <a class = "link" href="viewr.jsp"> here!!! </a></p>
    
+	</div>
+	<footer>
+		   <p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+	</footer>
 	</div>
 </BODY>
 </HTML>

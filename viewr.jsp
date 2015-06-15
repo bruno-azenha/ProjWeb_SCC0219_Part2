@@ -6,13 +6,11 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<title>view Reservations</title>
 </head>
@@ -48,12 +46,12 @@
 			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservation">
 				
 				
-				<h2>Check reservation</h2>
-				<div class = "field">
+				<h2 class="header">Check your reservations</h2>
+				<div>
 					<label>Start Date</label>
 					<input class= "form-control" name = "dateIn" id= "iDate" readonly='true' required  />
 				</div>
-				<div class = "field">
+				<div>
 					<label>End Date</label>
 					<input class= "form-control" name = "dateOut" id= "oDate" readonly='true' required />
 				</div>
@@ -64,6 +62,10 @@
 		<div id= "searchResponse">
 				
 		</div>
+	</div>
+	<footer>
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+	</footer>
 	</div>
 	
 </body>

@@ -35,7 +35,7 @@ public class MessageServlet extends HttpServlet {
 			String url;
 			// Checa se já existem mensagens no sistema
 			if (messageList == null || messageList.isEmpty()){
-				url = "noMessages.jsp";
+				url = "nomessage.jsp";
 			}
 
 			else {

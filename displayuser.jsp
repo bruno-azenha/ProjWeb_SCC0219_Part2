@@ -48,27 +48,27 @@
 	<div class = "container">
 		<div class="row cover">
 
-			<h2>These are the users</h2>
+			<h2 class="header">These are the users</h2>
 		
 			<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet">
 				<input type="hidden" name="action" value="delete"/>
 				<table border=1>
-					<tr><td><b></b></td><td><b>ID</b></td><td><b>registration date</b></td><td><b>name</b></td><td><b>cpf</b></td><td><b>DoB</b></td><td><b>gender</b></td><td><b>civilStatus</b></td><td><b>city</b></td><td><b>state</b></td><td><b>zipcode</b></td><td><b>email</b><td><b>admin</b></td></td><td></td></tr>
+					<tr><td><b></b></td><td class= "text"><b>ID</b></td><td class= "text"><b>Registration date</b></td><td class= "text"><b>Name</b></td><td class= "text"><b>CPF</b></td><td class= "text"><b>DoB</b></td><td class= "text"><b>Gender</b></td><td class= "text"><b>Civil Status</b></td><td class= "text"><b>City</b></td><td class= "text"><b>State</b></td><td class= "text"><b>Zipcode</b></td><td class= "text"><b>Email</b><td class= "text"><b>Admin</b></td></td></tr>
 					<c:forEach var="user" items="${userQuery}" varStatus="status">
 					<tr>
-						<td><input type = "checkbox" name="removeUser${status.index}" value="true"/></td>
-						<td>${status.index}</td>
-						<td>${user.regDate}</td>
-						<td>${user.name}</td>
-						<td>${user.cpf}</td>
-						<td>${user.dob}</td>
-						<td>${user.gender}</td>
-						<td>${user.civilStatus}</td>
-						<td>${user.city}</td>
-						<td>${user.state}</td>
-						<td>${user.zip}</td>
-						<td>${user.email}</td>
-						<td>${user.isSuper}</td>
+						<td class= "text"><input type = "checkbox" name="removeUser${status.index}" value="true"/></td>
+						<td class= "text">${status.index}</td>
+						<td class= "text">${user.regDate}</td>
+						<td class= "text">${user.name}</td>
+						<td class= "text">${user.cpf}</td>
+						<td class= "text">${user.dob}</td>
+						<td class= "text">${user.gender}</td>
+						<td class= "text">${user.civilStatus}</td>
+						<td class= "text">${user.city}</td>
+						<td class= "text">${user.state}</td>
+						<td class= "text">${user.zip}</td>
+						<td class= "text">${user.email}</td>
+						<td class= "text">${user.isSuper}</td>
 					</tr>
 					</c:forEach>
 				</table>	
@@ -76,10 +76,8 @@
 			</form>
 		</div>
 
-</div>
-		</div>
-			<footer>
-		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+		<footer>
+		   <p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>
 		</div>
 	

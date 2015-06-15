@@ -5,14 +5,10 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
-
+	
 	<title> 
 	Sign in error
 	</title>
@@ -45,23 +41,29 @@
 		</nav>
 	</div>
 	
-	<div class="container cover">
-	<h2>Success</h2>
+	<div class="container">
+	<div class="row cover">
+	<h2 class = "header">Success</h2>
 	<c:choose>
 		<c:when test="${origin == 'reservation' }">
-			<p>Your reservation was recorded<br>
-	   		Click <a href="${pageContext.request.contextPath}/user.jsp"> here!!! </a> to go back</p>
+			<p class= "text">Your reservation was recorded<br>
+	   		Click <a class="link" href="${pageContext.request.contextPath}/user.jsp"> here!!! </a> to go back</p>
 	   	</c:when>
 	   	<c:when test="${origin == 'message'}">
-			<p>Your message was successfully sent! Please wait for our answer.<br>
-	   		Click <a href="${pageContext.request.contextPath}/index.jsp"> here!!! </a> to go back</p>
+			<p class= "text">Your message was successfully sent! Please wait for our answer.<br>
+	   		Click <a class="link" href="${pageContext.request.contextPath}/index.jsp"> here!!! </a> to go back</p>
 	   	</c:when>
 	   	<c:when test="${origin == 'signUp'}">
-			<p>Your registration was succesfull!<br>
-	   		Click <a href="${pageContext.request.contextPath}/login.jsp"> here!!! </a> to go to the login page.</p>
+			<p class= "text">Your registration was succesfull!<br>
+	   		Click <a  class="link" href="${pageContext.request.contextPath}/login.jsp"> here!!! </a> to go to the login page.</p>
 	   	</c:when>
    	</c:choose>
    
 	</div>
+	<footer>
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+	</footer>
+	</div>
+
 </BODY>
 </HTML>

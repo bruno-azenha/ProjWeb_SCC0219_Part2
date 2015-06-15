@@ -176,7 +176,7 @@ public class UserServlet extends HttpServlet {
 				/* Adds user to userList and saves List to session */
 				userList.add(user);
 				session.setAttribute("userList", userList);
-				session.setAttribute("registrationOK", true);
+				session.setAttribute("origin", "signUp");
 			}
 
 			/* Set the correct response url */

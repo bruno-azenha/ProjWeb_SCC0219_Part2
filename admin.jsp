@@ -11,7 +11,6 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<title>User Management Page</title>
 </head>
@@ -77,7 +76,7 @@
 		</div>
 	</div>
 			<footer>
-		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+		   <p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>
 		</div>
 	

@@ -6,14 +6,10 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/test.css">
-
+	
 	<title> 
 	Password Recovery Page
 	</title>
@@ -25,7 +21,7 @@
 			<div class ="container">
 				<div class = "navbar-header ">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-						<span class="sr-only"></span>
+						 <span class="sr-only"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -34,26 +30,24 @@
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
-						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
-						<li><a href="${pageContext.request.contextPath}/cancelr.jsp">Cancel Reservations</a></li>
-						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
+						<li class=""><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+						<li><a href="${pageContext.request.contextPath}/signup.jsp">Register</a></li>
+						<li><a href="${pageContext.request.contextPath}/contact.jsp">Contact</a></li>	                
+						<a class="btn btn-md btn-primary navbar-btn " href="${pageContext.request.contextPath}/login.jsp" role="button">log in</a>
 					</ul>
 				</div>
-				
-			</div>
+				<div></div>
+				</div>
 		</nav>
 	</div>
-	<c:if test="${user==null}">
-    <c:redirect url = "login.jsp"/>
-</c:if>
-<div class = "container">
+
+	<div class = "container">
 		<div class="row cover">
 			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/RecoveryServlet" method="GET" id = "recovery">
 				
 				
-				<h2>Password Recovery</h2>
-				<p>please enter your registered email account<br>
+				<h2 class="header">Password Recovery</h2>
+				<p class="text">please enter your registered email account<br>
 				a new password will be sent to it
 				</p>
 				<div>
@@ -62,10 +56,11 @@
 				<input class= "btn btn-md btn-warning btn-block form-control " type="submit" id="serch" value ="send request"/>
 				
 			</form>
-		<div id= "searchResponse">
-				
+		
 		</div>
-		</div>
+		<footer>
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+	</footer>
 	</div>
 	
 </body>

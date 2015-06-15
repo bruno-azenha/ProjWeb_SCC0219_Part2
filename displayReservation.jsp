@@ -71,6 +71,9 @@
 		<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="reserve" value ="delete selected"/>
 	</form>
 		</div>
+	<footer>
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+	</footer>
 
 </div>
 </body>

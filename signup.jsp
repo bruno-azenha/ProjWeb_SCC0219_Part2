@@ -24,7 +24,7 @@
 		<nav class="navbar navbar-default" >
 			<div class ="container">
 				<div class = "navbar-header ">
-					<a class ="navbar-brand" href= "${pageContext.request.contextPath}"">Bridgeport Hotel</a>
+					<a class ="navbar-brand" href= "${pageContext.request.contextPath}">Bridgeport Hotel</a>
 				</div>
 				<div id="navbar" class="">
 					<ul class="nav navbar-nav">
@@ -108,7 +108,7 @@
 	</div>
 	<div class = "container">
 		<footer>
-		<p>&copy; 2015 designed by Clayton de Oliveira, All rights reserved
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 	</footer>
 	</div>
 	</html>

@@ -8,6 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<title>Bridgeport Main page</title>
@@ -54,9 +55,9 @@
 			<div class="container">
 			<!-- add a caption to the image -->
 			<div class="carousel-caption">
-				<h1>Bridgeport Hotel</h1>
+				<h1 class= "header" >Bridgeport Hotel</h1>
 				<!--  If the page is loaded via <code> file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules. -->
-				<p class = "info">Bridgeport hotel is a great place to stay. A confortable place with  friendly staff which will be happy to take care of you while you are in this beautifull city. Whether you are here to relax, to work or to visit we have a room just for you. Make your reservation today</p>
+				<p class = " text info" >Bridgeport hotel is a great place to stay. A confortable place with  friendly staff which will be happy to take care of you while you are in this beautifull city. Whether you are here to relax, to work or to visit we have a room just for you. Make your reservation today</p>
 				<p><a class="btn btn-lg btn-primary" href="${pageContext.request.contextPath}/login.jsp" role="button">log in</a></p>
 			</div>
 			</div>
@@ -65,8 +66,8 @@
 			<img class="second-slide" src="${pageContext.request.contextPath}/imgs/facilities1.jpg" alt="bar photo">
 			<div class="container">
 			<div class="carousel-caption">
-				<h1>Want to relax?</h1>
-				<p class= "info" > Our lounge bar it's the right spot to meet new people in a relaxed envoriment. Not fancy for a drink? don't worry we still have a spa house for the deep relaxation you are looking for. Don't want to relax? Ok, then, we still hava an olympic pool and a gym if you still have energy to burn. Interested??? then take a look at our galery and see what we've got </p>
+				<h1 class = "header" >Want to relax?</h1>
+				<p class= " text info" > Our lounge bar it's the right spot to meet new people in a relaxed envoriment. Not fancy for a drink? don't worry we still have a spa house for the deep relaxation you are looking for. Don't want to relax? Ok, then, we still hava an olympic pool and a gym if you still have energy to burn. Interested??? then take a look at our galery and see what we've got </p>
 				<p><a class="btn btn-lg btn-primary" href="#facilities" role="button">Our Facilites</a></p>
 			</div>
 			</div>
@@ -75,8 +76,8 @@
 			<img class="third-slide" src="${pageContext.request.contextPath}/imgs/bedroom1.jpg" alt="bedroom photo">
 			<div class="container">
 			<div class="carousel-caption">
-				<h1>Let us worry about your stay.</h1>
-				<p class="info" >As every hotel should, we have bathroom in every bedroom with free towels at your disposal. Other services, such as, free wifi and cell phone chargers are avilable too. if you are looking for something more see a list of services below </p>
+				<h1 class="header">Let us worry about your stay.</h1>
+				<p class=" text info" >As every hotel should, we have bathroom in every bedroom with free towels at your disposal. Other services, such as, free wifi and cell phone chargers are avilable too. if you are looking for something more see a list of services below </p>
 				<p><a class="btn btn-lg btn-primary" href="#" role="button">Our Services</a></p>
 			</div>
 			</div>
@@ -88,7 +89,7 @@
 		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 		<span class="sr-only">Previous</span>
 		</a>
-		<a class="right carousel-control" href="#bridgeportCarousel" role="button" data-slide="next">
+<!--		<a class="right carousel-control" href="#bridgeportCarousel" role="button" data-slide="next">-->
 		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
 		</a>
@@ -149,9 +150,10 @@
 
 
 		<!-- FOOTER -->
+		
 		<footer>
 		<p class="pull-right"><a href="#">Back to top</a></p>
-		<p>&copy; 2015 designed by Clayton de Oliveira, All rights reserved &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
 		</footer>
 
 	</div><!-- /.container -->

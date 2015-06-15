@@ -6,14 +6,9 @@
 	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
-	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
+		<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
-	<script src="${pageContext.request.contextPath}/js/reservation.js"></script>
 	<title>Reservation Page</title>
 </head>
 <body>

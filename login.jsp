@@ -59,7 +59,7 @@
 
 		
 		<footer>
-		<p>&copy; 2015 designed by Clayton de Oliveira, All rights reserved
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>
 		
 	</div> <!-- /container -->
