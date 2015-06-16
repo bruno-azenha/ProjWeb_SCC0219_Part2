@@ -214,21 +214,45 @@ public class ReservationServlet extends HttpServlet {
 
 			ArrayList <Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
 			ArrayList <Reservation> reservationQuery = (ArrayList) session.getAttribute("reservationList");
+			ArrayList <TimeFrame> unavailableDays = (ArrayList) session.getAttribute("unavailableDays");
 			ArrayList <Reservation> reservationCopy = new ArrayList<Reservation>(reservationList);
+			ArrayList <Reservation> reservationQueryCopy = new ArrayList<Reservation>(reservationQuery);
+			ArrayList <TimeFrame> unavailableDaysCopy = new ArrayList<TimeFrame>(unavailableDays);
+
 			Integer count = 0;
+
+			String reservationIn = "";
+			String reservationOut = "";
 
 			for (Reservation rQuery : reservationQuery){
 				if (request.getParameter("removeReservation"+Integer.toString(count)) != null){
 					reservationCopy.remove(rQuery);
+					reservationQueryCopy.remove(rQuery);
+					reservationIn = rQuery.getCheckin();
+					reservationOut = rQuery.getCheckout();
+					break;
 				}			
 				count++;
 			}
 
+			/* torna o período disponível novamente */
+			for (TimeFrame tf : unavailableDays){
+				if (tf.getStartDate().equals(reservationIn) && tf.getEndDate().equals(reservationOut)){
+					unavailableDaysCopy.remove(tf);
+					break;
+				}
+			}
+
+
+			session.setAttribute("unavailableDays", unavailableDaysCopy);
 			session.setAttribute("reservationList", reservationCopy);
-			session.removeAttribute("reservationQuery");
-			String url = "viewr.jsp";
+			session.setAttribute("reservationQuery", reservationQueryCopy);
+
+			String url = "displayReservation.jsp";
+			 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
+			
 		}
 		catch(Exception e){
 			e.printStackTrace();
