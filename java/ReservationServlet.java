@@ -55,10 +55,7 @@ public class ReservationServlet extends HttpServlet {
 						url = "displayReservation.jsp";	
 
 					}
-
 				}
-				
-
 			}
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
@@ -148,6 +145,7 @@ public class ReservationServlet extends HttpServlet {
 				session.setAttribute("reservationList", reservationList);
 			}
 
+			ArrayList 
 			User user = (User) session.getAttribute("user");
 			Reservation reservation = new Reservation();
 			reservation.setUser(user.getEmail());
@@ -156,6 +154,10 @@ public class ReservationServlet extends HttpServlet {
 			reservation.setAdult(Integer.valueOf(request.getParameter("adult")));
 			reservation.setBaby(Integer.valueOf(request.getParameter("baby")));
 			reservation.setChild(Integer.valueOf(request.getParameter("child")));
+			
+			
+
+
 			reservationList.add(reservation);
 			session.setAttribute("reservationList",reservationList);
 
