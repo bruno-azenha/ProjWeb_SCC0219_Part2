@@ -47,16 +47,17 @@
 	<div class = "container">
 		<div class="row cover">
 		<h2  class = " text-center"> Search reservations</h2>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservation">
-				
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByEmail" accept-charset="utf-8">
+			<input type="hidden" name="mode" value="email"/>
 			<div >
-				<p>Enter the user name who made the resevation</p>
-				<label for="username"> Username</label>
-				<input class= "form-control" name = "username" id= "username" required  />
+				<p>Enter the email of the user who made the resevation</p>
+				<label for="email"> email</label>
+				<input class= "form-control" name = "email" id= "email" required  />
 			</div>
-			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="serch" value ="Search by name"/>			
+			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="serch" value ="Search by email"/>			
 		</form>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservation">
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByDate">
+			<input type="hidden" name="mode" value="date"/>
 			<div>
 				<p>Enter the start and the end date of your search</p>
 				<label>Start Date</label>

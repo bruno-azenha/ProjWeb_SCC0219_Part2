@@ -12,6 +12,7 @@
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
+	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
 	<title>User Management Page</title>
 </head>
 <body>
@@ -46,7 +47,7 @@
 		<div class="row cover">
 
 		<h1  class = " header text-center"> Search users</h1>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byEmail">
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byEmail" accept-charset="utf-8">
 			<input type="hidden" name="action" value="searchEmail"/>
 			<div>
 				<label>email</label>
@@ -56,7 +57,7 @@
 			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="search" value ="Search by email"/>			
 		</form>
 		
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byDate">
+		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="GET" id = "byDate" accept-charset="utf-8">
 			<input type="hidden" name="action" value="searchDate"/>
 			<div >
 				<label>Start Date</label>

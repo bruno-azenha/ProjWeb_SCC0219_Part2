@@ -15,15 +15,17 @@ $(document).ready(function() {
 	});
 	
 	$("#iDate").change(function() {
-		var date = new Date($(this).val());
-		var minOutDate = new Date(date.getFullYear(), date.getDate()+2, date.getMonth());
-        console.log(date);
-        console.log(minOutDate);
-        
-        console.log($(this).val());
+
+		var parts = $(this).val().split('/');
+		
+		var minOutDate = new Date(parseInt(parts[2]), parseInt(parts[1])-1, parseInt(parts[0])+2);
+		console.log($(this).val());
+		console.log(minOutDate);
+
 		$('#oDate').datepicker('option', 'minDate', minOutDate);
 		$("#oDate").val("");
 		$("#oDate").removeAttr("disabled");
+
 	
 	});
 	

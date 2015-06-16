@@ -25,6 +25,11 @@
 		class="java.util.ArrayList" 
 		scope="session"/>
 
+<jsp:useBean 
+		id="reservationQuery" 
+		class="java.util.ArrayList" 
+		scope="session"/>
+
 <c:choose> 
 	<c:when test="${registrationOK == true}">
 		<h2>Registration was successfull!</h2>
@@ -83,6 +88,21 @@
 <table border=1>
 <tr><td><b>ID</b></td><td><b>Name</b></td><td><b>idate</b></td><td></td></tr>
 <c:forEach var="reservation" items="${reservationList}" varStatus="status">
+	<tr>
+	<td>${status.index}</td>
+	<td>${reservation.user}</td>
+	<td>${reservation.checkin}</td>
+	
+	</tr>
+</c:forEach>
+</table>
+
+<hr>
+
+<h2>these is the reservation Query</h2>
+<table border=1>
+<tr><td><b>ID</b></td><td><b>Name</b></td><td><b>idate</b></td><td></td></tr>
+<c:forEach var="reservation" items="${reservationQuery}" varStatus="status">
 	<tr>
 	<td>${status.index}</td>
 	<td>${reservation.user}</td>

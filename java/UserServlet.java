@@ -48,20 +48,22 @@ public class UserServlet extends HttpServlet {
 				session.setAttribute("counter", new Integer(0));
 			}
 			if(session.getAttribute("userList")==null){
+				/* Inicializa e recupera a lista de usuários */
 				session.setAttribute("userList",new ArrayList<User>());
 				ArrayList userList = (ArrayList) session.getAttribute("userList");
-				User user = new User();
-				user.setName("David Ross");
-				user.setEmail("dross@gmail.com");
-				user.setPassword("123456");
+				
+				/* Cria David Ross user */
+				User dross = new User();
+				dross.setName("David Ross");
+				dross.setEmail("dross@gmail.com");
+				dross.setPassword("123456");
 				Date date = new Date();
 				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 				String fDate = formatter.format(date);
-				user.setRegDate(fDate);
+				dross.setRegDate(fDate);
+				userList.add(dross);
 
-				userList.add(user);
-
-				
+				/* Cria Admin Michael Jackson */
 				User admin = new User();
 				admin.setName("Michael Jackson");
 				admin.setEmail("adminmj@gmail.com");
@@ -71,8 +73,21 @@ public class UserServlet extends HttpServlet {
 				formatter = new SimpleDateFormat("dd/MM/yyyy");
 				fDate = formatter.format(date);
 				admin.setRegDate(fDate);
-
 				userList.add(admin);
+
+				/* Cria vários outros mock users */
+				for (int i=0; i<10; i++){
+					User mock = new User();
+					mock.setName("mock"+Integer.toString(i));
+					mock.setEmail("mock" + Integer.toString(i) + "@gmail.com");
+					mock.setPassword("mock" + Integer.toString(i));
+					mock.setIsSuper(false);
+					date = new Date();
+					formatter = new SimpleDateFormat("dd/MM/yyyy");
+					fDate = formatter.format(date);
+					mock.setRegDate(fDate);
+					userList.add(mock);
+				}
 
 				/* atualiza lista na sessao */
 				session.setAttribute("userList",userList);
@@ -202,7 +217,6 @@ public class UserServlet extends HttpServlet {
 			Date regDateEnd = format.parse(request.getParameter("regDateEnd"));
 			Date regDate;
 			for (User u : userList){
-				
 				regDate = format.parse(u.getRegDate());
 				if (regDateBegin.compareTo(regDate) <= 0 && regDateEnd.compareTo(regDate) >= 0){
 					userQuery.add(u);
@@ -250,17 +264,19 @@ public class UserServlet extends HttpServlet {
 			ArrayList <User> userList = (ArrayList) session.getAttribute("userList");
 			ArrayList <User> userQuery = (ArrayList) session.getAttribute("userList");
 			ArrayList <User> userCopy = new ArrayList<User>(userList);
+			ArrayList <User> userQueryCopy = new ArrayList<User>(userQuery);
 			Integer count = 0;
 
 			for (User uQuery : userQuery){
 				if (request.getParameter("removeUser"+Integer.toString(count)) != null){
 					userCopy.remove(uQuery);
+					userQueryCopy.remove(uQuery);
 				}			
 				count++;
 			}
 
 			session.setAttribute("userList", userCopy);
-			session.removeAttribute("userQuery");
+			session.setAttribute("userQuery", userQueryCopy);
 			String url = "displayuser.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);

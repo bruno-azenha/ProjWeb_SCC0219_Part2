@@ -45,7 +45,7 @@
 
 	<div class="container cover">
 
-		<form action = "/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="get" class="form-signin">
+		<form action = "/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="get" class="form-signin" accept-charset="utf-8">
 		<h2 class="form-signin-heading">Please sign in or register</h2>
 		<label for="inputEmail" class="sr-only">Email address</label>
 		<input name = "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>

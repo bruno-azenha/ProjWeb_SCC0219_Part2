@@ -43,7 +43,7 @@
 </c:if>
 <div class = "container">
 		<div class="row cover">
-			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservation">
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservation" accept-charset="utf-8">
 				
 				
 				<h2 class="header">Check your reservations</h2>
