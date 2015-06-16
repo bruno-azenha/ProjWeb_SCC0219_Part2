@@ -10,8 +10,6 @@ $(document).ready(function() {
 	});
 	
 	$("#iDate").change(function() {
-		
-		
 		$("#oDate").val("");
 		$("#oDate").removeAttr("disabled");
 	

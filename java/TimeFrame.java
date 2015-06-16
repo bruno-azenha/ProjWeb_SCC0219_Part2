@@ -2,10 +2,10 @@ package Bridgeport;
 
 public class TimeFrame implements java.io.Serializable {
 
-	private String startDate
+	private String startDate;
 	private String endDate;
 
-	public TimeFrate (){
+	public TimeFrame (){
 	}
 
 	// Setters
@@ -18,11 +18,11 @@ public class TimeFrame implements java.io.Serializable {
 	}
 
 	// Getters
-	public Integer getStartDate () {
+	public String getStartDate () {
 		return this.startDate;
 	}
 
-	public Integer getEndDate () {
+	public String getEndDate () {
 		return this.endDate;
 	}
 
