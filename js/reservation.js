@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 		var parts = $(this).val().split('/');
 		
-		var minOutDate = new Date(parseInt(parts[2]), parseInt(parts[1]), parseInt(parts[0])+2);
+		var minOutDate = new Date(parseInt(parts[2]), parseInt(parts[1])-1, parseInt(parts[0])+2);
 		console.log($(this).val());
 		console.log(minOutDate);
 
