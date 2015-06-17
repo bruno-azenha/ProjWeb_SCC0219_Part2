@@ -259,7 +259,7 @@ public class UserServlet extends HttpServlet {
 			session.setAttribute("userQuery", userQuery);
 			
 			String url;
-			if (userQuery.	isEmpty() == true){
+			if (userQuery.isEmpty() == true){
 				url = "noUser.jsp";
 			}
 			else {
@@ -295,7 +295,7 @@ public class UserServlet extends HttpServlet {
 			session.setAttribute("userQuery", userQueryCopy);
 			
 			String url;
-			if (userQuery.	isEmpty() == true){
+			if (userQueryCopy.isEmpty() == true){
 				url = "noUser.jsp";
 			}
 			else {

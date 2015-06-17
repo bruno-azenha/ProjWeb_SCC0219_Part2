@@ -6,14 +6,12 @@
 	<meta charset ="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/reservation.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/css/error.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
-	<script src="${pageContext.request.contextPath}/js/validation.js"></script>
-	<script src="${pageContext.request.contextPath}/js/reservation.js"></script>
+	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 	<title>Reservation Management Page</title>
 </head>
 <body>
@@ -46,11 +44,11 @@
 </c:if>
 	<div class = "container">
 		<div class="row cover">
-		<h2  class = " text-center"> Search reservations</h2>
+		<h2  class = " text-center header"> Search reservations</h2>
 		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByEmail" accept-charset="utf-8">
 			<input type="hidden" name="mode" value="email"/>
 			<div >
-				<p>Enter the email of the user who made the resevation</p>
+				<p class="text">Enter the email of the user who made the resevation</p>
 				<label for="email"> email</label>
 				<input class= "form-control" name = "email" id= "email" required  />
 			</div>
@@ -59,12 +57,12 @@
 		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByDate">
 			<input type="hidden" name="mode" value="date"/>
 			<div>
-				<p>Enter the start and the end date of your search</p>
-				<label>Start Date</label>
+				<p class="text">Enter the start and the end date of your search</p>
+				<label class="text">Start Date</label>
 				<input class= "form-control" name = "dateIn" id= "iDate" readonly='true' required  />
 			</div>
 			<div >
-				<label>End Date</label>
+				<label class="text">End Date</label>
 				<input class= "form-control" name = "dateOut" id= "oDate" readonly='true' required />
 			</div>
 				

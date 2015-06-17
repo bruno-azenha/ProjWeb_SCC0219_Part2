@@ -32,11 +32,11 @@ public class ReservationServlet extends HttpServlet {
 			ArrayList<Message> reservationList = (ArrayList) session.getAttribute("reservationList");
 			
 			String url;
+			Boolean found = false;
 			// Checa se já foi instanciado a reservationList no sistema
 			if (reservationList == null || reservationList.isEmpty()){
 				url = "noReservation.jsp";
 			}
-
 			else {
 
 				User u = (User) session.getAttribute("user");
@@ -46,15 +46,14 @@ public class ReservationServlet extends HttpServlet {
 
 				else{
 					if (u.getIsSuper()){
-						superSearch(request, response);
-						url = "displayReservation.jsp";
+						found = superSearch(request, response);
 					}
 
 					else {
-						normalSearch(request, response);
-						url = "displayReservation.jsp";	
-
+						found = normalSearch(request, response);
 					}
+
+					url = (found == false)? "noReservation.jsp": "displayReservation.jsp";
 				}
 			}
 
@@ -67,7 +66,7 @@ public class ReservationServlet extends HttpServlet {
 		}
 	}
 
-	private void superSearch(HttpServletRequest request, HttpServletResponse response){
+	private Boolean superSearch(HttpServletRequest request, HttpServletResponse response){
 		try{
 
 			HttpSession session = request.getSession();
@@ -75,18 +74,21 @@ public class ReservationServlet extends HttpServlet {
 			ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
 			// Checa opção de busca de reserva (Data ou usuário)
 			
+			Boolean found = false;
 			if (request.getParameter("mode").equals("date")){
 				
 
 					DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 					Date dataQueryIn = format.parse(request.getParameter("dateIn"));
 					Date dataQueryOut = format.parse(request.getParameter("dateOut"));
-					Date reservationCheckin;
+					Date reservationCheckin, reservationCheckout;
 					for (Reservation r : reservationList){
 						
 						reservationCheckin = format.parse(r.getCheckin());
-						if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckin) >= 0){
+						reservationCheckout = format.parse(r.getCheckout());
+						if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
 							reservationQuery.add(r);
+							found = true;
 						}
 					}
 				
@@ -98,20 +100,25 @@ public class ReservationServlet extends HttpServlet {
 				for (Reservation r : reservationList){
 					if (r.getUser().equals(email)){
 						reservationQuery.add(r);
+						found = true;
 					}
 				}
 			}
 
 			session.setAttribute("reservationQuery", reservationQuery);
+			return found;
 		}
 		catch(Exception e){
 			e.printStackTrace();
 		}
+		return false;
 	}
 
-	private void normalSearch(HttpServletRequest request, HttpServletResponse response){
+	private Boolean normalSearch(HttpServletRequest request, HttpServletResponse response){
 		try{
 			HttpSession session = request.getSession();
+
+			Boolean found = false;
 
 			ArrayList <Reservation> reservationQuery = new ArrayList();
 			ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
@@ -120,19 +127,23 @@ public class ReservationServlet extends HttpServlet {
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date dataQueryIn = format.parse(request.getParameter("dateIn"));
 			Date dataQueryOut = format.parse(request.getParameter("dateOut"));
-			Date reservationCheckin;
+			Date reservationCheckin, reservationCheckout;
 			for (Reservation r : reservationList){
 				
 				reservationCheckin = format.parse(r.getCheckin());
-				if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckin) >= 0){
+				reservationCheckout = format.parse(r.getCheckout());
+				if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
 					reservationQuery.add(r);
+					found = true;
 				}
 			}
 			session.setAttribute("reservationQuery", reservationQuery);
+			return found;
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
+		return false;
 
 		
 	}
@@ -196,7 +207,7 @@ public class ReservationServlet extends HttpServlet {
 			}
 
 			else {
-				url = "error.jsp";
+				url = "invalidDate.jsp";
 			}
 			
 			session.setAttribute("origin", "reservation");
@@ -213,50 +224,46 @@ public class ReservationServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 
 			ArrayList <Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
-			ArrayList <Reservation> reservationQuery = (ArrayList) session.getAttribute("reservationList");
+			ArrayList <Reservation> reservationQuery = (ArrayList) session.getAttribute("reservationQuery");
 			ArrayList <TimeFrame> unavailableDays = (ArrayList) session.getAttribute("unavailableDays");
 			ArrayList <Reservation> reservationCopy = new ArrayList<Reservation>(reservationList);
 			ArrayList <Reservation> reservationQueryCopy = new ArrayList<Reservation>(reservationQuery);
 			ArrayList <TimeFrame> unavailableDaysCopy = new ArrayList<TimeFrame>(unavailableDays);
 
-			Integer count = 0;
-
 			String reservationIn = "";
 			String reservationOut = "";
 
+			Integer count = 0;
 			for (Reservation rQuery : reservationQuery){
 				if (request.getParameter("removeReservation"+Integer.toString(count)) != null){
 					reservationCopy.remove(rQuery);
 					reservationQueryCopy.remove(rQuery);
 					reservationIn = rQuery.getCheckin();
 					reservationOut = rQuery.getCheckout();
-					break;
+					/* torna o período disponível novamente */
+					for (TimeFrame tf : unavailableDays){
+						if (tf.getStartDate().equals(reservationIn) && tf.getEndDate().equals(reservationOut)){
+							unavailableDaysCopy.remove(tf);
+							break;
+						}
+			
+					}
+					unavailableDays = new ArrayList<TimeFrame>(unavailableDaysCopy);
 				}			
 				count++;
 			}
-
-			/* torna o período disponível novamente */
-			for (TimeFrame tf : unavailableDays){
-				if (tf.getStartDate().equals(reservationIn) && tf.getEndDate().equals(reservationOut)){
-					unavailableDaysCopy.remove(tf);
-					break;
-				}
-			}
-
 
 			session.setAttribute("unavailableDays", unavailableDaysCopy);
 			session.setAttribute("reservationList", reservationCopy);
 			session.setAttribute("reservationQuery", reservationQueryCopy);
 
-
 			String url;
-			if (reservationQuery.isEmpty() == true){
+			if (reservationQueryCopy.isEmpty() == true){
 				url = "noReservation.jsp";
 			}
 			else {
 				url = "displayReservation.jsp";
 			}
-			
 			 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);

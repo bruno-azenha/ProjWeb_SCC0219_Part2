@@ -30,6 +30,11 @@
 		class="java.util.ArrayList" 
 		scope="session"/>
 
+<jsp:useBean 
+		id="unavailableDays" 
+		class="java.util.ArrayList" 
+		scope="session"/>
+
 <c:choose> 
 	<c:when test="${registrationOK == true}">
 		<h2>Registration was successfull!</h2>
@@ -92,6 +97,7 @@
 	<td>${status.index}</td>
 	<td>${reservation.user}</td>
 	<td>${reservation.checkin}</td>
+	<td>${reservation.checkout}</td>
 	
 	</tr>
 </c:forEach>
@@ -107,6 +113,22 @@
 	<td>${status.index}</td>
 	<td>${reservation.user}</td>
 	<td>${reservation.checkin}</td>
+	<td>${reservation.checkout}</td>
+	
+	</tr>
+</c:forEach>
+</table>
+
+<hr>
+
+<h2>this is the Unavailable Periods</h2>
+<table border=1>
+<tr><td><b>ID</b></td><td><b>Start Date</b></td><td><b>End Date</b></td><td></td></tr>
+<c:forEach var="tp" items="${unavailableDays}" varStatus="status">
+	<tr>
+	<td>${status.index}</td>
+	<td>${tp.startDate}</td>
+	<td>${tp.endDate}</td>
 	
 	</tr>
 </c:forEach>

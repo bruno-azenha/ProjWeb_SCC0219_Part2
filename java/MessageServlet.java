@@ -111,7 +111,7 @@ public class MessageServlet extends HttpServlet {
 			session.removeAttribute("messageQuery");
 			
 			String url;
-			if (messageQuery.isEmpty() == true){
+			if (messageCopy.isEmpty() == true){
 				url = "noMessage.jsp";
 			}
 			else {
