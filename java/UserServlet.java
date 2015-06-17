@@ -223,7 +223,15 @@ public class UserServlet extends HttpServlet {
 				}
 			}
 			session.setAttribute("userQuery", userQuery);
-			String url = "displayuser.jsp";
+			
+			String url;
+			if (userQuery.isEmpty() == true){
+				url = "noUser.jsp";
+			}
+			else {
+				url = "displayUser.jsp";
+			}
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 
@@ -249,7 +257,15 @@ public class UserServlet extends HttpServlet {
 				}
 			}
 			session.setAttribute("userQuery", userQuery);
-			String url = "displayuser.jsp";
+			
+			String url;
+			if (userQuery.	isEmpty() == true){
+				url = "noUser.jsp";
+			}
+			else {
+				url = "displayUser.jsp";
+			}
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}
@@ -277,7 +293,15 @@ public class UserServlet extends HttpServlet {
 
 			session.setAttribute("userList", userCopy);
 			session.setAttribute("userQuery", userQueryCopy);
-			String url = "displayuser.jsp";
+			
+			String url;
+			if (userQuery.	isEmpty() == true){
+				url = "noUser.jsp";
+			}
+			else {
+				url = "displayUser.jsp";
+			}
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}

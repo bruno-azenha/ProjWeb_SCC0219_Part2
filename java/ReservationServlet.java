@@ -34,7 +34,7 @@ public class ReservationServlet extends HttpServlet {
 			String url;
 			// Checa se já foi instanciado a reservationList no sistema
 			if (reservationList == null || reservationList.isEmpty()){
-				url = "noReservations.jsp";
+				url = "noReservation.jsp";
 			}
 
 			else {
@@ -165,7 +165,7 @@ public class ReservationServlet extends HttpServlet {
 				tfEnd = format.parse(tf.getEndDate());
 
 				if ((dateIn.compareTo(tfStart) <= 0 && dateOut.compareTo(tfStart) >=0 ) 
-					 || dateIn.compareTo(tfEnd) <= 0 && dateOut.compareTo(tfEnd) >= 0){
+					 || (dateIn.compareTo(tfEnd) <= 0 && dateOut.compareTo(tfEnd) >= 0)){
 					periodOk = false;
 				}
 			}
@@ -248,7 +248,15 @@ public class ReservationServlet extends HttpServlet {
 			session.setAttribute("reservationList", reservationCopy);
 			session.setAttribute("reservationQuery", reservationQueryCopy);
 
-			String url = "displayReservation.jsp";
+
+			String url;
+			if (reservationQuery.isEmpty() == true){
+				url = "noReservation.jsp";
+			}
+			else {
+				url = "displayReservation.jsp";
+			}
+			
 			 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);

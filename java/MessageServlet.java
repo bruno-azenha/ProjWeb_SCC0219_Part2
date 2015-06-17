@@ -35,11 +35,11 @@ public class MessageServlet extends HttpServlet {
 			String url;
 			// Checa se já existem mensagens no sistema
 			if (messageList == null || messageList.isEmpty()){
-				url = "nomessage.jsp";
+				url = "noMessage.jsp";
 			}
 
 			else {
-				url = "displayMessages.jsp";
+				url = "displayMessage.jsp";
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
@@ -109,7 +109,15 @@ public class MessageServlet extends HttpServlet {
 
 			session.setAttribute("messageList", messageCopy);
 			session.removeAttribute("messageQuery");
-			String url = "displayMessages.jsp";
+			
+			String url;
+			if (messageQuery.isEmpty() == true){
+				url = "noMessage.jsp";
+			}
+			else {
+				url = "displayMessage.jsp";
+			}
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}

@@ -43,7 +43,7 @@
 	</div>
 	<div class="container">
 	<div class="row cover">
-	<h2 class = "header">Reservation Error</h2>
+	<h2 class = "header">No reservation was found.</h2>
 	<p class= "text" >You have no reservation between those dates<br/>
 		<c:choose>
 			<c:when test="${user.isSuper == true}">

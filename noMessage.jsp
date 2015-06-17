@@ -7,9 +7,9 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	
-	<title>No User Page</title>
+	<title>No Message Page</title>
 </head>
 <body>
 	<div class= "navbar-wrapper">
@@ -41,13 +41,14 @@
 </c:if>
 	<div class = "container">
 		<div class="row cover">
-		<h2 class="header">User Error</h2>
-	<p class="text">There is no users registered at this moment<br/>
-		To go back click <a class= "link" href="admin.jsp"> here!!! </a></p>
+		<h2 class = "header" >No message was found.</h2>
+	<p class="text">There is no message at this moment<br/>
+		to go back click <a class = "link" href="${pageContext.request.contextPath}/admin.jsp"> here!!! </a></p>
    
 	</div>
-		<footer>
-		   <p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+		</div>
+			<footer>
+		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>
 		</div>
 	
