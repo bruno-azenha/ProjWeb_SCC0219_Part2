@@ -38,14 +38,13 @@
 						<a class="btn btn-md btn-primary navbar-btn " href="${pageContext.request.contextPath}/login.jsp" role="button">log in</a>
 					</ul>
 				</div>
-				<div></div>
-				</div>
+			</div>
 		</nav>
 	</div>
 
 	<div class="container cover">
 
-		<form action = "/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="get" class="form-signin" accept-charset="utf-8">
+		<form action = "/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="get" class="form-signin pull-right" accept-charset="utf-8">
 		<h2 class="form-signin-heading">Please sign in or register</h2>
 		<label for="inputEmail" class="sr-only">Email address</label>
 		<input name = "email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
@@ -58,11 +57,12 @@
 		</form>
 
 		
-		<footer>
-		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
-		</footer>
+
 		
 	</div> <!-- /container -->
+	<footer class="container">
+		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+	</footer>
 
 
 </body>

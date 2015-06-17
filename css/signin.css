@@ -1,25 +1,16 @@
 body {
   background: #fefefe;
-  
-  
 }
 
 .cover{
   background-image: url(../imgs/signin.jpg);
-  position: absolute;
-  top: 50%;
-  left: 20%;
   height: 400px;
-  margin-top: -200px;
-  
-
-    
 }
 
 .form-signin {
   max-width: 330px;
   padding: 15px;
-  margin: 20px auto;
+  margin: 20px 6px;
   background-color: #eee;
 }
 .form-signin .form-signin-heading,

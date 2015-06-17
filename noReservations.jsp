@@ -8,9 +8,9 @@
 	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 	<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	
 
-	<title> 
+
+	<title>
 	No Reservations
 	</title>
 </HEAD>
@@ -37,7 +37,7 @@
 						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
 					</ul>
 				</div>
-				
+
 			</div>
 		</nav>
 	</div>
@@ -46,7 +46,7 @@
 	<h2 class = "header">Reservation Error</h2>
 	<p2 class= "text" >You have no reservation between those dates<br/>
 		to go back click <a class = "link" href="viewr.jsp"> here!!! </a></p>
-   
+
 	</div>
 	<footer>
 		   <p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
