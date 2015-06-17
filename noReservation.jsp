@@ -33,7 +33,6 @@
 					<ul class="nav navbar-nav">
 						<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
 						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
-						<li><a href="${pageContext.request.contextPath}/cancelr.jsp">Cancel Reservations</a></li>
 						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
 					</ul>
 				</div>
