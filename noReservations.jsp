@@ -44,9 +44,15 @@
 	<div class="container">
 	<div class="row cover">
 	<h2 class = "header">Reservation Error</h2>
-	<p2 class= "text" >You have no reservation between those dates<br/>
-		to go back click <a class = "link" href="viewr.jsp"> here!!! </a></p>
-
+	<p class= "text" >You have no reservation between those dates<br/>
+		<c:choose>
+			<c:when test="${user.isSuper == true}">
+				to go back click <a class = "link" href="${pageContext.request.contextPath}/admin.jsp"> here!!! </a></p>
+			</c:when>
+			<c:otherwise>
+				to go back click <a class = "link" href="${pageContext.request.contextPath}/viewr.jsp"> here!!! </a></p>
+			</c:otherwise>
+		</c:choose>
 	</div>
 	<footer>
 		   <p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>

@@ -43,7 +43,7 @@
 		<div class="row cover">
 		<h2 class = "header" >Message Error</h2>
 	<p class="text">There is no message at this moment<br/>
-		to go back click <a class = "link" href="admin.jsp"> here!!! </a></p>
+		to go back click <a class = "link" href="${pageContext.request.contextPath}/admin.jsp"> here!!! </a></p>
    
 	</div>
 		</div>
