@@ -39,11 +39,14 @@ public class MessageServlet extends HttpServlet {
 	}
 
 	private void getMessages(HttpServletRequest request, HttpServletResponse response){
-		
 		try {
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
+		
 			
-			ArrayList<Message> messageList = (ArrayList) session.getAttribute("messageList");
+			ArrayList<Message> messageList = (ArrayList) hbSession.createQuery("from Message").list();
+			request.setAttribute("messageList", messageList);
 			String url;
 			// Checa se já existem mensagens no sistema
 			if (messageList == null || messageList.isEmpty()){
@@ -69,19 +72,6 @@ public class MessageServlet extends HttpServlet {
 			Session hbSession = sessionFactory.openSession();
 			Transaction tx = hbSession.beginTransaction();
 
-
-			// Checa se já foi instanciado a messageList no sistema
-			
-			//Código obsoleto com o hibernate
-			ArrayList<Message> messageList = (ArrayList) session.getAttribute("messageList");
-			if (messageList == null){
-				messageList = new ArrayList<Message>();
-				session.setAttribute("messageList", messageList);
-			}
-			
-
-
-
 			Message message = new Message();
 			Date date = new Date();
 			DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -98,9 +88,6 @@ public class MessageServlet extends HttpServlet {
 
 			message.setKnown(know);
 			message.setMessage(request.getParameter("message"));
-			
-			messageList.add(0, message);
-
 
 			hbSession.save(message);
 			tx.commit();
@@ -120,6 +107,8 @@ public class MessageServlet extends HttpServlet {
 	private void deleteMessage(HttpServletRequest request, HttpServletResponse response){
 		try {
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
 			
 			ArrayList <Message> messageList = (ArrayList) session.getAttribute("messageList");
 			ArrayList <Message> messageQuery = (ArrayList) session.getAttribute("messageList");

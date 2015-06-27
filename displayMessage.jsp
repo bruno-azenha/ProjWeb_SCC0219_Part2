@@ -18,7 +18,7 @@
 	<jsp:useBean 
 		id="messageList" 
 		class="java.util.ArrayList" 
-		scope="session"/>
+		scope="request"/>
 
 	<div class= "navbar-wrapper">
 		<nav class="navbar navbar-default">
@@ -60,7 +60,7 @@
 		<tr>
 
 		<td class="text"><input type = "checkbox" name="removeMessage${status.index}" value="true"/></td>
-		<td class="text">${status.index}</td>
+		<td class="text">${message.id}</td>
 		<td class="text">${message.date}</td>
 		<td class="text">${message.name}</td>
 		<td class="text">${message.email}</td>
