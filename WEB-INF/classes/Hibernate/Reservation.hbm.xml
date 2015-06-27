@@ -11,5 +11,8 @@
         <property column="adult" name="adult"/>
         <property column="baby" name="baby"/>
         <property column="child" name="child"/>
+        <many-to-one name="userObject" class="Bridgeport.User">
+            <column name= "user_id"/>
+        </many-to-one>
     </class>      
 </hibernate-mapping>

@@ -1,0 +1,1 @@
+javac -cp /home/denis/Desktop/packages/apache-tomcat-7.0.61/webapps/ProjWeb_SCC0219_Part2/WEB-INF/classes:/home/denis/Desktop/packages/apache-tomcat-7.0.61/webapps/ProjWeb_SCC0219_Part2/WEB-INF/lib/*:/home/denis/Desktop/packages/apache-tomcat-7.0.61/lib/servlet-api.jar ../../java/*.java

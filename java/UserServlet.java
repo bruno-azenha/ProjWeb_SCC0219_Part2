@@ -164,6 +164,8 @@ public class UserServlet extends HttpServlet {
 		try{
 				
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
 
 			/* If we don't have a user list on this session, create it */				
 			ArrayList <User> userList = (ArrayList) session.getAttribute("userList");
@@ -201,9 +203,13 @@ public class UserServlet extends HttpServlet {
 				user.setRegDate(fDate);
 
 				/* Adds user to userList and saves List to session */
+				hbSession.save(user);
 				userList.add(user);
+				tx.commit();
+				hbSession.close();
 				session.setAttribute("userList", userList);
 				session.setAttribute("origin", "signUp");
+
 			}
 
 			/* Set the correct response url */
