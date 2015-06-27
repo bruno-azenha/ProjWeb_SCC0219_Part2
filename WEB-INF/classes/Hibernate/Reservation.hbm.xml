@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Bridgeport.Reservation" table="Reservation">
+        <id column="id" name="id">
+    		<generator class="native"/>
+        </id>
+        <property column="user" name="user"/>
+        <property column="checkin" name="checkin"/>
+        <property column="checkout" name="checkout"/>
+        <property column="adult" name="adult"/>
+        <property column="baby" name="baby"/>
+        <property column="child" name="child"/>
+    </class>      
+</hibernate-mapping>

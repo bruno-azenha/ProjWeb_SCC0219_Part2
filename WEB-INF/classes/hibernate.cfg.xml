@@ -7,8 +7,11 @@
     <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
     <property name="hibernate.connection.username">postgres</property>
     <property name="hibernate.connection.password">teste123,</property>
-	<property name="hbm2ddl.auto">update</property>
+    <property name="hbm2ddl.auto">update</property>
     <property name="show_sql">true</property>
-    <mapping resource="Hibernate/Book.hbm.xml"/>
+    <mapping resource="Hibernate/User.hbm.xml"/>
+    <mapping resource="Hibernate/Reservation.hbm.xml"/>
+    <mapping resource="Hibernate/Message.hbm.xml"/>
+    <mapping resource="Hibernate/TimeFrame.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Bridgeport.User" table="User">
+        <id column="user_id" name="id">
+            <generator class="native"/>
+        </id>
+        <property column="name" name="name"/>
+        <property column="cpf" name="cpf"/>
+        <property column="dob" name="dob"/>
+        <property column="gender" name="gender"/>
+        <property column="civilStatus" name="civilStatus"/>
+        <property column="city" name="city"/>
+        <property column="state" name="state"/>
+        <property column="zip" name="zip"/>
+        <property column="email" name="email"/>
+        <property column="password" name="password"/>
+        <property column="regDate" name="regDate"/>
+        <property column="isSuper" name="isSuper"/>
+    </class>      
+</hibernate-mapping>

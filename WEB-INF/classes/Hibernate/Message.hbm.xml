@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="Bridgeport.Message" table="Message">
+        <id column="id" name="id"/>
+        <property column="name" name="name"/>
+        <property column="email" name="email"/>
+        <property column="mobile" name="mobile"/>
+        <property column="known" name="known"/>
+        <property column="message" name="message"/>
+        <property column="date" name="date"/>
+    </class>      
+</hibernate-mapping>
