@@ -7,21 +7,22 @@ import java.util.*;
 import java.lang.Integer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-/*import org.hibernate.Query;
+import org.hibernate.*;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;*/
+import org.hibernate.Transaction;
 import org.hibernate.cfg.*;
 
 
 public class ReservationServlet extends HttpServlet {
-	private static Sessionfactory sessionFactory;
+	private static SessionFactory sessionFactory;
 
 	public void init(){
-		sessionFactory = new Configuration.configure("hibernate.cfg.xml");
+		sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 
 	}
-	
+
 	public void doGet (HttpServletRequest request, HttpServletResponse response){		
 		// Retorna todas as mensagens
 		getReservations(request, response);

@@ -1,5 +1,5 @@
 all:
-	javac -classpath ../../lib/servlet-api.jar java/*.java -d WEB-INF/classes/
+	javac -classpath ../../lib/servlet-api.jar:./WEB-INF/lib/* java/*.java -d WEB-INF/classes/
 
 clean:
 	rm -rf WEB-INF/classes/*.*

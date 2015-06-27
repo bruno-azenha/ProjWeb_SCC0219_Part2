@@ -8,18 +8,18 @@ import java.lang.Integer;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import org.hibernate.*;
-/*import org.hibernate.Query;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;*/
+import org.hibernate.Transaction;
 import org.hibernate.cfg.*;
 
 
 public class MessageServlet extends HttpServlet {
-	private static Sessionfactory sessionFactory;
+	private static SessionFactory sessionFactory;
 
 	public void init(){
-		sessionFactory = new Configuration.configure("hibernate.cfg.xml");
+		sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
 
 	}
 
@@ -66,13 +66,21 @@ public class MessageServlet extends HttpServlet {
 	private void newMessage(HttpServletRequest request, HttpServletResponse response){
 		try {
 			HttpSession session = request.getSession();
-			
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
+
+
 			// Checa se já foi instanciado a messageList no sistema
+			
+			//Código obsoleto com o hibernate
 			ArrayList<Message> messageList = (ArrayList) session.getAttribute("messageList");
 			if (messageList == null){
 				messageList = new ArrayList<Message>();
 				session.setAttribute("messageList", messageList);
 			}
+			
+
+
 
 			Message message = new Message();
 			Date date = new Date();
@@ -90,8 +98,14 @@ public class MessageServlet extends HttpServlet {
 
 			message.setKnown(know);
 			message.setMessage(request.getParameter("message"));
+			
 			messageList.add(0, message);
-			session.setAttribute("messageList",messageList);
+
+
+			hbSession.save(message);
+			tx.commit();
+			hbSession.close();
+
 			session.setAttribute("origin", "message");
 			String url = "success.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
