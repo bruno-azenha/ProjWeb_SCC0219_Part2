@@ -35,8 +35,13 @@ public class Message implements java.io.Serializable {
 	public void setMessage (String message) {
 		this.message = message;
 	}
+
 	public void setDate (String date) {
 		this.date = date;
+	}
+
+	public void setId (UUID id){
+		this.id = id;
 	}
 
 
