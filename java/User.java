@@ -1,6 +1,7 @@
 package Bridgeport;
 public class User implements java.io.Serializable {
 
+	private Long id;
 	private String name;
 	private String cpf;
 	private String dob;
