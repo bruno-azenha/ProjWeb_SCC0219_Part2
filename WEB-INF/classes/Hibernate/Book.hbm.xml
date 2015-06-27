@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="beans.Book" table="mybook">
+        <id column="book_id" name="id">
+            <generator class="increment"/>
+        </id>
+        <property column="book_name" name="title"/>
+        <property column="book_author" name="author"/>
+        <property column="available" name="available"/>
+    </class>      
+</hibernate-mapping>
