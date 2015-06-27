@@ -110,23 +110,27 @@ public class MessageServlet extends HttpServlet {
 			Session hbSession = sessionFactory.openSession();
 			Transaction tx = hbSession.beginTransaction();
 			
-			ArrayList <Message> messageList = (ArrayList) session.getAttribute("messageList");
-			ArrayList <Message> messageQuery = (ArrayList) session.getAttribute("messageList");
-			ArrayList <Message> messageCopy = new ArrayList<Message>(messageList);
-			Integer count = 0;
+			ArrayList<Message> messageList = (ArrayList) hbSession.createQuery("from Message").list();
 
-			for (Message mQuery : messageQuery){
-				if (request.getParameter("removeMessage"+Integer.toString(count)) != null){
-					messageCopy.remove(mQuery);
+			Integer count = 0;
+			Message msg;
+			String id;
+			for (Message mQuery : messageList){
+				id = request.getParameter("removeMessage"+Integer.toString(count)); 
+				if (id != null){
+					msg = (Message) hbSession.get(Message.class, UUID.fromString(id));
+					hbSession.delete(msg);
 				}			
 				count++;
 			}
 
-			session.setAttribute("messageList", messageCopy);
-			session.removeAttribute("messageQuery");
+			tx.commit();
+			messageList = (ArrayList) hbSession.createQuery("from Message").list();			
+			hbSession.close();
+			request.setAttribute("messageList", messageList);
 			
 			String url;
-			if (messageCopy.isEmpty() == true){
+			if (messageList.isEmpty() == true){
 				url = "noMessage.jsp";
 			}
 			else {

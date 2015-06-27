@@ -59,7 +59,7 @@
 		<c:forEach var="message" items="${messageList}" varStatus="status">
 		<tr>
 
-		<td class="text"><input type = "checkbox" name="removeMessage${status.index}" value="true"/></td>
+		<td class="text"><input type = "checkbox" name="removeMessage${status.index}" value="${message.id}"/></td>
 		<td class="text">${message.id}</td>
 		<td class="text">${message.date}</td>
 		<td class="text">${message.name}</td>
