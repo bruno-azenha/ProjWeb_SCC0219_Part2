@@ -44,7 +44,7 @@ public class MessageServlet extends HttpServlet {
 			Session hbSession = sessionFactory.openSession();
 			Transaction tx = hbSession.beginTransaction();
 		
-			
+			//falta arrumar por data
 			ArrayList<Message> messageList = (ArrayList) hbSession.createQuery("from Message").list();
 			request.setAttribute("messageList", messageList);
 			String url;
@@ -56,7 +56,7 @@ public class MessageServlet extends HttpServlet {
 			else {
 				url = "displayMessage.jsp";
 			}
-			
+			hbSession.close();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}

@@ -55,55 +55,14 @@ public class UserServlet extends HttpServlet {
 		try{
 
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
 			String url="error.jsp";
 			if(session.getAttribute("counter")==null){
 				session.setAttribute("counter", new Integer(0));
 			}
-			if(session.getAttribute("userList")==null){
-				/* Inicializa e recupera a lista de usuários */
-				session.setAttribute("userList",new ArrayList<User>());
-				ArrayList userList = (ArrayList) session.getAttribute("userList");
-				
-				/* Cria David Ross user */
-				User dross = new User();
-				dross.setName("David Ross");
-				dross.setEmail("dross@gmail.com");
-				dross.setPassword("123456");
-				Date date = new Date();
-				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-				String fDate = formatter.format(date);
-				dross.setRegDate(fDate);
-				userList.add(dross);
-
-				/* Cria Admin Michael Jackson */
-				User admin = new User();
-				admin.setName("Michael Jackson");
-				admin.setEmail("adminmj@gmail.com");
-				admin.setPassword("adminadmin");
-				admin.setIsSuper(true);
-				date = new Date();
-				formatter = new SimpleDateFormat("dd/MM/yyyy");
-				fDate = formatter.format(date);
-				admin.setRegDate(fDate);
-				userList.add(admin);
-
-				/* Cria vários outros mock users */
-				for (int i=0; i<10; i++){
-					User mock = new User();
-					mock.setName("mock"+Integer.toString(i));
-					mock.setEmail("mock" + Integer.toString(i) + "@gmail.com");
-					mock.setPassword("mock" + Integer.toString(i));
-					mock.setIsSuper(false);
-					date = new Date();
-					formatter = new SimpleDateFormat("dd/MM/yyyy");
-					fDate = formatter.format(date);
-					mock.setRegDate(fDate);
-					userList.add(mock);
-				}
-
-				/* atualiza lista na sessao */
-				session.setAttribute("userList",userList);
-		}
+			
+		
 			Integer loginCounter= (Integer) session.getAttribute("counter");
 			
 			if(loginCounter >= 3){
@@ -111,7 +70,7 @@ public class UserServlet extends HttpServlet {
 				Date date = new Date();
 				long currentTime = date.getTime();
 				long timeDiff = currentTime - lastAccessedTime;
-				// 20 minutes in milliseconds  
+				// 60 minutes in milliseconds  
 				if (timeDiff >= 3600000)
 				{
 					//invalidate user session, so they can try again
@@ -120,25 +79,27 @@ public class UserServlet extends HttpServlet {
 			}
 
 			if(loginCounter < 3){
-				ArrayList<User> userList = (ArrayList) session.getAttribute("userList");
-				for(User c : userList){
-					if(request.getParameter("email").equals(c.getEmail())){
-					   if(request.getParameter("password").equals(c.getPassword())){
-						  session.setAttribute("user",c);
-						   loginCounter = 0;
-						  
-						   if( c.getIsSuper()){
-							 url= "admin.jsp";
-						  }else
-							 url= "user.jsp";
-						  break;
+				String email = request.getParameter("email");
+				ArrayList <User> u = (ArrayList) hbSession.createQuery("from User u where u.email = '"+email+"'").list();
+				User user = (User) hbSession.get(User.class, u.get(0).getId());
+				if(request.getParameter("password").equals(user.getPassword())){
+					session.setAttribute("user",user);
+					loginCounter = 0;
+					if( user.getIsSuper()){
+						 url= "admin.jsp";
+					}else{
+					 url= "user.jsp";
 					}
 				}
-			}
+				else{
+					loginCounter= loginCounter +1;
+
+				}	
 			}
 
-			loginCounter= loginCounter +1;
+			
 			session.setAttribute("counter",loginCounter);
+			hbSession.close();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 
@@ -166,17 +127,54 @@ public class UserServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			Session hbSession = sessionFactory.openSession();
 			Transaction tx = hbSession.beginTransaction();
+			String url = null;
 
 			/* If we don't have a user list on this session, create it */				
-			ArrayList <User> userList = (ArrayList) session.getAttribute("userList");
-			if (userList == null){
-				userList = new ArrayList<User>();
-				session.setAttribute("userList", userList);
+			ArrayList <User> userList = (ArrayList) hbSession.createQuery("from User").list();
+			
+			if (userList.isEmpty()){
+				/* Cria David Ross user */
+				User dross = new User();
+				dross.setName("David Ross");
+				dross.setEmail("dross@gmail.com");
+				dross.setPassword("123456");
+				Date date = new Date();
+				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+				String fDate = formatter.format(date);
+				dross.setRegDate(fDate);
+				hbSession.save(dross);
+
+				/* Cria Admin Michael Jackson */
+				User admin = new User();
+				admin.setName("Michael Jackson");
+				admin.setEmail("adminmj@gmail.com");
+				admin.setPassword("adminadmin");
+				admin.setIsSuper(true);
+				date = new Date();
+				formatter = new SimpleDateFormat("dd/MM/yyyy");
+				fDate = formatter.format(date);
+				admin.setRegDate(fDate);
+				hbSession.save(admin);
+
+				/* Cria vários outros mock users */
+				for (int i=0; i<10; i++){
+					User mock = new User();
+					mock.setName("mock"+Integer.toString(i));
+					mock.setEmail("mock" + Integer.toString(i) + "@gmail.com");
+					mock.setPassword("mock" + Integer.toString(i));
+					mock.setIsSuper(false);
+					date = new Date();
+					formatter = new SimpleDateFormat("dd/MM/yyyy");
+					fDate = formatter.format(date);
+					mock.setRegDate(fDate);
+					hbSession.save(mock);
+				}
 			}
 
 			/* Searches userList to see if there is already a user with this email */
 			Boolean hasUniqueEmail = true;
-			for (User u : userList){
+			ArrayList<User> usersIn = (ArrayList) hbSession.createQuery("from User").list(); 
+			for (User u : usersIn){
 				if (u.getEmail().equals(request.getParameter("email"))){
 					hasUniqueEmail = false;
 					session.setAttribute("registrationOK", false);
@@ -204,16 +202,17 @@ public class UserServlet extends HttpServlet {
 
 				/* Adds user to userList and saves List to session */
 				hbSession.save(user);
-				userList.add(user);
 				tx.commit();
-				hbSession.close();
-				session.setAttribute("userList", userList);
 				session.setAttribute("origin", "signUp");
+				url = "success.jsp";
 
+			}else{
+				url = "signUperror.jsp";
 			}
 
 			/* Set the correct response url */
-			String url = "success.jsp";
+			
+			hbSession.close();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 
@@ -225,9 +224,12 @@ public class UserServlet extends HttpServlet {
 	private void userSearchDate(HttpServletRequest request, HttpServletResponse response){
 		try{		
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
+			String url = null;
 
+			ArrayList <User> userList = (ArrayList) hbSession.createQuery("from User").list();
 			ArrayList <User> userQuery = new ArrayList();
-			ArrayList <User> userList = (ArrayList )session.getAttribute("userList");
 
 			// Faz busca pela data
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
@@ -240,16 +242,16 @@ public class UserServlet extends HttpServlet {
 					userQuery.add(u);
 				}
 			}
-			session.setAttribute("userQuery", userQuery);
+			request.setAttribute("userQuery", userQuery);
 			
-			String url;
+			
 			if (userQuery.isEmpty() == true){
 				url = "noUser.jsp";
 			}
 			else {
 				url = "displayUser.jsp";
 			}
-			
+			hbSession.close();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 
@@ -262,9 +264,12 @@ public class UserServlet extends HttpServlet {
 	private void userSearchEmail(HttpServletRequest request, HttpServletResponse response){
 		try{		
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
+			String url = null;
 
 			ArrayList <User> userQuery = new ArrayList();
-			ArrayList <User> userList = (ArrayList )session.getAttribute("userList");
+			ArrayList <User> userList = (ArrayList )hbSession.createQuery("from User").list();
 
 			// Faz busca pelo email
 			String email = request.getParameter("email");
@@ -274,16 +279,16 @@ public class UserServlet extends HttpServlet {
 					break;
 				}
 			}
-			session.setAttribute("userQuery", userQuery);
+			request.setAttribute("userQuery", userQuery);
 			
-			String url;
+			
 			if (userQuery.isEmpty() == true){
 				url = "noUser.jsp";
 			}
 			else {
 				url = "displayUser.jsp";
 			}
-			
+			hbSession.close();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}
@@ -295,31 +300,34 @@ public class UserServlet extends HttpServlet {
 	private void userDelete(HttpServletRequest request, HttpServletResponse response){
 		try{		
 			HttpSession session = request.getSession();
-			ArrayList <User> userList = (ArrayList) session.getAttribute("userList");
-			ArrayList <User> userQuery = (ArrayList) session.getAttribute("userList");
-			ArrayList <User> userCopy = new ArrayList<User>(userList);
-			ArrayList <User> userQueryCopy = new ArrayList<User>(userQuery);
-			Integer count = 0;
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
+			String url = null;
+			ArrayList<User> userList = (ArrayList) hbSession.createQuery("from User").list();
 
-			for (User uQuery : userQuery){
-				if (request.getParameter("removeUser"+Integer.toString(count)) != null){
-					userCopy.remove(uQuery);
-					userQueryCopy.remove(uQuery);
+			Integer count = 0;
+			User usr;
+			String id;
+			for (User u : userList){
+				id = request.getParameter("removeUser"+Integer.toString(count)); 
+				if (id != null){
+					usr = (User) hbSession.get(User.class, Integer.parseInt(id));
+					hbSession.delete(usr);
 				}			
 				count++;
 			}
 
-			session.setAttribute("userList", userCopy);
-			session.setAttribute("userQuery", userQueryCopy);
+			tx.commit();
+			userList = (ArrayList) hbSession.createQuery("from User").list();			
+			request.setAttribute("userQuery", userList);
 			
-			String url;
-			if (userQueryCopy.isEmpty() == true){
+			if (userList.isEmpty() == true){
 				url = "noUser.jsp";
 			}
 			else {
 				url = "displayUser.jsp";
 			}
-			
+			hbSession.close();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 		}

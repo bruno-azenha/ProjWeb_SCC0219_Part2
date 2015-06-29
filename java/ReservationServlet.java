@@ -39,18 +39,14 @@ public class ReservationServlet extends HttpServlet {
 
 	private void getReservations(HttpServletRequest request, HttpServletResponse response){
 		try {
+
 			HttpSession session = request.getSession();
-			ArrayList<Message> reservationList = (ArrayList) session.getAttribute("reservationList");
+			//ArrayList<Message> reservationList = (ArrayList) session.getAttribute("reservationList");
 			
 			String url;
 			Boolean found = false;
 			// Checa se já foi instanciado a reservationList no sistema
-			if (reservationList == null || reservationList.isEmpty()){
-				url = "noReservation.jsp";
-			}
-			else {
-
-				User u = (User) session.getAttribute("user");
+			User u = (User) session.getAttribute("user");
 				if (u == null) {
 					url = "noUser.jsp";
 				}
@@ -66,7 +62,7 @@ public class ReservationServlet extends HttpServlet {
 
 					url = (found == false)? "noReservation.jsp": "displayReservation.jsp";
 				}
-			}
+			
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
@@ -81,8 +77,10 @@ public class ReservationServlet extends HttpServlet {
 		try{
 
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
 			ArrayList <Reservation> reservationQuery = new ArrayList();
-			ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
+			//ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
 			// Checa opção de busca de reserva (Data ou usuário)
 			
 			Boolean found = false;
@@ -93,14 +91,16 @@ public class ReservationServlet extends HttpServlet {
 					Date dataQueryIn = format.parse(request.getParameter("dateIn"));
 					Date dataQueryOut = format.parse(request.getParameter("dateOut"));
 					Date reservationCheckin, reservationCheckout;
-					for (Reservation r : reservationList){
-						
-						reservationCheckin = format.parse(r.getCheckin());
-						reservationCheckout = format.parse(r.getCheckout());
-						if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
-							reservationQuery.add(r);
-							found = true;
-						}
+					reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.checkin < "+dataQueryIn+" and reservation.checkout > "+ dataQueryOut+"").list();
+					if(reservationQuery!= null ){
+						found= true;
+					}
+
+					for (Reservation r : reservationQuery){
+						System.out.println(r.getUser());
+						System.out.println(r.getCheckin());
+						System.out.println(r.getCheckout());
+							
 					}
 				
 			}
@@ -108,14 +108,18 @@ public class ReservationServlet extends HttpServlet {
 			else if (request.getParameter("mode").equals("email")){
 				String email = request.getParameter("email");
 
-				for (Reservation r : reservationList){
-					if (r.getUser().equals(email)){
-						reservationQuery.add(r);
-						found = true;
+				reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.user = "+email+"").list();
+				if(reservationQuery!= null ){
+						found= true;
 					}
-				}
+				for (Reservation r : reservationQuery){
+						System.out.println(r.getUser());
+						System.out.println(r.getCheckin());
+						System.out.println(r.getCheckout());
+							
+					}
 			}
-
+			hbSession.close();
 			session.setAttribute("reservationQuery", reservationQuery);
 			return found;
 		}
@@ -162,12 +166,14 @@ public class ReservationServlet extends HttpServlet {
 	private void newReservation (HttpServletRequest request, HttpServletResponse response){
 		try{
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			
 
-			ArrayList <Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
-			if (reservationList == null){
-				reservationList = new ArrayList<Reservation>();
-				session.setAttribute("reservationList", reservationList);
-			}
+			// ArrayList <Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
+			// if (reservationList == null){
+			// 	reservationList = new ArrayList<Reservation>();
+			// 	session.setAttribute("reservationList", reservationList);
+			// }
 
 			ArrayList <TimeFrame> unavailableDays = (ArrayList) session.getAttribute("unavailableDays");
 			if (unavailableDays == null){
@@ -196,6 +202,7 @@ public class ReservationServlet extends HttpServlet {
 			String url;
 
 			if (periodOk == true){
+				Transaction tx = hbSession.beginTransaction();
 				User user = (User) session.getAttribute("user");
 				Reservation reservation = new Reservation();
 				reservation.setUser(user.getEmail());
@@ -213,13 +220,16 @@ public class ReservationServlet extends HttpServlet {
 				session.setAttribute("unavailableDays",unavailableDays);
 
 				url = "success.jsp";
-				reservationList.add(reservation);
-				session.setAttribute("reservationList",reservationList);
+				hbSession.save(reservation);
+				tx.commit();
+
 			}
 
 			else {
 				url = "invalidDate.jsp";
+				
 			}
+			hbSession.close();
 			
 			session.setAttribute("origin", "reservation");
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);

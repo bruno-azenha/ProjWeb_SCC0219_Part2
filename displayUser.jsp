@@ -16,7 +16,7 @@
 <jsp:useBean 
 	id="userQuery" 
 	class="java.util.ArrayList" 
-	scope="session"/>
+	scope="request"/>
 
 	<div class= "navbar-wrapper">
 		<nav class="navbar navbar-default">
@@ -56,7 +56,7 @@
 					<tr><td><b></b></td><td class= "text"><b>ID</b></td><td class= "text"><b>Registration date</b></td><td class= "text"><b>Name</b></td><td class= "text"><b>CPF</b></td><td class= "text"><b>DoB</b></td><td class= "text"><b>Gender</b></td><td class= "text"><b>Civil Status</b></td><td class= "text"><b>City</b></td><td class= "text"><b>State</b></td><td class= "text"><b>Zipcode</b></td><td class= "text"><b>Email</b><td class= "text"><b>Admin</b></td></td></tr>
 					<c:forEach var="user" items="${userQuery}" varStatus="status">
 					<tr>
-						<td class= "text"><input type = "checkbox" name="removeUser${status.index}" value="true"/></td>
+						<td class= "text"><input type = "checkbox" name="removeUser${status.index}" value="${user.id}"/></td>
 						<td class= "text">${status.index}</td>
 						<td class= "text">${user.regDate}</td>
 						<td class= "text">${user.name}</td>
