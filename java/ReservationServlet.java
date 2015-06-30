@@ -86,27 +86,21 @@ public class ReservationServlet extends HttpServlet {
 			Boolean found = false;
 			if (request.getParameter("mode").equals("date")){
 				
-					DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-					Date dataQueryIn = format.parse(request.getParameter("dateIn"));
-					Date dataQueryOut = format.parse(request.getParameter("dateOut"));
-					Date reservationCheckin, reservationCheckout;
+				DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+				Date dataQueryIn = format.parse(request.getParameter("dateIn"));
+				Date dataQueryOut = format.parse(request.getParameter("dateOut"));
+				Date reservationCheckin, reservationCheckout;
 
-					
-					for (Reservation r : reservationList){
-						reservationCheckin = format.parse(r.getCheckin());
-						reservationCheckout = format.parse(r.getCheckout());
+				for (Reservation r : reservationList){
+					reservationCheckin = format.parse(r.getCheckin());
+					reservationCheckout = format.parse(r.getCheckout());
 
-						if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
-							reservationQuery.add(r);
-							found = true;
-						}
+					if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
+						reservationQuery.add(r);
+						found = true;
 					}
+				}
 
-					for (Reservation r : reservationQuery){
-						System.out.println(r.getUserEmail());
-						System.out.println(r.getCheckin());
-						System.out.println(r.getCheckout());
-					}
 			}
 
 			else if (request.getParameter("mode").equals("email")){
