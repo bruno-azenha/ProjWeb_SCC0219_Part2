@@ -4,6 +4,7 @@ public class TimeFrame implements java.io.Serializable {
 
 	private String startDate;
 	private String endDate;
+	private Integer id;
 
 	public TimeFrame (){
 	}
@@ -17,6 +18,10 @@ public class TimeFrame implements java.io.Serializable {
 		this.endDate = endDate;
 	}
 
+	public void setId (Integer id){
+		this.id = id;
+	}
+
 	// Getters
 	public String getStartDate () {
 		return this.startDate;
@@ -24,6 +29,10 @@ public class TimeFrame implements java.io.Serializable {
 
 	public String getEndDate () {
 		return this.endDate;
+	}
+
+	public Integer getId (){
+		return this.id;
 	}
 
 }

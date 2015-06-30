@@ -53,8 +53,8 @@
 			<tr><td class = "text"></td><td class = "text"><b>ID</b></td><td class = "text"><b>Name</b></td><td class = "text"><b>Checkin</b></td><td class = "text"><b>Checkout</b></td><td class = "text"><b>Adults</b></td><td class = "text"><b>Babies</b></td><td class = "text"><b>Children</b></td></tr>
 			<c:forEach var="reservation" items="${reservationQuery}" varStatus="status">
 				<tr>
-				<td class = "text"><input type="checkbox" name="removeReservation${status.index}" value="true"/></td>
-				<td class = "text">${status.index}</td>
+				<td class = "text"><input type="checkbox" name="removeReservation${status.index}" value="reservation.id"/></td>
+				<td class = "text">${reservation.id}</td>
 				<td class = "text">${reservation.user}</td>
 				<td class = "text">${reservation.checkin}</td>
 				<td class = "text">${reservation.checkout}</td>

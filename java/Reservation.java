@@ -9,6 +9,7 @@ public class Reservation implements java.io.Serializable {
 	private Integer adult;
 	private Integer baby;
 	private Integer child;
+	private TimeFrame timeFrame;
 
 	public Reservation() {
 	}
@@ -17,9 +18,11 @@ public class Reservation implements java.io.Serializable {
 	public void setid(int id){
 		this.id = id;
 	}
+
 	public void setUserEmail (String userEmail) {
 		this.userEmail = userEmail;
 	}
+
 	public void setUserObject(User user){
 		this.userObject = user;
 	}
@@ -42,6 +45,10 @@ public class Reservation implements java.io.Serializable {
 	
 	public void setChild (Integer child) {
 		this.child = child;
+	}
+
+	public void setTimeFrame (TimeFrame timeFrame) {
+		this.timeFrame = timeFrame;
 	}
 
 	// Getters
@@ -71,8 +78,13 @@ public class Reservation implements java.io.Serializable {
 	public Integer getChild () {
 		return this.child;
 	}
+
 	public Integer getId(){
 		return this.id;
+	}
+
+	public TimeFrame getTimeFrame() {
+		return this.timeFrame;
 	}
 
 }

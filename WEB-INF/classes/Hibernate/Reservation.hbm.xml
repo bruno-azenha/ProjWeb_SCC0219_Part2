@@ -12,5 +12,6 @@
         <property column="baby" name="baby"/>
         <property column="child" name="child"/>
         <many-to-one name="userObject" class="Bridgeport.User" column="user_id"/>
+        <one-to-one name="timeFrame" class="Bridgeport.TimeFrame" cascade="all"/>
     </class>      
 </hibernate-mapping>

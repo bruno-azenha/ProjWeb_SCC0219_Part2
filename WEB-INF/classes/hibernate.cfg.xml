@@ -12,8 +12,6 @@
     <mapping resource="Hibernate/Message.hbm.xml"/>
     <mapping resource="Hibernate/User.hbm.xml"/>
     <mapping resource="Hibernate/Reservation.hbm.xml"/>
-    <!--  
-    
-    <mapping resource="Hibernate/TimeFrame.hbm.xml"/> -->
+    <mapping resource="Hibernate/TimeFrame.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -78,7 +78,7 @@ public class ReservationServlet extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			Session hbSession = sessionFactory.openSession();
-			Transaction tx = hbSession.beginTransaction();
+
 			ArrayList <Reservation> reservationQuery = new ArrayList();
 			//ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
 			// Checa opção de busca de reserva (Data ou usuário)
@@ -108,7 +108,7 @@ public class ReservationServlet extends HttpServlet {
 			else if (request.getParameter("mode").equals("email")){
 				String email = request.getParameter("email");
 
-				reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.user = "+email+"").list();
+				reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.userEmail = "+email+"").list();
 				if(reservationQuery!= null ){
 						found= true;
 					}
@@ -120,7 +120,7 @@ public class ReservationServlet extends HttpServlet {
 					}
 			}
 			hbSession.close();
-			session.setAttribute("reservationQuery", reservationQuery);
+			request.setAttribute("reservationQuery", reservationQuery);
 			return found;
 		}
 		catch(Exception e){
@@ -132,33 +132,29 @@ public class ReservationServlet extends HttpServlet {
 	private Boolean normalSearch(HttpServletRequest request, HttpServletResponse response){
 		try{
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
 
 			Boolean found = false;
 
 			ArrayList <Reservation> reservationQuery = new ArrayList();
-			ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
 
 			// Faz busca pela data
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date dataQueryIn = format.parse(request.getParameter("dateIn"));
 			Date dataQueryOut = format.parse(request.getParameter("dateOut"));
 			Date reservationCheckin, reservationCheckout;
-			for (Reservation r : reservationList){
-				
-				reservationCheckin = format.parse(r.getCheckin());
-				reservationCheckout = format.parse(r.getCheckout());
-				if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
-					reservationQuery.add(r);
-					found = true;
-				}
+			reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.checkin < "+dataQueryIn+" and reservation.checkout > "+ dataQueryOut+"").list();
+			if(reservationQuery!= null){
+				found= true;
 			}
-			session.setAttribute("reservationQuery", reservationQuery);
+
+			request.setAttribute("reservationQuery", reservationQuery);
 			return found;
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
-		return false;
+
 
 		
 	}
@@ -175,11 +171,12 @@ public class ReservationServlet extends HttpServlet {
 			// 	session.setAttribute("reservationList", reservationList);
 			// }
 
-			ArrayList <TimeFrame> unavailableDays = (ArrayList) session.getAttribute("unavailableDays");
-			if (unavailableDays == null){
+			ArrayList <TimeFrame> unavailableDays = (ArrayList) hbSession.createQuery("from TimeFrame").list();
+			
+			/*if (unavailableDays == null){
 				unavailableDays = new ArrayList<TimeFrame>();
 				session.setAttribute("unavailableDays", unavailableDays);
-			}
+			}*/
 
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date dateIn = format.parse(request.getParameter("iDate"));
@@ -216,10 +213,9 @@ public class ReservationServlet extends HttpServlet {
 				TimeFrame tf = new TimeFrame();
 				tf.setStartDate(reservation.getCheckin());
 				tf.setEndDate(reservation.getCheckout());
-				unavailableDays.add(tf);
-				session.setAttribute("unavailableDays",unavailableDays);
 
 				url = "success.jsp";
+				hbSession.save(tf);
 				hbSession.save(reservation);
 				tx.commit();
 
@@ -243,43 +239,30 @@ public class ReservationServlet extends HttpServlet {
 	private void deleteReservation (HttpServletRequest request, HttpServletResponse response){
 		try{
 			HttpSession session = request.getSession();
+			Session hbSession = sessionFactory.openSession();
+			Transaction tx = hbSession.beginTransaction();
 
-			ArrayList <Reservation> reservationList = (ArrayList) session.getAttribute("reservationList");
-			ArrayList <Reservation> reservationQuery = (ArrayList) session.getAttribute("reservationQuery");
-			ArrayList <TimeFrame> unavailableDays = (ArrayList) session.getAttribute("unavailableDays");
-			ArrayList <Reservation> reservationCopy = new ArrayList<Reservation>(reservationList);
-			ArrayList <Reservation> reservationQueryCopy = new ArrayList<Reservation>(reservationQuery);
-			ArrayList <TimeFrame> unavailableDaysCopy = new ArrayList<TimeFrame>(unavailableDays);
+			ArrayList <Reservation> reservationList = (ArrayList) hbSession.createQuery("from Reservation").list();
+			ArrayList <Reservation> reservationQuery = (ArrayList<Reservation>) session.getAttribute("reservationQuery");
 
-			String reservationIn = "";
-			String reservationOut = "";
-
+			Reservation reservation;
+			String id;
 			Integer count = 0;
-			for (Reservation rQuery : reservationQuery){
-				if (request.getParameter("removeReservation"+Integer.toString(count)) != null){
-					reservationCopy.remove(rQuery);
-					reservationQueryCopy.remove(rQuery);
-					reservationIn = rQuery.getCheckin();
-					reservationOut = rQuery.getCheckout();
-					/* torna o período disponível novamente */
-					for (TimeFrame tf : unavailableDays){
-						if (tf.getStartDate().equals(reservationIn) && tf.getEndDate().equals(reservationOut)){
-							unavailableDaysCopy.remove(tf);
-							break;
-						}
-			
-					}
-					unavailableDays = new ArrayList<TimeFrame>(unavailableDaysCopy);
-				}			
+			for (Reservation rQuery : reservationList){
+				id = request.getParameter("removeReservation"+Integer.toString(count));
+				if (id != null){
+					reservation = (Reservation) hbSession.get(Reservation.class, Integer.parseInt(id));
+					reservationQuery.remove(reservation);
+					hbSession.delete(reservation);
+				}				
 				count++;
 			}
 
-			session.setAttribute("unavailableDays", unavailableDaysCopy);
-			session.setAttribute("reservationList", reservationCopy);
-			session.setAttribute("reservationQuery", reservationQueryCopy);
+			tx.commit();
+			session.setAttribute("reservationQuery", reservationQuery);
 
 			String url;
-			if (reservationQueryCopy.isEmpty() == true){
+			if (reservationQuery.isEmpty() == true){
 				url = "noReservation.jsp";
 			}
 			else {
