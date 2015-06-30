@@ -80,7 +80,7 @@ public class UserServlet extends HttpServlet {
 
 			if(loginCounter < 3){
 				String email = request.getParameter("email");
-				ArrayList <User> u = (ArrayList) hbSession.createQuery("from hotel_user u where u.email = '"+email+"'").list();
+				ArrayList <User> u = (ArrayList) hbSession.createQuery("from User u where u.email = '"+email+"'").list();
 				User user = (User) hbSession.get(User.class, u.get(0).getId());
 				if(request.getParameter("password").equals(user.getPassword())){
 					session.setAttribute("user",user);

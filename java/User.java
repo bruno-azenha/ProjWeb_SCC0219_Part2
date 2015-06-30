@@ -1,5 +1,5 @@
 package Bridgeport;
-import java.util.ArrayList;
+import java.util.List;
 public class User implements java.io.Serializable {
 
 	private Integer id;
@@ -15,7 +15,7 @@ public class User implements java.io.Serializable {
 	private String password;
 	private String regDate;
 	private Boolean isSuper = false;
-	private ArrayList<Reservation> reservationList;
+	private List<Reservation> reservationList;
 
 	public User() {
 	}
@@ -24,7 +24,7 @@ public class User implements java.io.Serializable {
 	public void setId(Integer id){
 		this.id = id;
 	}
-	public void setReservationList( ArrayList <Reservation> reservationList){
+	public void setReservationList( List<Reservation> reservationList){
 		this.reservationList = reservationList;
 	}
 	public void setName (String name) {
@@ -81,7 +81,7 @@ public class User implements java.io.Serializable {
 	public Integer getId(){
 		return this.id;
 	}
-	public ArrayList <Reservation> getReservationList(){
+	public List<Reservation> getReservationList(){
 		return this.reservationList;
 	}
 	public String getName () {
