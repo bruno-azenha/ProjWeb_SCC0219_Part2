@@ -108,7 +108,7 @@ public class ReservationServlet extends HttpServlet {
 			else if (request.getParameter("mode").equals("email")){
 				String email = request.getParameter("email");
 
-				reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.userEmail = "+email+"").list();
+				reservationQuery = (ArrayList) hbSession.createQuery("select reservation from reservation where reservation.useremail like "+email).list();
 				if(reservationQuery!= null ){
 						found= true;
 					}
@@ -155,7 +155,7 @@ public class ReservationServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-
+		return false;
 		
 	}
 
