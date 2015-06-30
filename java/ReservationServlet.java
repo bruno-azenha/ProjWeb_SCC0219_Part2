@@ -80,44 +80,45 @@ public class ReservationServlet extends HttpServlet {
 			Session hbSession = sessionFactory.openSession();
 
 			ArrayList <Reservation> reservationQuery = new ArrayList();
-			//ArrayList <Reservation> reservationList = (ArrayList )session.getAttribute("reservationList");
+			ArrayList <Reservation> reservationList = (ArrayList )hbSession.createQuery("from Reservation").list();
 			// Checa opção de busca de reserva (Data ou usuário)
 			
 			Boolean found = false;
 			if (request.getParameter("mode").equals("date")){
 				
-
 					DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 					Date dataQueryIn = format.parse(request.getParameter("dateIn"));
 					Date dataQueryOut = format.parse(request.getParameter("dateOut"));
 					Date reservationCheckin, reservationCheckout;
-					reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.checkin < "+dataQueryIn+" and reservation.checkout > "+ dataQueryOut+"").list();
-					if(reservationQuery!= null ){
-						found= true;
+
+					
+					for (Reservation r : reservationList){
+						reservationCheckin = format.parse(r.getCheckin());
+						reservationCheckout = format.parse(r.getCheckout());
+
+						if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
+							reservationQuery.add(r);
+							found = true;
+						}
 					}
 
 					for (Reservation r : reservationQuery){
 						System.out.println(r.getUserEmail());
 						System.out.println(r.getCheckin());
 						System.out.println(r.getCheckout());
-							
 					}
-				
 			}
 
 			else if (request.getParameter("mode").equals("email")){
 				String email = request.getParameter("email");
 
-				reservationQuery = (ArrayList) hbSession.createQuery("select reservation from reservation where reservation.useremail like "+email).list();
-				if(reservationQuery!= null ){
-						found= true;
+				reservationQuery = (ArrayList) hbSession.createQuery("from Reservation").list();
+				for (Reservation r : reservationList){
+					if (r.getUserEmail().equals(email)){
+						reservationQuery.add(r);
+						found = true;
 					}
-				for (Reservation r : reservationQuery){
-						System.out.println(r.getUserEmail());
-						System.out.println(r.getCheckin());
-						System.out.println(r.getCheckout());
-							
-					}
+				}
 			}
 			hbSession.close();
 			request.setAttribute("reservationQuery", reservationQuery);

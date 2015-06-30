@@ -45,7 +45,7 @@
 		<jsp:useBean 
 			id="reservationQuery" 
 			class="java.util.ArrayList" 
-			scope="session"/>
+			scope="request"/>
 
 	<h2 class="header" >these are the reservations</h2>
 	<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" id="deleteReservation" accept-charset="utf-8">
@@ -55,7 +55,7 @@
 				<tr>
 				<td class = "text"><input type="checkbox" name="removeReservation${status.index}" value="reservation.id"/></td>
 				<td class = "text">${reservation.id}</td>
-				<td class = "text">${reservation.user}</td>
+				<td class = "text">${reservation.userEmail}</td>
 				<td class = "text">${reservation.checkin}</td>
 				<td class = "text">${reservation.checkout}</td>
 				<td class = "text">${reservation.adult}</td>
