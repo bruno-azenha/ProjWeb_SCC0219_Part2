@@ -17,10 +17,10 @@
         <property column="password" name="password"/>
         <property column="regDate" name="regDate"/>
         <property column="isSuper" name="isSuper"/>
-<!--         <set name= "reservationList" cascade = "all">
+        <list name= "reservationList" cascade = "all">
             <key column="user_id"/>
             <list-index column= "idx"/>
             <one-to-many class="Bridgeport.Reservation"/>
-        </set>
- -->    </class>      
+        </list>
+    </class>      
 </hibernate-mapping>

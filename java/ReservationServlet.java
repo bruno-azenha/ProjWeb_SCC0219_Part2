@@ -97,7 +97,7 @@ public class ReservationServlet extends HttpServlet {
 					}
 
 					for (Reservation r : reservationQuery){
-						System.out.println(r.getUser());
+						System.out.println(r.getUserEmail());
 						System.out.println(r.getCheckin());
 						System.out.println(r.getCheckout());
 							
@@ -113,7 +113,7 @@ public class ReservationServlet extends HttpServlet {
 						found= true;
 					}
 				for (Reservation r : reservationQuery){
-						System.out.println(r.getUser());
+						System.out.println(r.getUserEmail());
 						System.out.println(r.getCheckin());
 						System.out.println(r.getCheckout());
 							
@@ -205,7 +205,7 @@ public class ReservationServlet extends HttpServlet {
 				Transaction tx = hbSession.beginTransaction();
 				User user = (User) session.getAttribute("user");
 				Reservation reservation = new Reservation();
-				reservation.setUser(user.getEmail());
+				reservation.setUserEmail(user.getEmail());
 				reservation.setCheckin(request.getParameter("iDate"));
 				reservation.setCheckout(request.getParameter("oDate"));
 				reservation.setAdult(Integer.valueOf(request.getParameter("adult")));

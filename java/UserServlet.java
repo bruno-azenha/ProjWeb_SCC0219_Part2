@@ -126,13 +126,13 @@ public class UserServlet extends HttpServlet {
 				
 			HttpSession session = request.getSession();
 			Session hbSession = sessionFactory.openSession();
-			Transaction tx = hbSession.beginTransaction();
 			String url = null;
 
-			/* If we don't have a user list on this session, create it */				
-			ArrayList <User> userList = (ArrayList) hbSession.createQuery("from User").list();
+			/* Recover userList from the DB */				
+			ArrayList <User> userList = (ArrayList) hbSession.createQuery("from hotel_user").list();
 			
 			if (userList.isEmpty()){
+				Transaction tx_populate = hbSession.beginTransaction();
 				/* Cria David Ross user */
 				User dross = new User();
 				dross.setName("David Ross");
@@ -169,6 +169,8 @@ public class UserServlet extends HttpServlet {
 					mock.setRegDate(fDate);
 					hbSession.save(mock);
 				}
+
+				tx_populate.commit();
 			}
 
 			/* Searches userList to see if there is already a user with this email */
@@ -202,7 +204,6 @@ public class UserServlet extends HttpServlet {
 
 				/* Adds user to userList and saves List to session */
 				hbSession.save(user);
-				tx.commit();
 				session.setAttribute("origin", "signUp");
 				url = "success.jsp";
 
@@ -211,7 +212,6 @@ public class UserServlet extends HttpServlet {
 			}
 
 			/* Set the correct response url */
-			
 			hbSession.close();
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
