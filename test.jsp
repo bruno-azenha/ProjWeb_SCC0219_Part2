@@ -95,7 +95,7 @@
 <c:forEach var="reservation" items="${reservationList}" varStatus="status">
 	<tr>
 	<td>${status.index}</td>
-	<td>${reservation.user}</td>
+	<td>${reservation.userEmail}</td>
 	<td>${reservation.checkin}</td>
 	<td>${reservation.checkout}</td>
 	
@@ -110,8 +110,8 @@
 <tr><td><b>ID</b></td><td><b>Name</b></td><td><b>idate</b></td><td></td></tr>
 <c:forEach var="reservation" items="${reservationQuery}" varStatus="status">
 	<tr>
-	<td>${status.index}</td>
-	<td>${reservation.user}</td>
+	<td>${reservation.id}</td>
+	<td>${reservation.userEmail}</td>
 	<td>${reservation.checkin}</td>
 	<td>${reservation.checkout}</td>
 	
@@ -126,7 +126,7 @@
 <tr><td><b>ID</b></td><td><b>Start Date</b></td><td><b>End Date</b></td><td></td></tr>
 <c:forEach var="tp" items="${unavailableDays}" varStatus="status">
 	<tr>
-	<td>${status.index}</td>
+	<td>${reservation.id}</td>
 	<td>${tp.startDate}</td>
 	<td>${tp.endDate}</td>
 	

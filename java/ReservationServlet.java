@@ -114,7 +114,7 @@ public class ReservationServlet extends HttpServlet {
 				}
 			}
 			hbSession.close();
-			request.setAttribute("reservationQuery", reservationQuery);
+			session.setAttribute("reservationQuery", reservationQuery);
 			return found;
 		}
 		catch(Exception e){
@@ -150,7 +150,7 @@ public class ReservationServlet extends HttpServlet {
 			}
 
 			hbSession.close();
-			request.setAttribute("reservationQuery", reservationQuery);
+			session.setAttribute("reservationQuery", reservationQuery);
 			return found;
 		}
 		catch (Exception e){
@@ -248,15 +248,18 @@ public class ReservationServlet extends HttpServlet {
 			Transaction tx = hbSession.beginTransaction();
 
 			ArrayList <Reservation> reservationList = (ArrayList) hbSession.createQuery("from Reservation").list();
+			ArrayList <Reservation> reservationQuery = (ArrayList) session.getAttribute("reservationQuery");
+			ArrayList <Reservation> reservationQueryCopy = new ArrayList<Reservation> (reservationQuery);
 
 			Reservation reservation;
 			String id;
 			Integer count = 0;
-			for (Reservation rQuery : reservationList){
+			for (Reservation rQuery : reservationQuery){
 				id = request.getParameter("removeReservation"+Integer.toString(count));
 				if (id != null){
 					reservation = (Reservation) hbSession.get(Reservation.class, Integer.parseInt(id));
 					hbSession.delete(reservation);
+					reservationQueryCopy.remove(rQuery);
 				}				
 				count++;
 			}
@@ -264,13 +267,14 @@ public class ReservationServlet extends HttpServlet {
 			tx.commit();
 
 			String url;
-			if (false == true){
+			if (reservationQueryCopy.isEmpty() == true){
 				url = "noReservation.jsp";
 			}
 			else {
 				url = "displayReservation.jsp";
 			}
 			 
+			session.setAttribute("reservationQuery", reservationQueryCopy);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../"+url);
 			dispatcher.forward(request, response);
 			

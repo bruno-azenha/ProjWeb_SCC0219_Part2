@@ -45,7 +45,7 @@
 		<jsp:useBean 
 			id="reservationQuery" 
 			class="java.util.ArrayList" 
-			scope="request"/>
+			scope="session"/>
 
 	<h2 class="header" >these are the reservations</h2>
 	<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" id="deleteReservation" accept-charset="utf-8">
