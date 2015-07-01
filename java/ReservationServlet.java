@@ -219,7 +219,7 @@ public class ReservationServlet extends HttpServlet {
 
 				reservation.setTimeFrame(tf);
 
-				url = "success.jsp";
+				url = "rSuccess.jsp";
 				hbSession.save(tf);
 				hbSession.save(reservation);
 				tx.commit();

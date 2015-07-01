@@ -16,36 +16,39 @@
 
 
 <BODY>
-<div class= "navbar-wrapper">
+	<div class= "navbar-wrapper">
 		<nav class="navbar navbar-default">
 			<div class ="container">
 				<div class = "navbar-header ">
-					 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-		 <span class="sr-only"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-	  </button>
-					<a class ="navbar-brand" href= "${pageContext.request.contextPath}/index.jsp">Bridgeport Hotel</a>
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+						<span class="sr-only"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class ="navbar-brand" href= "${pageContext.request.contextPath}">Bridgeport Hotel</a>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
-				  <ul class="nav navbar-nav">
-					<li class=""><a href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-					<li><a href="${pageContext.request.contextPath}/signup.jsp">Register</a></li>
-					<li><a href="${pageContext.request.contextPath}/contact.jsp">Contact</a></li>
-					<a class="btn btn-md btn-primary navbar-btn " href="${pageContext.request.contextPath}/login.jsp" role="button">log in</a>               
-				  </ul>
+					<ul class="nav navbar-nav">
+						<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
+						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
+						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
+					</ul>
 				</div>
 				
-			  </div>
+			</div>
 		</nav>
 	</div>
+	
+	<c:if test="${user.isSuper!=false}">
+    	<c:redirect url = "login.jsp"/>
+	</c:if>
 	
 	<div class="container">
 		<div class="row cover">
 			<h2 class = "header">Success</h2>	
-				<p class= "text">Your message was successfully sent! Please wait for our answer.<br>
-	   			Click <a class="link" href="${pageContext.request.contextPath}/index.jsp"> here!!! </a> to go back</p>
+				<p class= "text">Your reservation was recorded<br>
+	   		Click <a class="link" href="${pageContext.request.contextPath}/user.jsp"> here!!! </a> to go back</p>
 	   	</div>   
 		
 		<footer>

@@ -26,6 +26,7 @@
 					<a class ="navbar-brand" href= "${pageContext.request.contextPath}">Bridgeport Hotel</a>
 				</div>
 				<div id="navbar" class="collapse navbar-collapse">
+				
 					<ul class="nav navbar-nav">
 						<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
 						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
