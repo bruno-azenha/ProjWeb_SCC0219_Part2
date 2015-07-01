@@ -74,7 +74,7 @@
 		<h3>Message:</h3>
 		<textarea class = " textarea" name = "message" id = "message" rows= "0" cols = "0" required></textarea>
 
-		<input class = "btn btn-lg btn-primary btn-block button " id = "submit" type="submit" value ="Send Message"/>
+		<input class = "btn btn-lg btn-primary button" id = "submit" type="submit" value ="Send Message"/>
 			
 		</form>
 		</div>

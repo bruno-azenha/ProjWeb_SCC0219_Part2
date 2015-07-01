@@ -12,7 +12,7 @@
 	<script type="text/javascript" src ="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-ui/jquery-ui.min.css">
 	<script src="${pageContext.request.contextPath}/js/calendar.js"></script>
-	<title>view Reservations</title>
+	<title>View Reservations</title>
 </head>
 <body>
 <div class= "navbar-wrapper">

@@ -10,7 +10,7 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	
 	<title> 
-	Sign in error
+	Success
 	</title>
 </HEAD>
 
