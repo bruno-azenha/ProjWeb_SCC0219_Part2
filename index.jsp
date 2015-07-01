@@ -89,7 +89,7 @@
 		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 		<span class="sr-only">Previous</span>
 		</a>
-<!--		<a class="right carousel-control" href="#bridgeportCarousel" role="button" data-slide="next">-->
+		<a class="right carousel-control" href="#bridgeportCarousel" role="button" data-slide="next">
 		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
 		</a>

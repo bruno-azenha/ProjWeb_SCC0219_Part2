@@ -11,7 +11,7 @@
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 	
 	
-	<title>User Management Page</title>
+	<title>Message Management Page</title>
 </head>
 <body>
 

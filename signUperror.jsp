@@ -11,7 +11,7 @@
 	
 
 	<title> 
-	Sign in error
+	Signup error
 	</title>
 </HEAD>
 
@@ -44,26 +44,12 @@
 	
 <div class="container">
 <div class="row cover">
-	<c:choose>	
-  <c:when test="${counter<=3}">
-   <h2 class="header">Sign in Error</h2>
-	<p class="text" >You entered a invalid user or name. Please go back and try again. Passwords are case sensitive.<br/>
-
-		Notice that you used  ${sessionScope.counter} of 3 attempts to sign in. After 3 failed attempts, you will no longer be able to sign in for 1 hour.<br/>
-		To go back click <a class= "link" href="${pageContext.request.contextPath}/login.jsp"> here!!! </a><br/>
-		If you forgot your password Click<a class="link" href="${pageContext.request.contextPath}/recover.jsp"> here!!! </a><br/></p>
-   
-
-    
-	</c:when>
-	<c:otherwise >
-   <h2 class="header">Sign in Error</h2>
-	<p class = "text">You entered a invalid user or name. You will no longer be able to sign in for 1 hour.<br/>
-	To go back click <a class="link" href="${pageContext.request.contextPath}/login.jsp"> here!!! </a>
-	</p>
+   <h2 class="header">Signup Error</h2>
+	<p class="text" >This e-mail is registered already.<br/>		
+		If you forgot your password Click<a class="link" href="${pageContext.request.contextPath}/recover.jsp"> here!!! </a><br/>
+		If you think this is a mistake please contact us  <a class="link" href="${pageContext.request.contextPath}/contact.jsp"> here!!! </a><br/>
+		To go back click <a class= "link" href="${pageContext.request.contextPath}/signup.jsp"> here!!! </a><br/></p>
   
-	</c:otherwise>
-	</c:choose>
 	</div>
 	<footer>
 		<p>&copy; 2015 Designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>

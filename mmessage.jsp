@@ -9,7 +9,7 @@
 	<link href="${pageContext.request.contextPath}/css/custom.css" rel="stylesheet">
 		<script src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
 	<script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-	<title>Reservation Page</title>
+	<title> Message Management Page</title>
 </head>
 <body>
 	<div class= "navbar-wrapper">
