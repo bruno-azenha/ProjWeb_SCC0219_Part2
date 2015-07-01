@@ -138,7 +138,6 @@ public class UserServlet extends HttpServlet {
 				dross.setName("David Ross");
 				dross.setEmail("dross@gmail.com");
 				dross.setPassword("123456");
-				dross.setReservationList(new ArrayList<Reservation>());
 				Date date = new Date();
 				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 				String fDate = formatter.format(date);
@@ -150,7 +149,6 @@ public class UserServlet extends HttpServlet {
 				admin.setName("Michael Jackson");
 				admin.setEmail("adminmj@gmail.com");
 				admin.setPassword("adminadmin");
-				admin.setReservationList(new ArrayList<Reservation>());
 				admin.setIsSuper(true);
 				date = new Date();
 				formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -164,7 +162,6 @@ public class UserServlet extends HttpServlet {
 					mock.setName("mock"+Integer.toString(i));
 					mock.setEmail("mock" + Integer.toString(i) + "@gmail.com");
 					mock.setPassword("mock" + Integer.toString(i));
-					mock.setReservationList(new ArrayList<Reservation>());
 					mock.setIsSuper(false);
 					date = new Date();
 					formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -201,7 +198,6 @@ public class UserServlet extends HttpServlet {
 				user.setZip(request.getParameter("zip"));
 				user.setEmail(request.getParameter("email"));
 				user.setPassword(request.getParameter("password"));
-				user.setReservationList(new ArrayList<Reservation>());
 				Date date = new Date();
 				DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 				String fDate = formatter.format(date);
@@ -310,14 +306,18 @@ public class UserServlet extends HttpServlet {
 			Transaction tx = hbSession.beginTransaction();
 			String url = null;
 			ArrayList<User> userList = (ArrayList) hbSession.createQuery("from User").list();
-
 			Integer count = 0;
 			User usr;
 			String id;
 			for (User u : userList){
+
+				// Antes de deletar os Usuários, precisa deletar as reservas dele
+
+
 				id = request.getParameter("removeUser"+Integer.toString(count)); 
 				if (id != null){
 					usr = (User) hbSession.get(User.class, Integer.parseInt(id));
+					RemoveReservationsFromUser(usr);
 					hbSession.delete(usr);
 				}			
 				count++;
@@ -340,5 +340,18 @@ public class UserServlet extends HttpServlet {
 		catch(Exception e){
 			e.printStackTrace();
 		}
+	}
+
+	private void RemoveReservationsFromUser(User u){
+		Session hbSession = sessionFactory.openSession();
+		Transaction tx = hbSession.beginTransaction();
+
+		ArrayList <Reservation> reservationList = (ArrayList )hbSession.createQuery("from Reservation r where r.userEmail='"+u.getEmail()+"'").list();
+		for (Reservation r : reservationList){
+			hbSession.delete(r);
+		}
+
+		tx.commit();
+		hbSession.close();
 	}
 }
