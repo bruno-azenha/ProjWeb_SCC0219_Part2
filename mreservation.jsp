@@ -39,43 +39,47 @@
 			</div>
 		</nav>
 	</div>
-	<c:if test="${user.isSuper==false}">
+
+	<c:if test="${user.isSuper!=true}">
     <c:redirect url = "login.jsp"/>
-</c:if>
+	</c:if>
+
 	<div class = "container">
 		<div class="row cover">
-		<h2  class = " text-center header"> Search reservations</h2>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByEmail" accept-charset="utf-8">
-			<input type="hidden" name="mode" value="email"/>
-			<div >
-				<p class="text">Enter the email of the user who made the resevation</p>
-				<label for="email"> email</label>
-				<input class= "form-control" name = "email" id= "email" required  />
-			</div>
-			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="serch" value ="Search by email"/>			
-		</form>
-		<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByDate">
-			<input type="hidden" name="mode" value="date"/>
-			<div>
-				<p class="text">Enter the start and the end date of your search</p>
-				<label class="text">Start Date</label>
-				<input class= "form-control" name = "dateIn" id= "iDate" readonly='true' required  />
-			</div>
-			<div >
-				<label class="text">End Date</label>
-				<input class= "form-control" name = "dateOut" id= "oDate" readonly='true' required />
-			</div>
-				
-			<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="serch" value ="Search by date"/>
-				
+			<h2  class = " text-center header"> Search reservations</h2>
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByEmail" accept-charset="utf-8">
+				<input type="hidden" name="mode" value="email"/>
+				<div >
+					<p class="text">Enter the email of the user who made the resevation</p>
+					<label for="email"> email</label>
+					<input class= "form-control" name = "email" id= "email" required  />
+				</div>
+				<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="serch" value ="Search by email"/>			
 			</form>
-		
-		<div id= "searchResponse">
-				
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="GET" id = "reservationByDate">
+				<input type="hidden" name="mode" value="date"/>
+				<div>
+					<p class="text">Enter the start and the end date of your search</p>
+					<label class="text">Start Date</label>
+					<input class= "form-control" name = "dateIn" id= "iDate" readonly='true' required  />
+				</div>
+				<div >
+					<label class="text">End Date</label>
+					<input class= "form-control" name = "dateOut" id= "oDate" readonly='true' required />
+				</div>
+					
+				<input class= "btn btn-md btn-success btn-block form-control " type="submit" id="serch" value ="Search by date"/>
+					
+				</form>
+			
+			<div id= "searchResponse">
+					
+			</div>
 		</div>
+		
 	</div>
-		
-		</div>
+
+	<div class="container">
 		<footer>
 		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>

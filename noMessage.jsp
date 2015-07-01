@@ -36,21 +36,23 @@
 			</div>
 		</nav>
 	</div>
-	<c:if test="${user.isSuper==false}">
-    <c:redirect url = "login.jsp"/>
-</c:if>
+
+	<c:if test="${user.isSuper!=true}">
+    	<c:redirect url = "login.jsp"/>
+	</c:if>
+	
 	<div class = "container">
 		<div class="row cover">
-		<h2 class = "header" >No message was found.</h2>
-	<p class="text">There is no message at this moment<br/>
-		to go back click <a class = "link" href="${pageContext.request.contextPath}/admin.jsp"> here!!! </a></p>
+			<h2 class = "header" >No message was found.</h2>
+			<p class="text">There is no message at this moment<br/>
+			To go back click <a class = "link" href="${pageContext.request.contextPath}/admin.jsp"> here!!! </a></p>
    
-	</div>
 		</div>
-			<footer>
+		
+		<footer>
 		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
 		</footer>
-		</div>
+	</div>
 	
 </body>
 </html>

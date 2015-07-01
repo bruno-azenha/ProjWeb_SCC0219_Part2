@@ -40,7 +40,7 @@
 			</div>
 		</nav>
 	</div>
-	<c:if test="${user.isSuper==false}">
+	<c:if test="${user.isSuper!=true}">
     <c:redirect url = "login.jsp"/>
 </c:if>
 	<div class = "container">
