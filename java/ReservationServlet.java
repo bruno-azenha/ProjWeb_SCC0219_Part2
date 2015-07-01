@@ -106,7 +106,6 @@ public class ReservationServlet extends HttpServlet {
 			else if (request.getParameter("mode").equals("email")){
 				String email = request.getParameter("email");
 
-				reservationQuery = (ArrayList) hbSession.createQuery("from Reservation").list();
 				for (Reservation r : reservationList){
 					if (r.getUserEmail().equals(email)){
 						reservationQuery.add(r);
@@ -128,21 +127,29 @@ public class ReservationServlet extends HttpServlet {
 		try{
 			HttpSession session = request.getSession();
 			Session hbSession = sessionFactory.openSession();
+			User u = (User) session.getAttribute("user");
 
 			Boolean found = false;
 
 			ArrayList <Reservation> reservationQuery = new ArrayList();
+			ArrayList <Reservation> reservationList = (ArrayList )hbSession.createQuery("from Reservation r where r.userEmail='"+u.getEmail()+"'").list();
 
-			// Faz busca pela data
 			DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date dataQueryIn = format.parse(request.getParameter("dateIn"));
 			Date dataQueryOut = format.parse(request.getParameter("dateOut"));
 			Date reservationCheckin, reservationCheckout;
-			reservationQuery = (ArrayList) hbSession.createQuery("from Reservation reservation where reservation.checkin < "+dataQueryIn+" and reservation.checkout > "+ dataQueryOut+"").list();
-			if(reservationQuery!= null){
-				found= true;
+
+			for (Reservation r : reservationList){
+				reservationCheckin = format.parse(r.getCheckin());
+				reservationCheckout = format.parse(r.getCheckout());
+
+				if (dataQueryIn.compareTo(reservationCheckin) <= 0 && dataQueryOut.compareTo(reservationCheckout) >= 0){
+					reservationQuery.add(r);
+					found = true;
+				}
 			}
 
+			hbSession.close();
 			request.setAttribute("reservationQuery", reservationQuery);
 			return found;
 		}
@@ -203,11 +210,14 @@ public class ReservationServlet extends HttpServlet {
 				reservation.setAdult(Integer.valueOf(request.getParameter("adult")));
 				reservation.setBaby(Integer.valueOf(request.getParameter("baby")));
 				reservation.setChild(Integer.valueOf(request.getParameter("child")));
-				
+				reservation.setUserObject(user);
+
 				/* Adiciona o timeframe da reservation à unavailableDays */
 				TimeFrame tf = new TimeFrame();
 				tf.setStartDate(reservation.getCheckin());
 				tf.setEndDate(reservation.getCheckout());
+
+				reservation.setTimeFrame(tf);
 
 				url = "success.jsp";
 				hbSession.save(tf);
@@ -238,7 +248,6 @@ public class ReservationServlet extends HttpServlet {
 			Transaction tx = hbSession.beginTransaction();
 
 			ArrayList <Reservation> reservationList = (ArrayList) hbSession.createQuery("from Reservation").list();
-			ArrayList <Reservation> reservationQuery = (ArrayList<Reservation>) session.getAttribute("reservationQuery");
 
 			Reservation reservation;
 			String id;
@@ -247,17 +256,15 @@ public class ReservationServlet extends HttpServlet {
 				id = request.getParameter("removeReservation"+Integer.toString(count));
 				if (id != null){
 					reservation = (Reservation) hbSession.get(Reservation.class, Integer.parseInt(id));
-					reservationQuery.remove(reservation);
 					hbSession.delete(reservation);
 				}				
 				count++;
 			}
 
 			tx.commit();
-			session.setAttribute("reservationQuery", reservationQuery);
 
 			String url;
-			if (reservationQuery.isEmpty() == true){
+			if (false == true){
 				url = "noReservation.jsp";
 			}
 			else {
