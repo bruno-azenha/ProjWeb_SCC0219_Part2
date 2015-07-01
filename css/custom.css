@@ -1,12 +1,12 @@
 
 .header{
     color: white;
-	text-shadow: 2px 2px 5px black;
+	text-shadow: 2px 2px 5px #000, -2px -2px 5px #000, -2px 2px 5px #000, 2px -2px 5px #000;
 	
 
 }
 .text {color: ghostwhite;
-	text-shadow: 2px 2px 5px black;
+	text-shadow: 2px 2px 5px #000, -2px -2px 5px #000, -2px 2px 5px #000, 2px -2px 5px #000;
 }
 
 .link {
@@ -25,7 +25,7 @@
 
 .form h2,h3,label {
     color: #E1EEEE;
-	text-shadow: 2px 2px 5px black;
+	text-shadow: 2px 2px 5px #000, -2px -2px 5px #000, -2px 2px 5px #000, 2px -2px 5px #000;
 
 }
 
