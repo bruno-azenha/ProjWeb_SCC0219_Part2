@@ -25,14 +25,30 @@
 					</button>
 					<a class ="navbar-brand" href= "${pageContext.request.contextPath}">Bridgeport Hotel</a>
 				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-				
-					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
-						<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
-						<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
-					</ul>
-				</div>
+				<c:choose>
+					<c:when test="${user.isSuper==false}">
+						<div id="navbar" class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li><a href="${pageContext.request.contextPath}/user.jsp">Make a Reservation</a></li>
+								<li><a href="${pageContext.request.contextPath}/viewr.jsp">View Reservations</a></li>
+								<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
+							</ul>
+						</div>
+					</c:when>
+					<c:when test= "${user.isSuper == true}">
+					<div id="navbar" class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li><a href="${pageContext.request.contextPath}/admin.jsp">Manage Users</a></li>
+							<li><a href="${pageContext.request.contextPath}/mreservation.jsp">Manage Reservations</a></li>
+							<li><a href="${pageContext.request.contextPath}/mmessage.jsp">Manage Messages</a></li>
+							<a class="btn navbar-btn btn-primary " href="${pageContext.request.contextPath}/logout.jsp" role="button">log out</a>
+						</ul>
+					</div>
+					</c:when>
+					<c:otherwise>
+						<c:redirect url = "login.jsp"/>
+					</c:otherwise>
+				</c:choose>
 				
 			</div>
 		</nav>
