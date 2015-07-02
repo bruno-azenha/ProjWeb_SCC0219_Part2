@@ -3,8 +3,9 @@
 	background-repeat: no-repeat;
     padding: 20px;
     background-size: cover;
-    background-position: center center;
-    background-attachment: local;
+    background-position: center top;
+    background-attachment: fixed;
+
 }
 
 .form h2,h3,label {

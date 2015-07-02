@@ -1,44 +1,34 @@
-# ProjWeb_SCC0219_Part2
-Implementação da segunda parte do Projeto de Introdução ao Desenvolvimento Web da USP de São Carlos.
+# ProjWeb_SCC0219_Parte3
+Implementação da Terceira parte do Projeto de Introdução ao Desenvolvimento Web da USP de São Carlos.
 
-------------- // --------------
+Bruno Azenha Gonçalves - 7143444
+Clayton de Oliveira    - 7161591
 
-# Documentação
+--------------------------------
 
-## Servlets
+A base de dados é populada com usuários padrão quando se registra um usuário novo e não havia nenhum usuário cadastrado
 
-### UserServlet:
-#### Get Method:
-* Recebe as informações do form de login (email, password)
-* Busca para ver se o usuário existe e se ele existir, testa a senha.
-* Se encontrado o usuário, loga (Coloca o usuário na sessão) e redireciona para página do usuário.
-* Caso contrário, incrementa um contador que impedirá mais tentativas de login se >= 5
+Administrador:
+Login: adminmj@gmail.com
+Senha: adminadmin
 
-#### Post Method:
-* Recebe as informações do form de cadastro
-* Verifica se já existe usuário cadastrado com o email
-* Se existir, retorna `true` na variável de sessão "registrationOK";
+David Ross 
+Login: dross@gmail.com
+Senha: 123456
 
+10 Mock Users:
+Login: mockX@gmail.com
+Senha: mockX
+	*X é um número de 0 a 9
 
-### ReservationServlet:
-#### Get Method:
-* Diferentes "filtros" para retorno de reservas:
-* P/ usuário comum - data inicio, data fim e rotorna todas as reservas do usuário no período 
-* P/ adm - filtra por nome de usuário ou data de início e data de fim
+--------------------------------
 
-#### Post Method:
-* Recebe as informações do form de adição de reserva e pega usuário da sessão
-* Adiciona reserva à lista de reservas da sessão
-* Precisa verificar se há
-* O administrador também pode consultar e remover usuários.
-* Para consultar, pode passar data de início e fim de cadastro ou email.
-* A seleção para remoção se dá através de checkbox e um botão vermelho remove.
+Foram criadas 4 Tabelas na Base de Dados:
+1. hotel_user
+2. reservation
+3. message
+4. timeframe
 
+O escopo de sessão só é utilizado para fazer lógica de sistema, nunca para persistência de dados.
 
-### MessageServlet:
-#### Get Method:
-* Só o administrador pode ter acesso às mensagens.
-* Retorna as mensagens na ordem contrária que elas foram enviadas (mais recentes primeiro).
-* Precisa fazer paginação das mensagens.
-* Precisa marcar as mensagens como lidas ou não.
-
+:)

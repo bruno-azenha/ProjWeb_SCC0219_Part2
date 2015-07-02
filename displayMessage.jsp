@@ -60,7 +60,7 @@
 		<tr>
 
 		<td class="text"><input type = "checkbox" name="removeMessage${status.index}" value="${message.id}"/></td>
-		<td class="text">${message.id}</td>
+		<td class="text">${status.index}</td>
 		<td class="text">${message.date}</td>
 		<td class="text">${message.name}</td>
 		<td class="text">${message.email}</td>
@@ -74,11 +74,11 @@
 		<input class= "btn btn-md btn-danger btn-block form-control " type="submit" id="message" value ="delete selected"/>
 			</div>
 </td>
+		<footer>
+			<p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
+		</footer>
 </div>
 		</div>
-			<footer>
-		   <p>&copy; 2015 designed by Bruno Azenha &amp; Clayton de Oliveira, All rights reserved</p>
-		</footer>
 		</div>
 	
 </body>
