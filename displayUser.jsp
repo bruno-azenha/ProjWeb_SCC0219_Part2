@@ -50,7 +50,7 @@
 
 			<h2 class="header">These are the users</h2>
 		
-			<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" accept-charset="utf-8">
+			<form method="POST" action="/ProjWeb_SCC0219_Part3/Bridgeport/UserServlet" accept-charset="utf-8">
 				<input type="hidden" name="action" value="delete"/>
 				<table border=1>
 					<tr><td><b></b></td><td class= "text"><b>ID</b></td><td class= "text"><b>Registration date</b></td><td class= "text"><b>Name</b></td><td class= "text"><b>CPF</b></td><td class= "text"><b>DoB</b></td><td class= "text"><b>Gender</b></td><td class= "text"><b>Civil Status</b></td><td class= "text"><b>City</b></td><td class= "text"><b>State</b></td><td class= "text"><b>Zipcode</b></td><td class= "text"><b>Email</b><td class= "text"><b>Admin</b></td></td></tr>

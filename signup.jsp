@@ -41,7 +41,7 @@
 	<div class="container cover">
 		<div class= "col-md-12">
 		
-			<form  class = "form" action="/ProjWeb_SCC0219_Part2/Bridgeport/UserServlet" method="POST" id= "register" autocomplete = "off" accept-charset="utf-8">
+			<form  class = "form" action="/ProjWeb_SCC0219_Part3/Bridgeport/UserServlet" method="POST" id= "register" autocomplete = "off" accept-charset="utf-8">
 				<h1>Register</h1>
 				<div class="form-group">
 					<label for ="name">Full Name: </label>

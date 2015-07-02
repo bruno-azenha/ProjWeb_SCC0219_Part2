@@ -45,7 +45,7 @@
 </c:if>
 	<div class = "container">
 		<div class="row cover">
-			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" method="POST" id = "reservation" accept-charset="utf-8">
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part3/Bridgeport/ReservationServlet" method="POST" id = "reservation" accept-charset="utf-8">
 				<input type="hidden" name="action" value="add"/>
 				<input type ="hidden" name= "origin" value="reservation"/>
 				<h2>Make your reservation</h2>

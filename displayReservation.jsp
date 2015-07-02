@@ -49,7 +49,7 @@
 			scope="session"/>
 
 	<h2 class="header" >these are the reservations</h2>
-	<form method="POST" action="/ProjWeb_SCC0219_Part2/Bridgeport/ReservationServlet" id="deleteReservation" accept-charset="utf-8">
+	<form method="POST" action="/ProjWeb_SCC0219_Part3/Bridgeport/ReservationServlet" id="deleteReservation" accept-charset="utf-8">
 		<table border=1>
 			<tr><td class = "text"></td><td class = "text"><b>ID</b></td><td class = "text"><b>Name</b></td><td class = "text"><b>Checkin</b></td><td class = "text"><b>Checkout</b></td><td class = "text"><b>Adults</b></td><td class = "text"><b>Babies</b></td><td class = "text"><b>Children</b></td></tr>
 			<c:forEach var="reservation" items="${reservationQuery}" varStatus="status">

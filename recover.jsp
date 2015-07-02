@@ -43,7 +43,7 @@
 
 	<div class = "container">
 		<div class="row cover">
-			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part2/Bridgeport/RecoveryServlet" method="GET" id = "recovery" accept-charset="utf-8">
+			<form class = "col-md-6 form" action="/ProjWeb_SCC0219_Part3/Bridgeport/RecoveryServlet" method="GET" id = "recovery" accept-charset="utf-8">
 				
 				
 				<h2 class="header">Password Recovery</h2>
